@@ -5,4 +5,9 @@ permalink: /contact/
 ---
 
 
-I can only aspire to Knuth-levels of inaccessibility; you can reach me via email.   
+I can only aspire to Knuth-levels of inaccessibility; the easiest way to reach me
+is via email.   
+
+[LinkedIn](https://www.linkedin.com/in/rory-hartong-redden-18334356)
+
+[Kaggle](https://www.kaggle.com/roryhr)
