@@ -4,13 +4,17 @@ title: About
 permalink: /about/
 ---
 
-I'm currently a machine learning fellow at Startup.ML
+I'm currently a machine learning fellow at [Startup.ML](Startup.ML)
 
-Feel free to peruse my [resume](https://github.com/roryhr/resume/raw/master/rhartong-redden_resume.pdf)
+I'd like leave San Francisco for somewhere colder in the
+winter and stickier in the summer that's home to a certain
+baseball team that hasn't won in a long time but I'll stay in the
+Bay Area if I have to. I have a
+[resume](https://github.com/roryhr/resume/raw/master/rhartong-redden_resume.pdf) that I lovingly crafted in LaTeX.
 
 ## Short Bio
 
-A thread running through my portfolio of work in academia, from astronomy to
+A thread running through my academic portfolio, from astronomy to
 fluid dynamics, is computer vision. For my master’s thesis I designed and
 fabricated a fluid dynamics experiment that measured the state of the fluid
 using a cutting edge computer vision system. Similarly, my bachelor’s thesis

@@ -4,18 +4,16 @@ title:  "First Jekyll Post!"
 date:   2016-01-24 20:00:59 -0800
 categories: jekyll update
 ---
-While the fine folks at Jekyll say you "Up and running in seconds" that's more
-like a teaser, as in "You could win". I was not up and running in seconds.
+While the fine folks at [Jekyll](http://jekyllrb.com) say "Get up and running *in seconds*"
+(emphasis theirs). I feel like that's a teaser, as in "You *could* get up and
+running in seconds...if you're lucky". I was not lucky.
 
-http://jekyllrb.com/docs/installation/
-
-
-Unfortunately, Ubuntu installs Ruby 1.9 while we need Ruby >= 2.0 for Jekyll
+Unfortunately, the Ubuntu repository has Ruby 1.9 while we need Ruby >= 2.0 for Jekyll
 so `apt-get` won't do. I used the Ruby Version Manager (RVM) which turned out
-to be a hassle to install. I got curl error: 77. Solution is below:
+to be a hassle to install. I got a `curl error: 77` which was related to my
+ssh certificate. Solution below:
 
 http://stackoverflow.com/questions/3160909/how-do-i-deal-with-certificates-using-curl-while-trying-to-access-an-https-url
-
 
 After running a `$bundle update/bundle install` it broke my `jekyll serve` that
 had been working previously.
