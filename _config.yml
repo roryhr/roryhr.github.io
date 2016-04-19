@@ -9,10 +9,10 @@
 title: Rory's Website
 email: roryhr@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
-  Rory H.R.'s personal website: physics, data science, and other stuff
+  Rory H.R.'s personal website: machine learning, physics, and other stuff
 baseurl: "" # the subpath of your site, e.g. /blog
 # url: "http://yourdomain.com" # the base hostname & protocol for your site
-twitter_username: rory_h_r
+# twitter_username: rory_h_r
 github_username:  roryhr
 # Build settings
 markdown: kramdown
