@@ -9,7 +9,7 @@
 title: Rory's Website
 email: roryhr@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
-  Rory H.R.'s personal website: machine learning, physics, and other stuff
+  Rory Hartong-Redden: machine learning and physics, mostly
 baseurl: "" # the subpath of your site, e.g. /blog
 # url: "http://yourdomain.com" # the base hostname & protocol for your site
 # twitter_username: rory_h_r

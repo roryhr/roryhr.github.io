@@ -3,6 +3,7 @@ layout: page
 title: About
 permalink: /about/
 ---
+I'm a machine learning scientist in San Francisco. 
 
 This winter I was a machine learning fellow at [Startup.ML](Startup.ML) working on 
 machine learning in finance. I built out a data pipeline to ingest market data 
@@ -16,9 +17,8 @@ I don't have a Microsoft Word version.
 
 [Resume](https://github.com/roryhr/resume/raw/master/rhartong_redden_resume.pdf) 
 
-[CV](https://github.com/roryhr/resume/raw/master/rhartong_redden_cv.pdf) 
 
-# Short Bio
+# Bio
 
 For my master’s thesis I designed a fluid dynamics experiment that measured 
 the state of the fluid using a novel computer vision system. 
@@ -29,3 +29,5 @@ Lacking a theory to draw conclusions from my data, I developed a new theory for 
 I'm currently fascinated by deep convolutional networks, Kaggle, and 
 Reinforcement Learning. Applications for RL include autonomous driving,
 autonomous trading, autonomous...you name it! 
+
+[CV](https://github.com/roryhr/resume/raw/master/rhartong_redden_cv.pdf) 
