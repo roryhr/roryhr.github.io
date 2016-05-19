@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Python for (Data) Science</title>
+        <link rel="stylesheet" href="./theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="./">Rory's Blog </a></h1>
+                <nav><ul>
+                    <li><a href="./pages/about.html">About</a></li>
+                    <li><a href="./pages/contact.html">Contact</a></li>
+                    <li><a href="./pages/projects.html">Projects</a></li>
+                    <li class="active"><a href="./category/blog.html">Blog</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="./python-for-data-science.html" rel="bookmark"
+           title="Permalink to Python for (Data) Science">Python for (Data) Science</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2016-01-24T00:00:00+01:00">
+                Published: Sun 24 January 2016
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="./author/rory-hr.html">Rory HR</a>
+        </address>
+<p>In <a href="./category/blog.html">Blog</a>.</p>
+
+</footer><!-- /.post-info -->      <p>[Note: This post started out as a letter to a friend who's looking to get into Data Science.
+It goes without saying it's all my opinion.]</p>
+<p>Data science is very popular...too popular! I'm concerned it'll all collapse in a few years either because expectations are too high, or, more likely, a standardized tool will come out that's easy to use which will obliterate the need for all these 100k+ jobs.</p>
+<p>Coming from MATLAB, I was hesitant to learn Python because it's open source and a hassle to find everything you need. In MATLAB, everything you'll need is nicely provided to you in an IDE with built-in documentation.
+As a programming language, it leaves a lot to be desired but as a scientific tool for data analysis it's pretty great.
+Unfortunately, nobody likes writing documentation for free so it's expensive.</p>
+<p>It took me about a year to get a "lay of the land" for Python. Complications include the nature of open-source: options...so many options as well as the sheer scope of Python.
+You can use Python to run websites, launch jobs on thousands of servers,
+do data analysis on your computer...you name it.
+The power of Python lies in its extensibility and readability.</p>
+<h1>MATLAB</h1>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Pros</th>
+<th>Cons</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Name</td>
+<td>matrix laboratory</td>
+<td>ALL CAPS IS OBNOXIOUS</td>
+</tr>
+<tr>
+<td>Documentation</td>
+<td>For each command there's a summary, mathematical formulation, and an example</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Packages</td>
+<td>There are about 100 <a href="http://www.mathworks.com/products/">add-ons</a></td>
+<td>That's about it. Smaller community of shared code.</td>
+</tr>
+<tr>
+<td>Language</td>
+<td>Designed for scientific computing</td>
+<td>Not designed for object oriented programming</td>
+</tr>
+<tr>
+<td>Speed</td>
+<td>Core operations (fft, matrix multiplications) are c-optimized</td>
+<td>MATLAB loops are dog slow</td>
+</tr>
+<tr>
+<td>Calling C code</td>
+<td>Can be done using .mex files</td>
+<td>It's a pain!</td>
+</tr>
+</tbody>
+</table>
+<h1>Python</h1>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Pros</th>
+<th>Cons</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Name</td>
+<td>Who doesn't love Monty Python?</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Documentation</td>
+<td>Extensive documentation of the language</td>
+<td>Package documentation is often poor</td>
+</tr>
+<tr>
+<td>Packages</td>
+<td>1000s updated every day</td>
+<td>Most are specialized and might not do what you want, see documentation above</td>
+</tr>
+<tr>
+<td>Language</td>
+<td>Designed for readability</td>
+<td>Not designed for scientific computing</td>
+</tr>
+<tr>
+<td>Speed</td>
+<td>Numpy operations (fft, matrix multiplications) are c-optimized</td>
+<td>Python loops are slow</td>
+</tr>
+<tr>
+<td>Calling C code</td>
+<td>I hear it's easy</td>
+<td>You'll want to do some research, you have options</td>
+</tr>
+</tbody>
+</table>
+<p>For Python/Data Science you'll need to know the scientific Python stack: Numpy, Scipy (not used directly), Pandas, Scikit-learn, Jupyter/IPython/Notebooks.
+XGBoost is the state of the art for decision trees. The documentation on the web for all of these is pretty good.</p>
+<p>Learn SQL too. A good python interface to SQL is through SQLAlchemy. Django uses it too.
+I like to use SQLAlchemy to issue a SQL query and then pull the data into a Pandas Dataframe and work with that from there.</p>
+<p>Keras is good for neural networks and convolutional networks (CNNs) and is nice high level interface to Theano/Tensorflow.
+It's easy to use. The hard part is knowing how to configure your network (nobody knows, it's an area of active research). There are lots of papers on arXiv about the latest and greatest CNN that won a image-something competition that you can base your network on.</p>
+<p>I use Anaconda and Conda for Python (most non-programmers do). I guess if you become a developer you'll have something better but Anaconda is easy to install and includes most of the important scientific python packages. <em>I highly recommend spending time mastering virtual environments because it will save you lots of time later when you're installing new Python packages.</em> (I think Docker is better but I don't use it yet). Python packages do not play nicely with each other!
+http://conda.pydata.org/docs/using/envs.html</p>
+<p>I had Anaconda on Windows and it worked pretty well but as you get deeper into Python, you'll find smaller packages maintained by one or two guys which won't work. Half my colleagues with Windows run Ubuntu in a VirtualBox. Of course, if you have a Mac you're already set. I did a dual boot Ubuntu/Windows which is working fine. The point is to Avoid Windows.</p>
+<p>I haven't done any "Big Data" stuff with Spark, Hadoop, etc. Here's a link to a neat end-to-end example from a guy who worked at Netflix. So many buzzwords, frameworks, languages...it makes your head spin.</p>
+<p>https://github.com/fluxcapacitor/pipeline/wiki</p>
+<p>I don't know much about A/B testing but it's a big field unto itself.</p>
+<p>http://www.exp-platform.com/Pages/default.aspx</p>
+<p>I got my introduction to Python from Codecademy and <a href="http://learnpythonthehardway.org/">Learn Python the Hard Way</a>.
+After a while you're better off programming for yourself by solving problems. You can be a good data scientist and never use classes.
+Kaggle is good for that. It looks hard to start (and it is hard to do well) but working on a challenge is good practice for the basics like loading csv files, working with strings, working with numpy arrays etc.
+It's actually pretty easy. It's also good practice for interviews because a common screening question is a simple classification problem: given a training data set of customer attributes and purchase history, predict for a test data set the probability a customer will buy a wicket. You should use scikit-learn or xgboost for this.</p>
+<p>I try to code "Pythonically" and these are helpful references for that:</p>
+<p><a href="https://www.python.org/dev/peps/pep-0020/">PEP 20</a></p>
+<p><a href="http://legacy.python.org/dev/peps/pep-0008/">PEP 8</a></p>
+<p>If you stick with Python, "PEP 8" is something you'll hear a lot.</p>
+<p>Cheers,</p>
+<p>Rory</p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="https://twitter.com/rory_h_r">twitter</a></li>
+                            <li><a href="https://github.com/roryhr">github</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>
