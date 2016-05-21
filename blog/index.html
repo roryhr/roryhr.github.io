@@ -43,31 +43,36 @@ Companies like Facebook, Google, and Microsoft use this challenge as a proving g
 In 2014 Google won the ImageNet competition with their "Inception" network and an accuracy of 6.7%. 
 The winning network in 2015 was Microsoft Research's "ResNet" with an accuracy of 3.6%.</p>
 <p>The winning architecture is notable for a few reasons. 
-First, it commands attention simply by it's performance. It's a striking improvement over last year's result. 
-Second, the performance was gained through a reformulated network structure rather than via additional computation. 
+First, it commands attention simply by it's performance and striking improvement over last year's result. 
+Second, the improvement was achieved using a reformulated network structure rather than via additional computation. 
 Third, their residual theory is an attractively simple and extensible, paving the way for future improvements. </p>
-<h1>Technical Remix of He's Presentation</h1>
+<h1>Technical Summary of He's Presentation</h1>
 <p>The Microsoft Research team of Kaiming He, Xiangyu Zhang, Shaoqing Ren, Jian Sun 
-won the 2015 ImageNet competition with their Residual Network. They achieved 
-a 3.6% error rate across 1000 classes. </p>
+won the 2015 ImageNet competition in a number of categories. 
+In the object detection task an ensemble of residual models achieved a 3.6% classification error rate.</p>
+<h2>Deeper Models</h2>
 <p>Anticipating their 152 layer winning network (the deepest to date), He et al. noticed each winning network 
 was deeper than the year before. 
-This raises the question posed in the paper, "Is learning better networks as simple as stacking 
-more layers?"</p>
+This raises the question they pose, "Is learning better networks as simple as stacking more layers?"</p>
 <p><img alt="ImageNet Presentation Slide 6" src="/blog/images/ilsvrc2015_he-006.jpg" />
 <img alt="ImageNet Presentation Slide 3" src="/images/ilsvrc2015_he-003.jpg" /></p>
 <p>The answer is "yes" and "no". 
 He showed  that adding traditional layers made a model perform worse (no). 
-However, with a tweaked architecture adding more layers improves performance
-and the paradigm is preserved (yes).</p>
+On the left side of the figure below, we see <em>deeper</em> networks perform <em>worse</em>. 
+This is counterintuitive because the extra 12 layers in the 56-layer network 
+could learn the identity shortcut and thus perform as well as the 44-layer network. 
+In practice, the deeper plain networks converge to worse local optima than shallower counterparts. </p>
+<p>However, with a residual architecture adding layers improves performance (yes).
+When the identity connection is baked into the network it that helps the deeper networks converge to better solutions. </p>
 <p><img alt="ImageNet Presentation Slide 22" src="/images/ilsvrc2015_he-022.jpg" /></p>
-<p>A basic residual block consists of two convolution layers with a shortcut connection 
-across both layers.
-Let the two weight layers constitute the function F(x) and 
-the desired function be H(x). 
-For a plain network, the weights learn H(x). 
-In a residual network the weights learn H(x)-x. </p>
-<p><img alt="ImageNet Presentation Slide 17" src="/images/ilsvrc2015_he-017.jpg" /></p>
+<h2>Residual Units</h2>
+<p>A basic residual unit consists of two convolution layers with a shortcut connection across both layers.
+Let the two weight layers constitute the function F(x) and the desired function be H(x). </p>
+<p>For a plain network the weights learn H(x). </p>
+<p>For a residual network the weights learn H(x)-x. </p>
+<p><img alt="ImageNet Presentation Slide 17" src="/images/ilsvrc2015_he-017.jpg" />
+The network is learning a function with respect to the identity function. 
+It's not clear why this works better than, say, initializing the weights in a plain network identity matrices. </p>
 <h1>Not too deep enough</h1>
 <p>If deeper models are better, why stop at 152 layers?
 The authors tried an "aggressively deep" model with 1202 layers 
