@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
         <meta charset="utf-8" />
-        <title>Rory's Blog - neural networks</title>
-        <link rel="stylesheet" href="../theme/css/main.css" />
+        <title>Rory's Corner - neural networks</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
 
         <!--[if IE]>
             <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -12,65 +12,59 @@
 
 <body id="index" class="home">
         <header id="banner" class="body">
-                <h1><a href="../">Rory's Blog </a></h1>
+                <h1><a href="/">Rory's Corner </a></h1>
                 <nav><ul>
-                    <li><a href="../pages/about.html">About</a></li>
-                    <li><a href="../pages/contact.html">Contact</a></li>
-                    <li><a href="../pages/projects.html">Projects</a></li>
-                    <li><a href="../category/misc.html">misc</a></li>
-                    <li class="active"><a href="../category/neural-networks.html">neural networks</a></li>
-                    <li><a href="../category/reinforcement-learning.html">reinforcement learning</a></li>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/archives">Blog</a></li>
+                    <li><a href="/pages/about">About</a></li>
+                    <li><a href="/pages/projects">Projects</a></li>
+                    <li><a href="/pages/contact">Contact</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="../residual-networks.html">Residual Networks</a></h1>
+                    <h1 class="entry-title"><a href="/residual-networks.html">Residual Networks</a></h1>
 <footer class="post-info">
-        <abbr class="published" title="2016-05-11T00:00:00+02:00">
+        <abbr class="published" title="2016-05-11T00:00:00-07:00">
                 Published: Wed 11 May 2016
         </abbr>
 
         <address class="vcard author">
-                By                         <a class="url fn" href="../author/rory-hr.html">Rory HR</a>
+                By                         <a class="url fn" href="/author/rory-hartong-redden.html">Rory Hartong-Redden</a>
         </address>
-<p>In <a href="../category/neural-networks.html">neural networks</a>.</p>
+<p>In <a href="/category/neural-networks.html">neural networks</a>.</p>
 
-</footer><!-- /.post-info --><h1>Motivation</h1>
-<p>They say a picture is worth a thousand words. 
-Images contain a lot of information and historically it's been impossible 
-to understand even the simplest things about images. </p>
-<p>Companies like Facebook, Google, and Microsoft are racing to develop 
-algorithms to monitize the data in images. 
-Applications include adversising, the analysis of medical images, and self-driving cars.</p>
-<h1>Technical Remix of He's Presentation</h1>
-<p>The Microsoft Research team of Kaiming He, Xiangyu Zhang, Shaoqing Ren, Jian Sun 
-won the 2015 ImageNet competition with their Residual Network. They achieved 
-a 3.6% error rate across 1000 classes. </p>
-<p>Anticipating their 152 layer winning network (the deepest to date), He et al. noticed each winning network 
-was deeper than the year before. 
-This raises the question posed in the paper, "Is learning better networks as simple as stacking 
-more layers?"</p>
+</footer><!-- /.post-info --><h1>Abstract</h1>
+<p>Understanding the content of an image is a long-standing challenge in computer vision. 
+In the last five years, the state-of-the art has advanced far beyond scanning checks and facial recognition to the point where, on certain benchmarks, object classification performed by a machine exceeds human level accuracy.</p>
+<p>A representative benchmark is the <a href="www.image-net.org/challenges/LSVRC/">ImageNet Large Scale Visual Recognition Challenge</a> which provides 1.2 million training images for identifying 1000 classes of objects. Companies like Facebook, Google, and Microsoft use this challenge as a proving ground for technology that will monetize images. In 2014 Google won the ImageNet competition with their "Inception" network and an accuracy of 6.7%. The winning network in 2015 was Microsoft Research's "ResNet" with an accuracy of 3.6%.</p>
+<p>The winning architecture is notable because it commands attention simply by it's striking improvement over last year's result. 
+Second, the improvement was achieved using a reformulated network structure rather than by using additional parameters to learn coupled with additional computation. 
+Third, their ResNet is simpler than <a href="https://arxiv.org/abs/1409.4842">Inception</a>, which won in 2014, and has opened a new path for research and future improvements. 
+Taking together, Residual Networks represent an important technical and conceptual leap in deep learning. </p>
+<h1>Technical Summary of He's Presentation</h1>
+<p>The Microsoft Research team of Kaiming He, Xiangyu Zhang, Shaoqing Ren, Jian Sun won the 2015 ImageNet competition in a number of categories. 
+In the object detection task an ensemble of residual models achieved a 3.6% classification error rate.</p>
+<h2>Deeper Models</h2>
+<p>Anticipating their 152 layer winning network (the deepest to date), He et al. noticed each winning network was deeper than the year before. This raises the question they pose, "Is learning better networks as simple as stacking more layers?"</p>
 <p><img alt="ImageNet Presentation Slide 6" src="/images/ilsvrc2015_he-006.jpg" />
 <img alt="ImageNet Presentation Slide 3" src="/images/ilsvrc2015_he-003.jpg" /></p>
-<p>The answer is "yes" and "no". 
-He showed  that adding traditional layers made a model perform worse (no). 
-However, with a tweaked architecture adding more layers improves performance
-and the “deeper is better” paradigm is preserved (yes).</p>
+<p>The answer is "yes" and "no". He showed that adding traditional layers made a model perform worse (no). On the left side of the figure below, we see deeper networks perform worse. This is counterintuitive because the extra 12 layers in the 56-layer network could learn the identity shortcut and thus perform as well as the 44-layer network. In practice, the deeper plain networks converge to worse local optima than shallower counterparts.</p>
+<p>However, with a residual architecture adding layers improves performance (yes). When the identity connection is baked into the network it that helps the deeper networks converge to better solutions. </p>
 <p><img alt="ImageNet Presentation Slide 22" src="/images/ilsvrc2015_he-022.jpg" /></p>
-<p>A basic residual block consists of two convolution layers with a shortcut connection 
-across both layers.
-Let the two weight layers constitute the function F(x) and 
-the desired function be H(x). 
-For a plain network, the weights learn H(x). 
-In a residual network the weights learn H(x)-x. </p>
+<h2>Residual Units</h2>
+<p>A basic residual unit consists of two convolution layers with a shortcut connection across both layers. Let the two weight layers constitute the function F(x) and the desired function be H(x).</p>
+<p>For a plain network the weights learn H(x).</p>
+<p>For a residual network the weights learn H(x)-x. </p>
 <p><img alt="ImageNet Presentation Slide 17" src="/images/ilsvrc2015_he-017.jpg" /></p>
-<h1>Not too deep enough</h1>
-<p>If deeper models are better, why stop at 152 layers?
-The authors tried an "agressively deep" model with 1202 layers 
-but it's error was higher. </p>
+<p>The network is learning a function with respect to the identity function. It's not clear why this works better than, say, initializing the weights in a plain network identity matrices.
+Not too deep enough</p>
+<p>If deeper models are better, why stop at 152 layers? The authors tried an "aggressively deep" model with 1202 layers but its error was higher. </p>
+<h2>Not too deep enough</h2>
+<p>If deeper models are better, why stop at 152 layers? The authors tried an "aggressively deep" model with 1202 layers but its error was higher. </p>
 <h1>Code</h1>
-<p>If you want to see some code... T </p>
+<p>If you want to see some code... </p>
 <h3>Original Recipe, Caffe</h3>
 <p><a href="https://github.com/KaimingHe/deep-residual-networks">Deep Residual Networks</a></p>
 <h3>Facebook, Torch</h3>
@@ -83,18 +77,19 @@ but it's error was higher. </p>
                 <div class="blogroll">
                         <h2>blogroll</h2>
                         <ul>
-                            <li><a href="http://getpelican.com/">Pelican</a></li>
-                            <li><a href="http://python.org/">Python.org</a></li>
-                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
-                            <li><a href="#">You can modify those links in your config file</a></li>
+                            <li><a href="http://blog.keras.io/">Keras</a></li>
+                            <li><a href="http://blog.kaggle.com/">No Free Hunch (Kaggle)</a></li>
+                            <li><a href="http://efavdb.com/">EFAVDB</a></li>
+                            <li><a href="http://googleresearch.blogspot.com/">Google</a></li>
                         </ul>
                 </div><!-- /.blogroll -->
                 <div class="social">
                         <h2>social</h2>
                         <ul>
 
-                            <li><a href="#">You can add links in your config file</a></li>
-                            <li><a href="#">Another social link</a></li>
+                            <li><a href="https://github.com/roryhr">Github</a></li>
+                            <li><a href="https://www.linkedin.com/in/rory-hartong-redden-18334356">LinkedIn</a></li>
+                            <li><a href="https://twitter.com/rory_h_r">Twitter</a></li>
                         </ul>
                 </div><!-- /.social -->
         </section><!-- /#extras -->
