@@ -40,12 +40,12 @@
         </address>
 <p>In <a href="/category/python-documentation.html">python, documentation</a>.</p>
 
-</footer><!-- /.post-info -->      <h1>Abstract</h1>
-<p>How does this website work?</p>
-<h1>Start</h1>
-<p>After 9 months I'm returning to this website. The first question I had was "How does this thing work?" 
+</footer><!-- /.post-info -->      <h1>Introduction</h1>
+<p>After 9 months I'm returning to this website. My first question was "How does this thing work?" 
 Of course I didn't document it and I don't remember. Lesson learned. </p>
-<h1>How does this website work?</h1>
+<p><strong>The things we take for granted are the most important to document.</strong> </p>
+<p>This post is for myself and anyone interested in using Pelican to make a Github-hosted website.</p>
+<h1>How does this thing work?</h1>
 <h2>High level overview</h2>
 <p>This site is hosted for free by <a href="https://github.com/">Github</a>. Thanks Github! The html "code" is at <a href="https://github.com/roryhr/roryhr.github.io">roryhr/roryhr.github.io</a>.</p>
 <p>Great. I used a static site generator called Pelican that generates a website from a series markdown text files in a particular directory structure (more on that in a bit).
@@ -86,67 +86,59 @@ origin  https://github.com/roryhr/roryhr.github.io <span class="o">(</span>push<
 </pre></div>
 
 
-<p>Run the development server manually (there's also a <code>.sh</code> script but I don't use it)
-    :::bash
-    ((blog)) rory@rory-Satellite-S75-B:~/Projects/site-code<span class="math">\( cd output/
-    ((blog)) rory@rory-Satellite-S75-B:~/Projects/site-code/output\)</span> python -m pelican.server</p>
-<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
-    var align = "center",
-        indent = "0em",
-        linebreak = "false";
+<p>Run the development server manually and navigate to <code>http://localhost:8000</code></p>
+<div class="highlight"><pre><span></span><span class="o">((</span>blog<span class="o">))</span> rory@rory-Satellite-S75-B:~/Projects/site-code$ <span class="nb">cd</span> output/
+<span class="o">((</span>blog<span class="o">))</span> rory@rory-Satellite-S75-B:~/Projects/site-code/output$ python -m pelican.server
+</pre></div>
 
-    if (false) {
-        align = (screen.width < 768) ? "left" : align;
-        indent = (screen.width < 768) ? "0em" : indent;
-        linebreak = (screen.width < 768) ? 'true' : linebreak;
-    }
 
-    var mathjaxscript = document.createElement('script');
-    var location_protocol = (false) ? 'https' : document.location.protocol;
-    if (location_protocol !== 'http' && location_protocol !== 'https') location_protocol = 'https:';
-    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
-    mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
-    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
-        "MathJax.Hub.Config({" +
-        "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' }, Macros: {} }," +
-        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
-        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
-        "    displayAlign: '"+ align +"'," +
-        "    displayIndent: '"+ indent +"'," +
-        "    showMathMenu: true," +
-        "    messageStyle: 'normal'," +
-        "    tex2jax: { " +
-        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
-        "        displayMath: [ ['$$','$$'] ]," +
-        "        processEscapes: true," +
-        "        preview: 'TeX'," +
-        "    }, " +
-        "    'HTML-CSS': { " +
-        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
-        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
-        "    }, " +
-        "}); " +
-        "if ('default' !== 'default') {" +
-            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-        "}";
-    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
-}
-</script>
+<p>Alternatively, take advantage of the shell script that automagically recompiles the site as you edit it (very cool!)</p>
+<div class="highlight"><pre><span></span><span class="o">((</span>blog<span class="o">))</span> rory@rory-Satellite-S75-B:~/Projects/site-code$ ./develop_server.sh start
+</pre></div>
+
+
+<h1>Repository contents</h1>
+<div class="highlight"><pre><span></span>site-code/
+    content/
+        blog/
+            blog-posts-go-here.md
+        images/
+            images-go-here.jpg
+            and-other-static-files.html
+        pages/
+            about.md
+            contact.md
+            index.md
+            projects.md
+    output/
+        index.html 
+        lots of other html files
+    render_math/
+    develop_server.sh  
+    LICENSE 
+    pelicanconf.py  
+    README.md
+</pre></div>
+
+
+<h2>Wiring the site up</h2>
+<p>I made a custom landing page with <code>pages/index.md</code> which becomes <code>index.html</code></p>
+<div class="highlight"><pre><span></span><span class="n">title</span><span class="p">:</span>
+<span class="n">save_as</span><span class="p">:</span> <span class="n">index</span><span class="o">.</span><span class="n">html</span>
+
+<span class="n">Hi</span><span class="p">,</span>
+
+<span class="n">I</span><span class="s1">&#39;m a mechanical engineer/physicist by training who does things with computers now.</span>
+</pre></div>
+
+
+<p>In <code>site-code/pelicanconf.py</code> I wire up the buttons so they're labeled and go to the appropriate place (this took some fiddling).</p>
+<div class="highlight"><pre><span></span><span class="n">MENUITEMS</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;Home&#39;</span><span class="p">,</span> <span class="s1">&#39;/&#39;</span><span class="p">),</span>
+             <span class="p">(</span><span class="s1">&#39;Articles&#39;</span><span class="p">,</span> <span class="s1">&#39;/archives&#39;</span><span class="p">),</span>
+             <span class="p">(</span><span class="s1">&#39;About&#39;</span><span class="p">,</span> <span class="s1">&#39;/pages/about&#39;</span><span class="p">),</span>
+             <span class="p">(</span><span class="s1">&#39;Projects&#39;</span><span class="p">,</span> <span class="s1">&#39;/pages/projects&#39;</span><span class="p">),</span>
+             <span class="p">(</span><span class="s1">&#39;Contact&#39;</span><span class="p">,</span> <span class="s1">&#39;/pages/contact&#39;</span><span class="p">)]</span>
+</pre></div>
     </div><!-- /.entry-content -->
 
   </article>
