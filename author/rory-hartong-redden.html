@@ -24,7 +24,68 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/how-does-this-thing-work.html">How does this thing work?</a></h1>
+                    <h1 class="entry-title"><a href="/happy-new-year.html">Happy New Year!</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2018-03-31T00:00:00-07:00">
+                Published: Sat 31 March 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/rory-hartong-redden.html">Rory Hartong-Redden</a>
+        </address>
+<p>In <a href="/category/blog.html">blog</a>.</p>
+
+</footer><!-- /.post-info --><p>Well it's been a while but I'm back at it. </p>
+<p>What have I been doing? </p>
+<p>Enough to keep me busy so without further delay here are the...</p>
+<h1>Top Ten Things I've Been Up To</h1>
+<p>In no particular order, here's a new Top Ten list. </p>
+<ol>
+<li>
+<p>Fish Shell. It's delightful.</p>
+</li>
+<li>
+<p>PySpark</p>
+</li>
+<li>
+<p>Published research! <a href="https://arxiv.org/abs/1802.01532">Real-time Prediction of Intermediate-Horizon Automotive Collision Risk</a></p>
+</li>
+<li>
+<p>Monolithic repos, it's handy to have all <em>my</em> code in one folder in one git <a href="https://github.com/roryhr/code">repo</a>. </p>
+</li>
+<li>
+<p>Gave a <a href="https://youtu.be/LEjLmN0ev5I">talk on plots</a> at <a href="http://pyninsula.org/">Pyninsula</a></p>
+</li>
+<li>
+<p>I got the canonical 3rd Gen 13in MacBook Pro. It's great!</p>
+</li>
+<li>
+<p><a href="http://n-gate.com/">n-gate.com</a> is a fun counterpoint to HackerNews. I learned about bikeshedding which puts a name to a phenomenon I'd identified in my "Thought at Hand" post.</p>
+</li>
+<li>
+<p>Refactoring my code following the insights from Trey Hunner's PyCon talk. Slides <a href="http://treyhunner.com/readability-counts">here</a></p>
+</li>
+<li>
+<p>Attended the Remedial School of Rock by listening to the classic albums by Led Zeppelin.</p>
+</li>
+<li>
+<p>I ran my first marathon in Dec 2017 in Sacramento at CIM and signed up for the SF Marathon in July. 
+My goal is to run 35 miles a week year-round. I missed a few weeks due to illness but I'm logging my miles on Strava.</p>
+</li>
+</ol>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/how-does-this-thing-work.html" rel="bookmark"
+                           title="Permalink to How does this thing work?">How does this thing work?</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2017-03-12T00:00:00-08:00">
                 Published: Sun 12 March 2017
@@ -35,113 +96,16 @@
         </address>
 <p>In <a href="/category/python-documentation.html">python, documentation</a>.</p>
 
-</footer><!-- /.post-info --><p>Edit: 3-31-2018</p>
+</footer><!-- /.post-info -->                <p>Edit: 3-31-2018</p>
 <p>Added a <code>requirements.txt</code> to capture dependencies. The big one is <code>Markdown</code>.</p>
 <h1>Introduction</h1>
 <p>After 9 months I'm returning to this website.
 My first question was "How does this thing work?"
 Of course I didn't document it and I don't remember. Lesson learned.</p>
-<p><strong>The things we take for granted are the most important to document.</strong></p>
-<p>This post is for myself and anyone interested in using Pelican to make a Github-hosted website.</p>
-<h1>How does this thing work?</h1>
-<h2>High level overview</h2>
-<p>This site is hosted for free by <a href="https://github.com/">Github</a>. Thanks Github! The html "code" is a special repository <a href="https://github.com/roryhr/roryhr.github.io">roryhr/roryhr.github.io</a>.</p>
-<p>Great. I used a static site generator called Pelican that generates html, which comprises this website, from a series markdown text files in a particular directory structure (more on that in a bit).
-These files are in a separate repository at
-<a href="https://github.com/roryhr/site-code">roryhr/site-code</a>.</p>
-<h2>Recipes</h2>
-<p>Generate the website</p>
-<div class="highlight"><pre><span></span><span class="o">((</span>blog<span class="o">))</span> rory@rory-Satellite-S75-B:~/Projects/site-code$ pelican content
-WARNING: empty slug <span class="k">for</span> /home/rory/Projects/site-code/content/pages/index.md. You can fix this by adding a title or a slug to your content
-Done: Processed <span class="m">7</span> articles, <span class="m">0</span> drafts, <span class="m">4</span> pages and <span class="m">0</span> hidden pages in <span class="m">0</span>.23 seconds.
-<span class="o">((</span>blog<span class="o">))</span> rory@rory-Satellite-S75-B:~/Projects/site-code$
-</pre></div>
-
-
-<p>Shell showing the output folder is a Git repo pointing to <code>roryhr/roryhr.github.io</code></p>
-<div class="highlight"><pre><span></span><span class="o">((</span>blog<span class="o">))</span> rory@rory-Satellite-S75-B:~/Projects/site-code/output$ git status
-On branch master
-Your branch is up-to-date with <span class="s1">&#39;origin/master&#39;</span>.
-Changes not staged <span class="k">for</span> commit:
-  <span class="o">(</span>use <span class="s2">&quot;git add &lt;file&gt;...&quot;</span> to update what will be committed<span class="o">)</span>
-  <span class="o">(</span>use <span class="s2">&quot;git checkout -- &lt;file&gt;...&quot;</span> to discard changes in working directory<span class="o">)</span>
-
-    modified:   archives.html
-    modified:   author/rory-hartong-redden.html
-    modified:   authors.html
-    modified:   category/opinion.html
-
-Untracked files:
-  <span class="o">(</span>use <span class="s2">&quot;git add &lt;file&gt;...&quot;</span> to include in what will be committed<span class="o">)</span>
-
-    how-does-this-thing-work.html
-
-no changes added to commit <span class="o">(</span>use <span class="s2">&quot;git add&quot;</span> and/or <span class="s2">&quot;git commit -a&quot;</span><span class="o">)</span>
-<span class="o">((</span>blog<span class="o">))</span> rory@rory-Satellite-S75-B:~/Projects/site-code/output$ git remote -v
-origin  https://github.com/roryhr/roryhr.github.io <span class="o">(</span>fetch<span class="o">)</span>
-origin  https://github.com/roryhr/roryhr.github.io <span class="o">(</span>push<span class="o">)</span>
-<span class="o">((</span>blog<span class="o">))</span> rory@rory-Satellite-S75-B:~/Projects/site-code/output$
-</pre></div>
-
-
-<p>Run the development server manually and navigate to <code>http://localhost:8000</code></p>
-<div class="highlight"><pre><span></span><span class="o">((</span>blog<span class="o">))</span> rory@rory-Satellite-S75-B:~/Projects/site-code$ <span class="nb">cd</span> output/
-<span class="o">((</span>blog<span class="o">))</span> rory@rory-Satellite-S75-B:~/Projects/site-code/output$ python -m pelican.server
-</pre></div>
-
-
-<p>Alternatively, take advantage of the shell script that automagically recompiles the site as you edit it (very cool!)</p>
-<div class="highlight"><pre><span></span><span class="o">((</span>blog<span class="o">))</span> rory@rory-Satellite-S75-B:~/Projects/site-code$ ./develop_server.sh start
-</pre></div>
-
-
-<h1>Repository contents</h1>
-<div class="highlight"><pre><span></span>site-code/
-    content/
-        blog/
-            blog-posts-go-here.md
-        images/
-            images-go-here.jpg
-            and-other-static-files.html
-        pages/
-            about.md
-            contact.md
-            index.md
-            projects.md
-    output/
-        index.html
-        lots of other html files
-    render_math/
-    develop_server.sh  
-    LICENSE
-    pelicanconf.py  
-    README.md
-</pre></div>
-
-
-<h2>Wiring the site up</h2>
-<p>I made a custom landing page with <code>pages/index.md</code> which becomes <code>index.html</code></p>
-<div class="highlight"><pre><span></span><span class="n">title</span><span class="p">:</span>
-<span class="n">save_as</span><span class="p">:</span> <span class="n">index</span><span class="o">.</span><span class="n">html</span>
-
-<span class="n">Thanks</span> <span class="k">for</span> <span class="n">stopping</span> <span class="n">by</span> <span class="n">my</span> <span class="n">little</span> <span class="n">website</span><span class="o">.</span>
-
-<span class="o">--</span> <span class="n">Rory</span> <span class="n">Hartong</span><span class="o">-</span><span class="n">Redden</span>
-</pre></div>
-
-
-<p>In <code>site-code/pelicanconf.py</code> I wire up the buttons so they're labeled and go to the appropriate place (this took some fiddling).</p>
-<div class="highlight"><pre><span></span><span class="n">MENUITEMS</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;Home&#39;</span><span class="p">,</span> <span class="s1">&#39;/&#39;</span><span class="p">),</span>
-             <span class="p">(</span><span class="s1">&#39;Articles&#39;</span><span class="p">,</span> <span class="s1">&#39;/archives&#39;</span><span class="p">),</span>
-             <span class="p">(</span><span class="s1">&#39;About&#39;</span><span class="p">,</span> <span class="s1">&#39;/pages/about&#39;</span><span class="p">),</span>
-             <span class="p">(</span><span class="s1">&#39;Projects&#39;</span><span class="p">,</span> <span class="s1">&#39;/pages/projects&#39;</span><span class="p">),</span>
-             <span class="p">(</span><span class="s1">&#39;Contact&#39;</span><span class="p">,</span> <span class="s1">&#39;/pages/contact&#39;</span><span class="p">)]</span>
-</pre></div>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+<p><strong>The things we take for granted …</strong></p>
+                <a class="readmore" href="/how-does-this-thing-work.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
