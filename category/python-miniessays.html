@@ -24,7 +24,100 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/code-for-tomorrow.html">Code for Tomorrow</a></h1>
+                    <h1 class="entry-title"><a href="/python-environments.html">Python Environments</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2018-08-13T00:00:00-07:00">
+                Published: Mon 13 August 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/rory-hartong-redden.html">Rory Hartong-Redden</a>
+        </address>
+<p>In <a href="/category/python-miniessays.html">python, miniessays</a>.</p>
+
+</footer><!-- /.post-info --><ol>
+<li>Why should I care about environments?</li>
+<li>How do I manage environments? </li>
+<li>Demo</li>
+</ol>
+<h1>Why should I care about environments?</h1>
+<p>Suppose you work on two projects, one is old and written in Python 2, the other is new and uses Python 3. 
+The only way to work on this pair of projects is with a pair of <code>Python.exe</code>s and their respective packages.
+Environments let you work with different Python interpreters.</p>
+<p>Even for different projects in the same Python version (let's assume 3) you can have packages with differing dependencies. Smaller and specialized packages may need a specific version of numpy that, say, Pandas doesn't support.
+The approach is to separate the package requirements by project -- only install what you need for a given project.
+Environments let you isolate dependencies.</p>
+<p>Bob just joined a project that Alice is maintaining. Bob runs the code and pip installs packages that he sees in the code but it doesn't work. Alice responds, "It works for me!"
+Environments can be copied exactly. 
+This way Bob will have the exact same packages as Alice and everything will work. </p>
+<h1>How do I manage environments?</h1>
+<ol>
+<li>virtualenv</li>
+<li>pipenv</li>
+<li>conda</li>
+<li>manually</li>
+</ol>
+<p>All of these basically boil down to the same formula: put everything you need in a folder. That's it!
+If you don't trust me and want to do it manually -- knock yourself out. </p>
+<h1>Demo</h1>
+<p>I use <code>conda</code> which is both a package manager and virtual enviornment manager. 
+Since <code>conda</code> also supports R it's a popular choice in data science circles. 
+<code>pipenv</code> is popular among developers.</p>
+<p>The Anaconda Python/R Distribution is a collection of packages that Anaconda.com curates.
+It includes the hits like <code>Pandas</code>, <code>matplotlib</code>, <code>requests</code>...</p>
+<ol>
+<li>
+<p>Install conda and anaconda https://www.anaconda.com/download</p>
+</li>
+<li>
+<p>run <code>$ conda</code> do a <code>$ which python</code> and convince yourself that everything is okay</p>
+</li>
+<li>
+<p>Now let's make a new environemtn for web development. It needs <code>pelican</code> and <code>markdown</code>.</p>
+</li>
+<li>
+<p><code>$ conda create -n web_env pelican markdown</code></p>
+</li>
+</ol>
+<div class="highlight"><pre><span></span>$ conda create -n web_env pelican markdown
+Solving environment: failed
+
+PackagesNotFoundError: The following packages are not available from current channels:
+
+  - pelican
+</pre></div>
+
+
+<p>Not to worry! We can make an environment and then pip install whatever we can find on conda.</p>
+<div class="highlight"><pre><span></span>$ conda create -n web_env <span class="nv">python</span><span class="o">=</span><span class="m">3</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>$ <span class="nb">source</span> activate web_env
+<span class="o">(</span>web_env<span class="o">)</span> $ pip install pelican markdown
+</pre></div>
+
+
+<p>Check out our handiwork and save our dependencies. </p>
+<div class="highlight"><pre><span></span>$ conda list
+$ pip freeze &gt; requirements.txt
+</pre></div>
+
+
+<p>And that's about all there is to it!</p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/code-for-tomorrow.html" rel="bookmark"
+                           title="Permalink to Code for Tomorrow">Code for Tomorrow</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2018-04-02T00:00:00-07:00">
                 Published: Mon 02 April 2018
@@ -35,26 +128,16 @@
         </address>
 <p>In <a href="/category/python-miniessays.html">python, miniessays</a>.</p>
 
-</footer><!-- /.post-info --><p>This is the first of a series of short articles.</p>
+</footer><!-- /.post-info -->                <p>This is the first of a series of short articles.</p>
 <h1>Code for Tomorrow</h1>
 <p>How do you know if your code is good? 
 This is subjective, to be sure, but is clarified by answering a given question which sets the standard by which the code is judged.
-The most question being “Does it work?” 
-Then you hear “Is it fast?” Is it tested? How is it used?</p>
-<p>I add to this list, “Imagine that five years from now someone comes upon your code. Can they use it? Will it work?” Whenever I’m coding this is in the back of my mind.</p>
-<p>Consider, the average tenure in tech is 2-3 years so five years is two generations of employees; nobody who originally wrote the code is around. 
-The wiki pages were archived and lost and the Jira stories are gone because everyone is using something much better now. 
-Yet your code sits and is one day discovered, perfectly preserved like Pompeii. </p>
-<p>The code should be self-documenting. 
-Not as in readable but in the documentation should literally live with the code.
-If someone cloned your git repo they should also have the documentation. 
-If they found your Oracle database then all columns and tables should be described using the builtin comment and metadata features.</p>
-<p>Our imaginary employee from the future will try run the code. 
-Does it rely on deprecated packages? Open source packages come and go. Recognize fads and use packages that will be around.</p>
-<p>What will our future person want to know? Does it work? Is it correct? That’s where tests come in. They give confidence to the newcomer that the code is correct, that timezones are handled correctly.</p>
-<p>The last thing is readability. You want it to be simple and timeless so someone who stumbles upon it can figure out how it works.</p>
-<p>All of these good things come from considering your code five years from now.</p>                </article>
-            </aside><!-- /#featured -->
+The most question being …</p>
+                <a class="readmore" href="/code-for-tomorrow.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+                </ol><!-- /#posts-list -->
+                </section><!-- /#content -->
         <section id="extras" class="body">
                 <div class="blogroll">
                         <h2>links</h2>
