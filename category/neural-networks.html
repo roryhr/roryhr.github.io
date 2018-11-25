@@ -3,19 +3,15 @@
 <head>
         <meta charset="utf-8" />
         <title>Rory's Corner - neural networks</title>
-        <link rel="stylesheet" href="/theme/css/main.css" />
-
-        <!--[if IE]>
-            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
+        <link rel="stylesheet" href="http://roryhr.com/theme/css/main.css" />
 </head>
 
 <body id="index" class="home">
         <header id="banner" class="body">
-                <h1><a href="/">Rory's Corner </a></h1>
+                <h1><a href="http://roryhr.com/">Rory's Corner </a></h1>
                 <nav><ul>
                     <li><a href="/">Home</a></li>
-                    <li><a href="/archives">Articles</a></li>
+                    <li><a href="/articles">Articles</a></li>
                     <li><a href="/pages/about">About</a></li>
                     <li><a href="/pages/projects">Projects</a></li>
                     <li><a href="/pages/contact">Contact</a></li>
@@ -24,16 +20,16 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/residual-networks.html">Residual Networks</a></h1>
+                    <h1 class="entry-title"><a href="http://roryhr.com/residual-networks.html">Residual Networks</a></h1>
 <footer class="post-info">
         <abbr class="published" title="2016-05-11T00:00:00-07:00">
                 Published: Wed 11 May 2016
         </abbr>
 
         <address class="vcard author">
-                By                         <a class="url fn" href="/author/rory-hartong-redden.html">Rory Hartong-Redden</a>
+                By                         <a class="url fn" href="http://roryhr.com/author/rory-hartong-redden.html">Rory Hartong-Redden</a>
         </address>
-<p>In <a href="/category/neural-networks.html">neural networks</a>.</p>
+<p>In <a href="http://roryhr.com/category/neural-networks.html">neural networks</a>.</p>
 
 </footer><!-- /.post-info --><h1>Abstract</h1>
 <p>Understanding the content of an image is a long-standing challenge in computer vision. 
@@ -48,16 +44,16 @@ Taking together, Residual Networks represent an important technical and conceptu
 In the object detection task an ensemble of residual models achieved a 3.6% classification error rate.</p>
 <h2>Deeper Models</h2>
 <p>Anticipating their 152 layer winning network (the deepest to date), He et al. noticed each winning network was deeper than the year before. This raises the question they pose, "Is learning better networks as simple as stacking more layers?"</p>
-<p><img alt="ImageNet Presentation Slide 6" src="/images/ilsvrc2015_he-006.jpg">
-<img alt="ImageNet Presentation Slide 3" src="/images/ilsvrc2015_he-003.jpg"></p>
+<p><img alt="ImageNet Presentation Slide 6" src="http://roryhr.com/images/ilsvrc2015_he-006.jpg">
+<img alt="ImageNet Presentation Slide 3" src="http://roryhr.com/images/ilsvrc2015_he-003.jpg"></p>
 <p>The answer is "yes" and "no". He showed that adding traditional layers made a model perform worse (no). On the left side of the figure below, we see deeper networks perform worse. This is counterintuitive because the extra 12 layers in the 56-layer network could learn the identity shortcut and thus perform as well as the 44-layer network. In practice, the deeper plain networks converge to worse local optima than shallower counterparts.</p>
 <p>However, with a residual architecture adding layers improves performance (yes). When the identity connection is baked into the network it that helps the deeper networks converge to better solutions. </p>
-<p><img alt="ImageNet Presentation Slide 22" src="/images/ilsvrc2015_he-022.jpg"></p>
+<p><img alt="ImageNet Presentation Slide 22" src="http://roryhr.com/images/ilsvrc2015_he-022.jpg"></p>
 <h2>Residual Units</h2>
 <p>A basic residual unit consists of two convolution layers with a shortcut connection across both layers. Let the two weight layers constitute the function F(x) and the desired function be H(x).</p>
 <p>For a plain network the weights learn H(x).</p>
 <p>For a residual network the weights learn H(x)-x. </p>
-<p><img alt="ImageNet Presentation Slide 17" src="/images/ilsvrc2015_he-017.jpg"></p>
+<p><img alt="ImageNet Presentation Slide 17" src="http://roryhr.com/images/ilsvrc2015_he-017.jpg"></p>
 <p>The network is learning a function with respect to the identity function. It's not clear why this works better than, say, initializing the weights in a plain network identity matrices.
 Not too deep enough</p>
 <p>If deeper models are better, why stop at 152 layers? The authors tried an "aggressively deep" model with 1202 layers but its error was higher. </p>
