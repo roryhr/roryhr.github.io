@@ -20,7 +20,124 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="http://roryhr.com/python-environments.html">Python Environments</a></h1>
+                    <h1 class="entry-title"><a href="http://roryhr.com/coding-approach.html">Coding Approach</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2019-07-15T00:00:00-07:00">
+                Published: Mon 15 July 2019
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="http://roryhr.com/author/rory-hartong-redden.html">Rory Hartong-Redden</a>
+        </address>
+<p>In <a href="http://roryhr.com/category/python.html">Python</a>.</p>
+<p>tags: <a href="http://roryhr.com/tag/python.html">python</a> </p>
+</footer><!-- /.post-info --><p>Note:</p>
+<p>I like to phrase things as punchy commands but it's all just my preference.
+I don't care too much about style and it's constantly evolving.</p>
+<p>My motto is a twist on the Zen of Python</p>
+<div class="highlight"><pre><span></span>If the implementation is hard to understand, it&#39;s bad.
+If the implementation is easy to understand, it may be good.
+</pre></div>
+
+
+<h1>Style Guide</h1>
+<p>List comprehensions are your bread and butter. Structre them like a SQL query.</p>
+<div class="highlight"><pre><span></span><span class="n">cleaned_emails</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">email</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">email</span>
+    <span class="ow">in</span> <span class="n">emails</span>
+    <span class="k">if</span> <span class="s1">&#39;@test.com&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">email</span>
+<span class="p">]</span>
+</pre></div>
+
+
+<p>Give the <a href="https://numpydoc.readthedocs.io/en/latest/format.html">The Numpy docstring style</a> a try.</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">clean_emails</span><span class="p">(</span><span class="n">emails</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Clean up emails from source database</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    emails : list</span>
+<span class="sd">        Raw email addresses</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    cleaned_emails : list</span>
+<span class="sd">        Cleaned email addresses</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">cleaned_emails</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">email</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">email</span>
+        <span class="ow">in</span> <span class="n">emails</span>
+        <span class="k">if</span> <span class="s1">&#39;@test.com&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">email</span>
+    <span class="p">]</span>
+    <span class="k">return</span> <span class="n">cleaned_emails</span>
+</pre></div>
+
+
+<p>Naming things is hard. Do it well! 
+Conserve your colleagues' brainpower: if a function has a good name and docstring then they don't have to understand <em>how it works</em> to understand <em>what it does</em>. </p>
+<h1>Writing Scripts</h1>
+<p>Start with functions.
+If you find yourself passing several parameters between functions then make a class.</p>
+<p>Let's say you have a pyspark script called <code>anonymize_emails.py</code> which needs a date and which database to use. </p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">pyspark</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">_</span><span class="p">,</span> <span class="n">database</span><span class="p">,</span> <span class="n">date</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span>
+
+    <span class="n">spark</span> <span class="o">=</span> <span class="n">pyspark</span><span class="o">.</span><span class="n">sql</span><span class="o">.</span><span class="n">SparkSession</span><span class="o">.</span><span class="n">builder</span>\
+        <span class="o">.</span><span class="n">appName</span><span class="p">(</span><span class="s1">&#39;Anonymize Emails for {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">date</span><span class="p">))</span>\
+        <span class="o">.</span><span class="n">getOrCreate</span><span class="p">()</span>
+
+    <span class="n">anonymize_emails</span><span class="p">(</span><span class="n">spark</span><span class="p">,</span> <span class="n">database</span><span class="p">,</span> <span class="n">date</span><span class="p">)</span>
+</pre></div>
+
+
+<p>The the alternative to tuple unpacking is common but I wouldn't encourage it.
+First it silently ignores any extra parameters passed to the script -- having the script raise an error is a feature.  </p>
+<div class="highlight"><pre><span></span>database = sys.argv[1]
+date = sys.argv[2]
+</pre></div>
+
+
+<p>However you can explicitly ignore extra parameters if you wish.</p>
+<div class="highlight"><pre><span></span>_, database, date, *_ = sys.argv
+</pre></div>
+
+
+<p>I'm not a huge fan of the trailing backslash for new lines but it's common in Spark code and growing on me. 
+For Pandas I still prefer to use parantheses. 
+In any case put each operation on new line. </p>
+<div class="highlight"><pre><span></span><span class="p">(</span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;user_id&#39;</span><span class="p">,</span> <span class="s1">&#39;time_on_page&#39;</span><span class="p">]]</span>
+    <span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;user_id&#39;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;average_time_on_page.csv&#39;</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+
+
+<p>Jupyter Notebooks are your friend. 
+Especially for data science you'll want to iterate: seeing what's actually in the data, check the processing did what you think it did, and see how long each chunk of code takes to run. 
+Super helpful for development! 
+What's a natural chunk of code?
+A function, of course. </p>
+<p>Once everything is working clean up the notebook and add some nice comments and descriptive text.
+Now you're ready to transfer this code to a proper script and deploy it.</p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="http://roryhr.com/python-environments.html" rel="bookmark"
+                           title="Permalink to Python Environments">Python Environments</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2018-08-13T00:00:00-07:00">
                 Published: Mon 13 August 2018
@@ -31,81 +148,17 @@
         </address>
 <p>In <a href="http://roryhr.com/category/python.html">Python</a>.</p>
 <p>tags: <a href="http://roryhr.com/tag/python.html">python</a> <a href="http://roryhr.com/tag/miniessays.html">miniessays</a> </p>
-</footer><!-- /.post-info --><ol>
+</footer><!-- /.post-info -->                <ol>
 <li>Why should I care about environments?</li>
 <li>How do I manage environments? </li>
 <li>Demo</li>
 </ol>
 <h1>Why should I care about environments?</h1>
 <p>Suppose you work on two projects, one is old and written in Python 2, the other is new and uses Python 3. 
-The only way to work on this pair of projects is with a pair of <code>Python.exe</code>s and their respective packages.
-Environments let you work with different Python interpreters.</p>
-<p>Even for different projects in the same Python version (let's assume 3) you can have packages with differing dependencies. Smaller and specialized packages may need a specific version of numpy that, say, Pandas doesn't support.
-The approach is to separate the package requirements by project -- only install what you need for a given project.
-Environments let you isolate dependencies.</p>
-<p>Bob just joined a project that Alice is maintaining. Bob runs the code and pip installs packages that he sees in the code but it doesn't work. Alice responds, "It works for me!"
-Environments can be copied exactly. 
-This way Bob will have the exact same packages as Alice and everything will work. </p>
-<h1>How do I manage environments?</h1>
-<ol>
-<li>virtualenv</li>
-<li>pipenv</li>
-<li>conda</li>
-<li>manually</li>
-</ol>
-<p>All of these basically boil down to the same formula: put everything you need in a folder. That's it!
-If you don't trust me and want to do it manually -- knock yourself out. </p>
-<h1>Demo</h1>
-<p>I use <code>conda</code> which is both a package manager and virtual enviornment manager. 
-Since <code>conda</code> also supports R it's a popular choice in data science circles. 
-<code>pipenv</code> is popular among developers.</p>
-<p>The Anaconda Python/R Distribution is a collection of packages that Anaconda.com curates.
-It includes the hits like <code>Pandas</code>, <code>matplotlib</code>, <code>requests</code>...</p>
-<ol>
-<li>
-<p>Install conda and anaconda https://www.anaconda.com/download</p>
-</li>
-<li>
-<p>run <code>$ conda</code> do a <code>$ which python</code> and convince yourself that everything is okay</p>
-</li>
-<li>
-<p>Now let's make a new environemtn for web development. It needs <code>pelican</code> and <code>markdown</code>.</p>
-</li>
-<li>
-<p><code>$ conda create -n web_env pelican markdown</code></p>
-</li>
-</ol>
-<div class="highlight"><pre><span></span>$ conda create -n web_env pelican markdown
-Solving environment: failed
-
-PackagesNotFoundError: The following packages are not available from current channels:
-
-  - pelican
-</pre></div>
-
-
-<p>Not to worry! We can make an environment and then pip install whatever we can find on conda.</p>
-<div class="highlight"><pre><span></span>$ conda create -n web_env <span class="nv">python</span><span class="o">=</span><span class="m">3</span>
-</pre></div>
-
-
-<div class="highlight"><pre><span></span>$ <span class="nb">source</span> activate web_env
-<span class="o">(</span>web_env<span class="o">)</span> $ pip install pelican markdown
-</pre></div>
-
-
-<p>Check out our handiwork and save our dependencies. </p>
-<div class="highlight"><pre><span></span>$ conda list
-$ pip freeze &gt; requirements.txt
-</pre></div>
-
-
-<p>And that's about all there is to it!</p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+The only way to work on this pair of projects …</p>
+                <a class="readmore" href="http://roryhr.com/python-environments.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
