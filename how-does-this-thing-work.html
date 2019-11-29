@@ -21,6 +21,7 @@
                 <nav><ul>
                     <li><a href="/">Home</a></li>
                     <li><a href="/articles">Articles</a></li>
+                    <li><a href="/archives">Archives</a></li>
                     <li><a href="/pages/about">About</a></li>
                     <li><a href="/pages/projects">Projects</a></li>
                     <li><a href="/pages/contact">Contact</a></li>
@@ -45,8 +46,8 @@
         </address>
 <p>In <a href="http://roryhr.com/category/python-documentation.html">python, documentation</a>.</p>
 
-</footer><!-- /.post-info -->      <p>Edit: 3-31-2018</p>
-<p>Added a <code>requirements.txt</code> to capture dependencies. The big one is <code>Markdown</code>.</p>
+</footer><!-- /.post-info -->      <p>Updated: 2019-11-29</p>
+<p>Added a <code>requirements.txt</code> to capture dependencies and ported to MacOS. </p>
 <h1>Introduction</h1>
 <p>After 9 months I'm returning to this website.
 My first question was "How does this thing work?"
@@ -55,12 +56,15 @@ Of course I didn't document it and I don't remember. Lesson learned.</p>
 <p>This post is for myself and anyone interested in using Pelican to make a Github-hosted website.</p>
 <h1>How does this thing work?</h1>
 <h2>High level overview</h2>
-<p>This site is hosted for free by <a href="https://github.com/">Github</a>. Thanks Github! The html "code" is a special repository <a href="https://github.com/roryhr/roryhr.github.io">roryhr/roryhr.github.io</a>.</p>
-<p>Great. I used a static site generator called Pelican that generates html, which comprises this website, from a series markdown text files in a particular directory structure (more on that in a bit).
+<p>This site is hosted for free by <a href="https://github.com/">Github</a> from the special repository <a href="https://github.com/roryhr/roryhr.github.io">roryhr/roryhr.github.io</a>. 
+Thanks Github!</p>
+<p>Great. 
+I used a static site generator called Pelican that generates html, which comprises this website, from markdown text files in a particular directory structure (more on that in a bit).
 These files are in a separate repository at
 <a href="https://github.com/roryhr/site-code">roryhr/site-code</a>.</p>
 <h2>Recipes</h2>
-<p>Generate the website</p>
+<p>Content for the website goes in the <code>content</code> directory. 
+Generate the website</p>
 <div class="highlight"><pre><span></span><span class="o">((</span>blog<span class="o">))</span> rory@rory-Satellite-S75-B:~/Projects/site-code$ pelican content
 WARNING: empty slug <span class="k">for</span> /home/rory/Projects/site-code/content/pages/index.md. You can fix this by adding a title or a slug to your content
 Done: Processed <span class="m">7</span> articles, <span class="m">0</span> drafts, <span class="m">4</span> pages and <span class="m">0</span> hidden pages in <span class="m">0</span>.23 seconds.
@@ -68,7 +72,7 @@ Done: Processed <span class="m">7</span> articles, <span class="m">0</span> draf
 </pre></div>
 
 
-<p>Shell showing the output folder is a Git repo pointing to <code>roryhr/roryhr.github.io</code></p>
+<p>The output html goes to the <code>output</code> directory which gets pushed to <code>roryhr.github.io</code> repo.</p>
 <div class="highlight"><pre><span></span><span class="o">((</span>blog<span class="o">))</span> rory@rory-Satellite-S75-B:~/Projects/site-code/output$ git status
 On branch master
 Your branch is up-to-date with <span class="s1">&#39;origin/master&#39;</span>.
@@ -100,8 +104,9 @@ origin  https://github.com/roryhr/roryhr.github.io <span class="o">(</span>push<
 </pre></div>
 
 
-<p>Alternatively, take advantage of the shell script that automagically recompiles the site as you edit it (very cool!)</p>
-<div class="highlight"><pre><span></span><span class="o">((</span>blog<span class="o">))</span> rory@rory-Satellite-S75-B:~/Projects/site-code$ ./develop_server.sh start
+<p>Alternatively, take advantage of the shell script that recompiles the site as you edit it (very cool!)</p>
+<div class="highlight"><pre><span></span><span class="o">(</span>web<span class="o">)</span> Rorys-MBP:website_code rory$ ./develop_server.sh start
+<span class="o">(</span>web<span class="o">)</span> Rorys-MBP:website_code rory$ ./develop_server.sh stop
 </pre></div>
 
 
