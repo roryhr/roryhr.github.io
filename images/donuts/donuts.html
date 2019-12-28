@@ -11,7 +11,10 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
   <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js" integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw==" crossorigin=""></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <!-- Custom styles for this template -->
+  <!-- <link href="album.css" rel="stylesheet"> -->
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-151184132-1"></script>
@@ -24,1302 +27,1515 @@
   </script>
 
   <style>
-    html, body {
-      height: 100%;
-      margin: 10px;
-      }
+    .map-home {
+      height: 300px;
+      margin-top: 50px;
+      margin-bottom: 50px;
+    }
+
     #map {
-      width: 600px;
-      height: 400px;
-      margin: 10px;
+      height: 300px;
+      margin: 50px;
     }
   </style>    
 </head>
 
 <body>
-  <h1>Rory's Donut Data...Online</h1>
-  <h3>Stay tuned for exclusive donut data-related content!</h3>
+  
+<main role="main">
+  <section class="jumbotron text-center">
+    <div class="container">
+      <h1>Donut Selfies</h1>
+      <p class="lead text-muted">
+        I'm on a mission to take the worst selfie and find the best donuts.
+      </p>
+    </div>
+  </section>
 
-  <div id='map'></div>
-  <script src="generate_map.js" type="text/javascript"></script>
+  <div class="album py-5 bg-light">
+    <div class="container">
 
-  <div class="row row-cols-1 row-cols-md-3" style="width: 44em;">
-    
-    <div class="col mb-4">
-      <div class="card">
-          <img src="Donutselfies_bMxPRLTyVg/39442782_10106647463925837_3960768692333051904_n_10106647463920847.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">Lucky Donuts</h5>
-            <p class="card-text">Lucky Donuts 
+      <div class="row">
+        <div id="map" class="col align-self-center">
+        </div>
+      </div>
+
+      <div class="row">
+        
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card">
+              <img src="Donutselfies_bMxPRLTyVg/77390659_10107590155444477_5651810003825197056_o_10107590155424517.jpg" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">LaMar's Donuts</h5>
+                <p class="card-text">LaMar's Donuts
+133 McCaslin Blvd
+Louisville, CO 80027
+
+It's a small chain (maybe 30 locations in 4 states) so I'll let it slide... good donuts and coffee. </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">2019-11-25</small>
+              </div>
+            </div>
+          </div>
+        </div>    
+        
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card">
+              <img src="Donutselfies_bMxPRLTyVg/39442782_10106647463925837_3960768692333051904_n_10106647463920847.jpg" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Lucky Donuts</h5>
+                <p class="card-text">Lucky Donuts 
 565 Dutton Ave
 San Leandro, CA
 
 They sell more lottery tickets than donuts which is a shame because my chocolate raised was great. </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">2018-08-18</small>
+              </div>
+            </div>
           </div>
-          <div class="card-footer">
-            <small class="text-muted">2018-08-18</small>
-          </div>
-      </div>
-    </div>
-    
-    <div class="col mb-4">
-      <div class="card">
-          <img src="Donutselfies_bMxPRLTyVg/39580521_10106647390048887_3684363726946828288_n_10106647390043897.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">Lee's Donuts</h5>
-            <p class="card-text">Lee's Donuts
+        </div>    
+        
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card">
+              <img src="Donutselfies_bMxPRLTyVg/39580521_10106647390048887_3684363726946828288_n_10106647390043897.jpg" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Lee's Donuts</h5>
+                <p class="card-text">Lee's Donuts
 5412 San Pablo Ave
 Oakland, CA
 
 Perfectly cooked (nice and crispy) old-fashionable that was let down by the chocolate. Still good though. </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">2018-08-18</small>
+              </div>
+            </div>
           </div>
-          <div class="card-footer">
-            <small class="text-muted">2018-08-18</small>
-          </div>
-      </div>
-    </div>
-    
-    <div class="col mb-4">
-      <div class="card">
-          <img src="Donutselfies_bMxPRLTyVg/29597211_10106363028716277_5102087088421878757_n_10106363028716277.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">Maple Leaf Donuts</h5>
-            <p class="card-text">Maple Leaf Donuts 
+        </div>    
+        
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card">
+              <img src="Donutselfies_bMxPRLTyVg/29597211_10106363028716277_5102087088421878757_n_10106363028716277.jpg" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Maple Leaf Donuts</h5>
+                <p class="card-text">Maple Leaf Donuts 
 2329 S Winchester Blvd
 Campbell, CA
 
 I had a chocolate old fashioned and chocolate raised which were both pretty good. The coffee, per donut shop tradition, was dreadful. </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">2018-03-25</small>
+              </div>
+            </div>
           </div>
-          <div class="card-footer">
-            <small class="text-muted">2018-03-25</small>
-          </div>
-      </div>
-    </div>
-    
-    <div class="col mb-4">
-      <div class="card">
-          <img src="Donutselfies_bMxPRLTyVg/29136599_10106334718435307_6112222028280889344_n_10106334718395387.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">Peejays Donuts</h5>
-            <p class="card-text">Peejays Donuts 
+        </div>    
+        
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card">
+              <img src="Donutselfies_bMxPRLTyVg/29136599_10106334718435307_6112222028280889344_n_10106334718395387.jpg" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Peejays Donuts</h5>
+                <p class="card-text">Peejays Donuts 
 Vijzelgracht 37
 Amsterdam, Netherlands
 
 It's a hipster place with raised donuts with assorted toppings but no chocolate. I had a glazed. Photo by @[1540208203:2048:Kinsey Hartong-Redden]. Thanks! </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">2018-03-13</small>
+              </div>
+            </div>
           </div>
-          <div class="card-footer">
-            <small class="text-muted">2018-03-13</small>
-          </div>
-      </div>
-    </div>
-    
-    <div class="col mb-4">
-      <div class="card">
-          <img src="Donutselfies_bMxPRLTyVg/28951558_10106328333256257_324087958594387968_n_10106328333251267.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">Bakker Bart</h5>
-            <p class="card-text">Bakker Bart
+        </div>    
+        
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card">
+              <img src="Donutselfies_bMxPRLTyVg/28951558_10106328333256257_324087958594387968_n_10106328333251267.jpg" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Bakker Bart</h5>
+                <p class="card-text">Bakker Bart
 Lijnbaan 67
 3012 EL Rotterdam
 Netherlands
 
 I had a sugar donut. It was that weird cake-raised hybrid, fluffy but dense. </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">2018-03-10</small>
+              </div>
+            </div>
           </div>
-          <div class="card-footer">
-            <small class="text-muted">2018-03-10</small>
-          </div>
-      </div>
-    </div>
-    
-    <div class="col mb-4">
-      <div class="card">
-          <img src="Donutselfies_bMxPRLTyVg/27971584_10106286562175837_7287066001488544473_n_10106286562175837.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">Bob's Donuts</h5>
-            <p class="card-text">Bob's Donuts 
+        </div>    
+        
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card">
+              <img src="Donutselfies_bMxPRLTyVg/27971584_10106286562175837_7287066001488544473_n_10106286562175837.jpg" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Bob's Donuts</h5>
+                <p class="card-text">Bob's Donuts 
 1621 Polk St
 San Francisco, CA
 
 I'm waiting in line. </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">2018-02-18</small>
+              </div>
+            </div>
           </div>
-          <div class="card-footer">
-            <small class="text-muted">2018-02-18</small>
-          </div>
-      </div>
-    </div>
-    
-    <div class="col mb-4">
-      <div class="card">
-          <img src="Donutselfies_bMxPRLTyVg/27658056_10106270071707867_2625165277596519782_n_10106270071707867.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">Grand Mission Donuts & Bakery</h5>
-            <p class="card-text">Grand Mission Donuts & Bakery
+        </div>    
+        
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card">
+              <img src="Donutselfies_bMxPRLTyVg/27658056_10106270071707867_2625165277596519782_n_10106270071707867.jpg" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Grand Mission Donuts & Bakery</h5>
+                <p class="card-text">Grand Mission Donuts & Bakery
 2195 Mission St
 San Francisco, CA
 
 I had a chocolate bar and a chocolate old fashioned; they were pretty good! </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">2018-02-10</small>
+              </div>
+            </div>
           </div>
-          <div class="card-footer">
-            <small class="text-muted">2018-02-10</small>
-          </div>
-      </div>
-    </div>
-    
-    <div class="col mb-4">
-      <div class="card">
-          <img src="Donutselfies_bMxPRLTyVg/25592092_10106156371608777_2045380404821064884_n_10106156371608777.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">Donuterie</h5>
-            <p class="card-text">Donuterie 
+        </div>    
+        
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card">
+              <img src="Donutselfies_bMxPRLTyVg/25592092_10106156371608777_2045380404821064884_n_10106156371608777.jpg" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Donuterie</h5>
+                <p class="card-text">Donuterie 
 NÃ¡prstkova 215/9
 Prague
 
 It's a tiny coffee shop and art gallery with donuts. Uber European. </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">2017-12-22</small>
+              </div>
+            </div>
           </div>
-          <div class="card-footer">
-            <small class="text-muted">2017-12-22</small>
-          </div>
-      </div>
-    </div>
-    
-    <div class="col mb-4">
-      <div class="card">
-          <img src="Donutselfies_bMxPRLTyVg/21192364_10105895198411957_8656538251760268180_n_10105895198411957.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">Gilroy Donut House</h5>
-            <p class="card-text">Gilroy Donut House
+        </div>    
+        
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card">
+              <img src="Donutselfies_bMxPRLTyVg/21192364_10105895198411957_8656538251760268180_n_10105895198411957.jpg" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Gilroy Donut House</h5>
+                <p class="card-text">Gilroy Donut House
 703 1st St 
 Gilroy, CA </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">2017-09-02</small>
+              </div>
+            </div>
           </div>
-          <div class="card-footer">
-            <small class="text-muted">2017-09-02</small>
-          </div>
-      </div>
-    </div>
-    
-    <div class="col mb-4">
-      <div class="card">
-          <img src="Donutselfies_bMxPRLTyVg/19060029_10105661747649157_2591370027959532789_n_10105661747649157.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">Moon Donuts</h5>
-            <p class="card-text">Moon Donuts 
+        </div>    
+        
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card">
+              <img src="Donutselfies_bMxPRLTyVg/19060029_10105661747649157_2591370027959532789_n_10105661747649157.jpg" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Moon Donuts</h5>
+                <p class="card-text">Moon Donuts 
 1000 Torrance Blvd
 Redondo Beach, CA
 
 I took my hat off in appreciation of their pretty good donuts. </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">2017-06-15</small>
+              </div>
+            </div>
           </div>
-          <div class="card-footer">
-            <small class="text-muted">2017-06-15</small>
-          </div>
-      </div>
-    </div>
-    
-    <div class="col mb-4">
-      <div class="card">
-          <img src="Donutselfies_bMxPRLTyVg/19059373_10105653056181927_7069204900321862896_n_10105653056181927.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">SK Donuts</h5>
-            <p class="card-text">SK Donuts 
+        </div>    
+        
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card">
+              <img src="Donutselfies_bMxPRLTyVg/19059373_10105653056181927_7069204900321862896_n_10105653056181927.jpg" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">SK Donuts</h5>
+                <p class="card-text">SK Donuts 
 607 Pacific Coast Highway
 Redondo Beach, CA </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">2017-06-12</small>
+              </div>
+            </div>
           </div>
-          <div class="card-footer">
-            <small class="text-muted">2017-06-12</small>
-          </div>
-      </div>
-    </div>
-    
-    <div class="col mb-4">
-      <div class="card">
-          <img src="Donutselfies_bMxPRLTyVg/18581753_10105588066546677_3236766387110637332_n_10105588066546677.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">Donut Bytes Lab</h5>
-            <p class="card-text">Donut Bytes Lab
+        </div>    
+        
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card">
+              <img src="Donutselfies_bMxPRLTyVg/18581753_10105588066546677_3236766387110637332_n_10105588066546677.jpg" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Donut Bytes Lab</h5>
+                <p class="card-text">Donut Bytes Lab
 12 SW 4th Ave
 Portland, OR
 
 They sell mini donuts by the dozen, so much for committing to 8 bits. </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">2017-05-21</small>
+              </div>
+            </div>
           </div>
-          <div class="card-footer">
-            <small class="text-muted">2017-05-21</small>
-          </div>
-      </div>
-    </div>
-    
-    <div class="col mb-4">
-      <div class="card">
-          <img src="Donutselfies_bMxPRLTyVg/18528047_10105583398636207_1902089463630444402_n_10105583398636207.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">Delicious Donuts</h5>
-            <p class="card-text">Delicious Donuts 
+        </div>    
+        
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card">
+              <img src="Donutselfies_bMxPRLTyVg/18528047_10105583398636207_1902089463630444402_n_10105583398636207.jpg" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Delicious Donuts</h5>
+                <p class="card-text">Delicious Donuts 
 12 SE Grand Ave
 Portland, OR
 
 They lived up to the name. Solid unpretentious donuts. </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">2017-05-20</small>
+              </div>
+            </div>
           </div>
-          <div class="card-footer">
-            <small class="text-muted">2017-05-20</small>
-          </div>
-      </div>
-    </div>
-    
-    <div class="col mb-4">
-      <div class="card">
-          <img src="Donutselfies_bMxPRLTyVg/18556061_10105582623699187_6802872983450881061_n_10105582623699187.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">Voodoo Donut</h5>
-            <p class="card-text">Voodoo Donut
+        </div>    
+        
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card">
+              <img src="Donutselfies_bMxPRLTyVg/18556061_10105582623699187_6802872983450881061_n_10105582623699187.jpg" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Voodoo Donut</h5>
+                <p class="card-text">Voodoo Donut
 22 SW 3rd Ave
 Portland, OR
 
 I'm still in line. After 15 minutes I had a chocolate old fashioned that, in texture and flavor, was just like a Safeway donut. </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">2017-05-19</small>
+              </div>
+            </div>
           </div>
-          <div class="card-footer">
-            <small class="text-muted">2017-05-19</small>
-          </div>
-      </div>
-    </div>
-    
-    <div class="col mb-4">
-      <div class="card">
-          <img src="Donutselfies_bMxPRLTyVg/18033459_10105499164591907_6630707892245608085_n_10105499164591907.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">Johnny Doughnuts (Truck)</h5>
-            <p class="card-text">Johnny Doughnuts (Truck)
+        </div>    
+        
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card">
+              <img src="Donutselfies_bMxPRLTyVg/18033459_10105499164591907_6630707892245608085_n_10105499164591907.jpg" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Johnny Doughnuts (Truck)</h5>
+                <p class="card-text">Johnny Doughnuts (Truck)
 Menlo Park Station
 
 My chocolate donut was delicious but overpriced. </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">2017-04-19</small>
+              </div>
+            </div>
           </div>
-          <div class="card-footer">
-            <small class="text-muted">2017-04-19</small>
-          </div>
-      </div>
-    </div>
-    
-    <div class="col mb-4">
-      <div class="card">
-          <img src="Donutselfies_bMxPRLTyVg/17498437_10105423001338677_6448921822903759011_n_10105423001338677.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">Donuts N Things</h5>
-            <p class="card-text">Donuts N Things
+        </div>    
+        
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card">
+              <img src="Donutselfies_bMxPRLTyVg/17498437_10105423001338677_6448921822903759011_n_10105423001338677.jpg" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Donuts N Things</h5>
+                <p class="card-text">Donuts N Things
 Morgan Hill, CA
 
 Delicious donuts! Recommend. </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">2017-03-25</small>
+              </div>
+            </div>
           </div>
-          <div class="card-footer">
-            <small class="text-muted">2017-03-25</small>
-          </div>
-      </div>
-    </div>
-    
-    <div class="col mb-4">
-      <div class="card">
-          <img src="Donutselfies_bMxPRLTyVg/17103705_10105367963624697_9128621550696005095_n_10105367963624697.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">Donut Basket</h5>
-            <p class="card-text">Donut Basket
+        </div>    
+        
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card">
+              <img src="Donutselfies_bMxPRLTyVg/17103705_10105367963624697_9128621550696005095_n_10105367963624697.jpg" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Donut Basket</h5>
+                <p class="card-text">Donut Basket
 2105 Old Middlefield Way # B
 Mountain View, CA 94043 </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">2017-03-05</small>
+              </div>
+            </div>
           </div>
-          <div class="card-footer">
-            <small class="text-muted">2017-03-05</small>
-          </div>
-      </div>
-    </div>
-    
-    <div class="col mb-4">
-      <div class="card">
-          <img src="Donutselfies_bMxPRLTyVg/15965515_10105214703569077_8475297044619212152_n_10105214703569077.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">Golden Bell Donuts</h5>
-            <p class="card-text">Golden Bell Donuts 
+        </div>    
+        
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card">
+              <img src="Donutselfies_bMxPRLTyVg/15965515_10105214703569077_8475297044619212152_n_10105214703569077.jpg" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Golden Bell Donuts</h5>
+                <p class="card-text">Golden Bell Donuts 
 San Mateo, CA </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">2017-01-09</small>
+              </div>
+            </div>
           </div>
-          <div class="card-footer">
-            <small class="text-muted">2017-01-09</small>
-          </div>
-      </div>
-    </div>
-    
-    <div class="col mb-4">
-      <div class="card">
-          <img src="Donutselfies_bMxPRLTyVg/15747803_10105178408918847_1382614209863581446_n_10105178408918847.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">O'Henry's Donuts</h5>
-            <p class="card-text">O'Henry's Donuts
+        </div>    
+        
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card">
+              <img src="Donutselfies_bMxPRLTyVg/15747803_10105178408918847_1382614209863581446_n_10105178408918847.jpg" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">O'Henry's Donuts</h5>
+                <p class="card-text">O'Henry's Donuts
 500 Vineyard Town Ctr
 Morgan Hill, CA </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">2016-12-29</small>
+              </div>
+            </div>
           </div>
-          <div class="card-footer">
-            <small class="text-muted">2016-12-29</small>
-          </div>
-      </div>
-    </div>
-    
-    <div class="col mb-4">
-      <div class="card">
-          <img src="Donutselfies_bMxPRLTyVg/15232180_10105093608255057_2870566272158700861_n_10105093608255057.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">Pilgrim Kitchen</h5>
-            <p class="card-text">Pilgrim Kitchen 
+        </div>    
+        
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card">
+              <img src="Donutselfies_bMxPRLTyVg/15232180_10105093608255057_2870566272158700861_n_10105093608255057.jpg" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Pilgrim Kitchen</h5>
+                <p class="card-text">Pilgrim Kitchen 
 311 El Camino Real
 Belmont, CA </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">2016-12-03</small>
+              </div>
+            </div>
           </div>
-          <div class="card-footer">
-            <small class="text-muted">2016-12-03</small>
-          </div>
-      </div>
-    </div>
-    
-    <div class="col mb-4">
-      <div class="card">
-          <img src="Donutselfies_bMxPRLTyVg/15037168_10105043452293007_2477332263264120839_n_10105043452293007.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">Evergreen Donuts</h5>
-            <p class="card-text">Evergreen Donuts 
+        </div>    
+        
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card">
+              <img src="Donutselfies_bMxPRLTyVg/15037168_10105043452293007_2477332263264120839_n_10105043452293007.jpg" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Evergreen Donuts</h5>
+                <p class="card-text">Evergreen Donuts 
 2844 S White Rd
 San Jose, CA 95148
 
 I didn't ask how they do it. </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">2016-11-13</small>
+              </div>
+            </div>
           </div>
-          <div class="card-footer">
-            <small class="text-muted">2016-11-13</small>
-          </div>
-      </div>
-    </div>
-    
-    <div class="col mb-4">
-      <div class="card">
-          <img src="Donutselfies_bMxPRLTyVg/14633021_10105006623652897_5354468227001341116_n_10105006623652897.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">Half Moon Bakery</h5>
-            <p class="card-text">Half Moon Bakery
+        </div>    
+        
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card">
+              <img src="Donutselfies_bMxPRLTyVg/14633021_10105006623652897_5354468227001341116_n_10105006623652897.jpg" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Half Moon Bakery</h5>
+                <p class="card-text">Half Moon Bakery
  514 Main St 
 Half Moon Bay, CA
 
 More donuts </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">2016-10-31</small>
+              </div>
+            </div>
           </div>
-          <div class="card-footer">
-            <small class="text-muted">2016-10-31</small>
-          </div>
-      </div>
-    </div>
-    
-    <div class="col mb-4">
-      <div class="card">
-          <img src="Donutselfies_bMxPRLTyVg/14702425_10104973444344497_4737079808438200912_n_10104973444344497.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">Nuri's Donuts</h5>
-            <p class="card-text">Nuri's Donuts 
+        </div>    
+        
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card">
+              <img src="Donutselfies_bMxPRLTyVg/14702425_10104973444344497_4737079808438200912_n_10104973444344497.jpg" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Nuri's Donuts</h5>
+                <p class="card-text">Nuri's Donuts 
 416 El Camino Real
 Redwood City, CA
 
 Really good chocolate old fashioned! Best donuts in the Redwood City area. </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">2016-10-19</small>
+              </div>
+            </div>
           </div>
-          <div class="card-footer">
-            <small class="text-muted">2016-10-19</small>
-          </div>
-      </div>
-    </div>
-    
-    <div class="col mb-4">
-      <div class="card">
-          <img src="Donutselfies_bMxPRLTyVg/14724559_10104955972373467_869140148030707025_n_10104955972373467.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">Rolling Pin Donuts</h5>
-            <p class="card-text">Rolling Pin Donuts
+        </div>    
+        
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card">
+              <img src="Donutselfies_bMxPRLTyVg/14724559_10104955972373467_869140148030707025_n_10104955972373467.jpg" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Rolling Pin Donuts</h5>
+                <p class="card-text">Rolling Pin Donuts
 429 San Bruno Ave
 San Bruno, CA </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">2016-10-13</small>
+              </div>
+            </div>
           </div>
-          <div class="card-footer">
-            <small class="text-muted">2016-10-13</small>
-          </div>
-      </div>
-    </div>
-    
-    <div class="col mb-4">
-      <div class="card">
-          <img src="Donutselfies_bMxPRLTyVg/14568179_10104947608639457_3876521233587162490_n_10104947608639457.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">Royal Pin Donuts</h5>
-            <p class="card-text">Royal Pin Donuts
+        </div>    
+        
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card">
+              <img src="Donutselfies_bMxPRLTyVg/14568179_10104947608639457_3876521233587162490_n_10104947608639457.jpg" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Royal Pin Donuts</h5>
+                <p class="card-text">Royal Pin Donuts
 551 El Camino Real
 South San Francisco, CA
 
 It's got a drive through! </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">2016-10-10</small>
+              </div>
+            </div>
           </div>
-          <div class="card-footer">
-            <small class="text-muted">2016-10-10</small>
-          </div>
-      </div>
-    </div>
-    
-    <div class="col mb-4">
-      <div class="card">
-          <img src="Donutselfies_bMxPRLTyVg/14292477_10104880279412767_8375870390848060051_n_10104880279412767.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">Doughnut Vault</h5>
-            <p class="card-text">Doughnut Vault
+        </div>    
+        
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card">
+              <img src="Donutselfies_bMxPRLTyVg/14292477_10104880279412767_8375870390848060051_n_10104880279412767.jpg" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Doughnut Vault</h5>
+                <p class="card-text">Doughnut Vault
 401 N Franklin
 Chicago, IL </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">2016-09-13</small>
+              </div>
+            </div>
           </div>
-          <div class="card-footer">
-            <small class="text-muted">2016-09-13</small>
-          </div>
-      </div>
-    </div>
-    
-    <div class="col mb-4">
-      <div class="card">
-          <img src="Donutselfies_bMxPRLTyVg/14046054_10104815090057757_2065539220886812208_n_10104815090057757.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">Rollo's Donuts</h5>
-            <p class="card-text">Rollo's Donuts
+        </div>    
+        
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card">
+              <img src="Donutselfies_bMxPRLTyVg/14046054_10104815090057757_2065539220886812208_n_10104815090057757.jpg" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Rollo's Donuts</h5>
+                <p class="card-text">Rollo's Donuts
 602 N 13th St
 San Jose, CA </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">2016-08-17</small>
+              </div>
+            </div>
           </div>
-          <div class="card-footer">
-            <small class="text-muted">2016-08-17</small>
-          </div>
-      </div>
-    </div>
-    
-    <div class="col mb-4">
-      <div class="card">
-          <img src="Donutselfies_bMxPRLTyVg/14051744_10104809675149277_9099059346837403271_n_10104809675149277.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">Daily Donuts</h5>
-            <p class="card-text">Daily Donuts
+        </div>    
+        
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card">
+              <img src="Donutselfies_bMxPRLTyVg/14051744_10104809675149277_9099059346837403271_n_10104809675149277.jpg" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Daily Donuts</h5>
+                <p class="card-text">Daily Donuts
 1075 Tully Rd
 San Jose, CA </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">2016-08-14</small>
+              </div>
+            </div>
           </div>
-          <div class="card-footer">
-            <small class="text-muted">2016-08-14</small>
-          </div>
-      </div>
-    </div>
-    
-    <div class="col mb-4">
-      <div class="card">
-          <img src="Donutselfies_bMxPRLTyVg/13912684_10104801849581777_3439397775602641422_n_10104801849581777.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">Susan's Donuts</h5>
-            <p class="card-text">Susan's Donuts
+        </div>    
+        
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card">
+              <img src="Donutselfies_bMxPRLTyVg/13912684_10104801849581777_3439397775602641422_n_10104801849581777.jpg" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Susan's Donuts</h5>
+                <p class="card-text">Susan's Donuts
 1113 Tasman Dr
 Sunnyvale, CA </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">2016-08-11</small>
+              </div>
+            </div>
           </div>
-          <div class="card-footer">
-            <small class="text-muted">2016-08-11</small>
-          </div>
-      </div>
-    </div>
-    
-    <div class="col mb-4">
-      <div class="card">
-          <img src="Donutselfies_bMxPRLTyVg/13903439_10104797382478887_4920367694403743723_n_10104797382478887.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">Marty's Donuts</h5>
-            <p class="card-text">Marty's Donuts
+        </div>    
+        
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card">
+              <img src="Donutselfies_bMxPRLTyVg/13903439_10104797382478887_4920367694403743723_n_10104797382478887.jpg" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Marty's Donuts</h5>
+                <p class="card-text">Marty's Donuts
 Sunnyvale, CA </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">2016-08-09</small>
+              </div>
+            </div>
           </div>
-          <div class="card-footer">
-            <small class="text-muted">2016-08-09</small>
-          </div>
-      </div>
-    </div>
-    
-    <div class="col mb-4">
-      <div class="card">
-          <img src="Donutselfies_bMxPRLTyVg/13814056_10104788614789407_8489991240736072140_n_10104788614789407.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">Penny Donuts</h5>
-            <p class="card-text">Penny Donuts
+        </div>    
+        
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card">
+              <img src="Donutselfies_bMxPRLTyVg/13814056_10104788614789407_8489991240736072140_n_10104788614789407.jpg" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Penny Donuts</h5>
+                <p class="card-text">Penny Donuts
 Newark, CA </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">2016-08-05</small>
+              </div>
+            </div>
           </div>
-          <div class="card-footer">
-            <small class="text-muted">2016-08-05</small>
-          </div>
-      </div>
-    </div>
-    
-    <div class="col mb-4">
-      <div class="card">
-          <img src="Donutselfies_bMxPRLTyVg/13892379_10104782077450287_7097556409445795056_n_10104782077450287.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">Lloyd's Donuts</h5>
-            <p class="card-text">Lloyd's Donuts
+        </div>    
+        
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card">
+              <img src="Donutselfies_bMxPRLTyVg/13892379_10104782077450287_7097556409445795056_n_10104782077450287.jpg" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Lloyd's Donuts</h5>
+                <p class="card-text">Lloyd's Donuts
 Fremont, CA </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">2016-08-02</small>
+              </div>
+            </div>
           </div>
-          <div class="card-footer">
-            <small class="text-muted">2016-08-02</small>
-          </div>
-      </div>
-    </div>
-    
-    <div class="col mb-4">
-      <div class="card">
-          <img src="Donutselfies_bMxPRLTyVg/13782014_10104770509362827_2908157923831364739_n_10104770509362827.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">Donut Delite</h5>
-            <p class="card-text">Donut Delite 
+        </div>    
+        
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card">
+              <img src="Donutselfies_bMxPRLTyVg/13782014_10104770509362827_2908157923831364739_n_10104770509362827.jpg" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Donut Delite</h5>
+                <p class="card-text">Donut Delite 
 732 Willow Rd
 Menlo Park, CA </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">2016-07-28</small>
+              </div>
+            </div>
           </div>
-          <div class="card-footer">
-            <small class="text-muted">2016-07-28</small>
-          </div>
-      </div>
-    </div>
-    
-    <div class="col mb-4">
-      <div class="card">
-          <img src="Donutselfies_bMxPRLTyVg/13669792_10104766429349207_4799681433170063234_n_10104766429349207.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">Donut Depot</h5>
-            <p class="card-text">Donut Depot 
+        </div>    
+        
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card">
+              <img src="Donutselfies_bMxPRLTyVg/13669792_10104766429349207_4799681433170063234_n_10104766429349207.jpg" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Donut Depot</h5>
+                <p class="card-text">Donut Depot 
 3383 Middlefield Rd
 Menlo Park, CA </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">2016-07-26</small>
+              </div>
+            </div>
           </div>
-          <div class="card-footer">
-            <small class="text-muted">2016-07-26</small>
-          </div>
-      </div>
-    </div>
-    
-    <div class="col mb-4">
-      <div class="card">
-          <img src="Donutselfies_bMxPRLTyVg/13731475_10104746819118267_6575046056966114038_n_10104746819118267.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">Valley Donuts</h5>
-            <p class="card-text">Valley Donuts 
+        </div>    
+        
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card">
+              <img src="Donutselfies_bMxPRLTyVg/13731475_10104746819118267_6575046056966114038_n_10104746819118267.jpg" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Valley Donuts</h5>
+                <p class="card-text">Valley Donuts 
 851 5th St
 Gonzales, CA
 
 Recommended if you're passing by on the 101. Very good donuts. </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">2016-07-17</small>
+              </div>
+            </div>
           </div>
-          <div class="card-footer">
-            <small class="text-muted">2016-07-17</small>
-          </div>
-      </div>
-    </div>
-    
-    <div class="col mb-4">
-      <div class="card">
-          <img src="Donutselfies_bMxPRLTyVg/13494842_10104693500883437_710233364085541122_n_10104693500883437.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">Ferrell's Donut House</h5>
-            <p class="card-text">Ferrell's Donut House 
+        </div>    
+        
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card">
+              <img src="Donutselfies_bMxPRLTyVg/13494842_10104693500883437_710233364085541122_n_10104693500883437.jpg" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Ferrell's Donut House</h5>
+                <p class="card-text">Ferrell's Donut House 
 1403 Ocean St 
 Santa Cruz, CA
 
 I forgot what I had because I ate them so quickly. They were really good though, I remember that. </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">2016-06-23</small>
+              </div>
+            </div>
           </div>
-          <div class="card-footer">
-            <small class="text-muted">2016-06-23</small>
-          </div>
-      </div>
-    </div>
-    
-    <div class="col mb-4">
-      <div class="card">
-          <img src="Donutselfies_bMxPRLTyVg/13533032_10104692824004907_5741379802482495240_n_10104692824004907.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">O'Henry's Donuts</h5>
-            <p class="card-text">O'Henry's Donuts
+        </div>    
+        
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card">
+              <img src="Donutselfies_bMxPRLTyVg/13533032_10104692824004907_5741379802482495240_n_10104692824004907.jpg" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">O'Henry's Donuts</h5>
+                <p class="card-text">O'Henry's Donuts
 401 E 10th St 
 Gilroy, CA </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">2016-06-23</small>
+              </div>
+            </div>
           </div>
-          <div class="card-footer">
-            <small class="text-muted">2016-06-23</small>
-          </div>
-      </div>
-    </div>
-    
-    <div class="col mb-4">
-      <div class="card">
-          <img src="Donutselfies_bMxPRLTyVg/13000128_10104560235767797_8044022791604534577_n_10104560235767797.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">The Jelly Donut</h5>
-            <p class="card-text">The Jelly Donut
+        </div>    
+        
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card">
+              <img src="Donutselfies_bMxPRLTyVg/13000128_10104560235767797_8044022791604534577_n_10104560235767797.jpg" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">The Jelly Donut</h5>
+                <p class="card-text">The Jelly Donut
 3000ish 24th St
 San Francisco, CA
 
 I found another one. </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">2016-04-18</small>
+              </div>
+            </div>
           </div>
-          <div class="card-footer">
-            <small class="text-muted">2016-04-18</small>
-          </div>
-      </div>
-    </div>
-    
-    <div class="col mb-4">
-      <div class="card">
-          <img src="Donutselfies_bMxPRLTyVg/12923190_10104546853955057_7908012938827639208_n_10104546853955057.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">Allstars Donuts</h5>
-            <p class="card-text">Allstars Donuts
+        </div>    
+        
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card">
+              <img src="Donutselfies_bMxPRLTyVg/12923190_10104546853955057_7908012938827639208_n_10104546853955057.jpg" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Allstars Donuts</h5>
+                <p class="card-text">Allstars Donuts
 399 5th St 
 San Francisco, CA
 
 I almost had the perfect chocolate old-fashioned. It was crispy on the outside and soft inside but the chocolate let it down. Still, an excellent showing for $1. </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">2016-04-11</small>
+              </div>
+            </div>
           </div>
-          <div class="card-footer">
-            <small class="text-muted">2016-04-11</small>
-          </div>
-      </div>
-    </div>
-    
-    <div class="col mb-4">
-      <div class="card">
-          <img src="Donutselfies_bMxPRLTyVg/12933136_10104514423855237_2311391854267592764_n_10104514423855237.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">J Georgie's Donuts & Hamburgers</h5>
-            <p class="card-text">J Georgie's Donuts & Hamburgers 
+        </div>    
+        
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card">
+              <img src="Donutselfies_bMxPRLTyVg/12933136_10104514423855237_2311391854267592764_n_10104514423855237.jpg" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">J Georgie's Donuts & Hamburgers</h5>
+                <p class="card-text">J Georgie's Donuts & Hamburgers 
 2462 San Bruno Ave
 San Francisco, CA
 
 $1.20 for two donuts? I'll take it! </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">2016-03-28</small>
+              </div>
+            </div>
           </div>
-          <div class="card-footer">
-            <small class="text-muted">2016-03-28</small>
-          </div>
-      </div>
-    </div>
-    
-    <div class="col mb-4">
-      <div class="card">
-          <img src="Donutselfies_bMxPRLTyVg/1958146_10104498059334867_6822172674596815245_n_10104498059334867.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">Dream Fluff Donuts</h5>
-            <p class="card-text">Dream Fluff Donuts
+        </div>    
+        
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card">
+              <img src="Donutselfies_bMxPRLTyVg/1958146_10104498059334867_6822172674596815245_n_10104498059334867.jpg" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Dream Fluff Donuts</h5>
+                <p class="card-text">Dream Fluff Donuts
 Berkeley, CA
 
 Since 1940. I like that kind of pedigree in my donuts. They were excellent. Highly recommend for diner atmosphere and good donuts. </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">2016-03-22</small>
+              </div>
+            </div>
           </div>
-          <div class="card-footer">
-            <small class="text-muted">2016-03-22</small>
-          </div>
-      </div>
-    </div>
-    
-    <div class="col mb-4">
-      <div class="card">
-          <img src="Donutselfies_bMxPRLTyVg/12705506_10104449839223357_211214143341153385_n_10104449839223357.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">King Pin Donuts</h5>
-            <p class="card-text">King Pin Donuts
+        </div>    
+        
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card">
+              <img src="Donutselfies_bMxPRLTyVg/12705506_10104449839223357_211214143341153385_n_10104449839223357.jpg" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">King Pin Donuts</h5>
+                <p class="card-text">King Pin Donuts
 2521 Durant Ave
 Berkeley, CA </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">2016-03-01</small>
+              </div>
+            </div>
           </div>
-          <div class="card-footer">
-            <small class="text-muted">2016-03-01</small>
-          </div>
-      </div>
-    </div>
-    
-    <div class="col mb-4">
-      <div class="card">
-          <img src="Donutselfies_bMxPRLTyVg/12742718_10104430947966587_592903899112507147_n_10104430947966587.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">Sweet Passion Bakery</h5>
-            <p class="card-text">Sweet Passion Bakery 
+        </div>    
+        
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card">
+              <img src="Donutselfies_bMxPRLTyVg/12742718_10104430947966587_592903899112507147_n_10104430947966587.jpg" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Sweet Passion Bakery</h5>
+                <p class="card-text">Sweet Passion Bakery 
 3020 Taraval 
 San Francisco, CA
 
 They only make sugar donuts. As far as donuts without chocolate go I give it a "donut I kinda liked". </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">2016-02-20</small>
+              </div>
+            </div>
           </div>
-          <div class="card-footer">
-            <small class="text-muted">2016-02-20</small>
-          </div>
-      </div>
-    </div>
-    
-    <div class="col mb-4">
-      <div class="card">
-          <img src="Donutselfies_bMxPRLTyVg/12507558_10104356692125887_5891771518116935388_n_10104356692125887.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">California Bakery</h5>
-            <p class="card-text">California Bakery 
+        </div>    
+        
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card">
+              <img src="Donutselfies_bMxPRLTyVg/12507558_10104356692125887_5891771518116935388_n_10104356692125887.jpg" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">California Bakery</h5>
+                <p class="card-text">California Bakery 
 77 McAllister St
 San Francisco, CA </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">2016-01-08</small>
+              </div>
+            </div>
           </div>
-          <div class="card-footer">
-            <small class="text-muted">2016-01-08</small>
-          </div>
-      </div>
-    </div>
-    
-    <div class="col mb-4">
-      <div class="card">
-          <img src="Donutselfies_bMxPRLTyVg/10270637_10104348246036917_8560145955630068849_n_10104348246036917.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">Western Donut</h5>
-            <p class="card-text">Western Donut
+        </div>    
+        
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card">
+              <img src="Donutselfies_bMxPRLTyVg/10270637_10104348246036917_8560145955630068849_n_10104348246036917.jpg" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Western Donut</h5>
+                <p class="card-text">Western Donut
 2034 Mission St 
 San Francisco, CA </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">2016-01-03</small>
+              </div>
+            </div>
           </div>
-          <div class="card-footer">
-            <small class="text-muted">2016-01-03</small>
-          </div>
-      </div>
-    </div>
-    
-    <div class="col mb-4">
-      <div class="card">
-          <img src="Donutselfies_bMxPRLTyVg/12341185_10104308450023447_2179195588440716837_n_10104308450023447.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">Happy Donuts</h5>
-            <p class="card-text">Happy Donuts
+        </div>    
+        
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card">
+              <img src="Donutselfies_bMxPRLTyVg/12341185_10104308450023447_2179195588440716837_n_10104308450023447.jpg" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Happy Donuts</h5>
+                <p class="card-text">Happy Donuts
 100 Bush St
 San Francisco, CA </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">2015-12-14</small>
+              </div>
+            </div>
           </div>
-          <div class="card-footer">
-            <small class="text-muted">2015-12-14</small>
-          </div>
-      </div>
-    </div>
-    
-    <div class="col mb-4">
-      <div class="card">
-          <img src="Donutselfies_bMxPRLTyVg/12346348_10104304758456377_4944375662440642659_n_10104304758456377.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">Happy Donuts</h5>
-            <p class="card-text">Happy Donuts
+        </div>    
+        
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card">
+              <img src="Donutselfies_bMxPRLTyVg/12346348_10104304758456377_4944375662440642659_n_10104304758456377.jpg" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Happy Donuts</h5>
+                <p class="card-text">Happy Donuts
 1330 El Camino Real
 Redwood City, CA </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">2015-12-12</small>
+              </div>
+            </div>
           </div>
-          <div class="card-footer">
-            <small class="text-muted">2015-12-12</small>
+        </div>    
+        
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card">
+              <img src="Donutselfies_bMxPRLTyVg/12033098_10104183767987247_1798043361033455225_n_10104183767987247.jpg" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">I had high hopes for this place. The chocolate raised and cake donuts tasted like bad imitations of Krispy Kreme, which isn't good to begin with.</h5>
+                <p class="card-text">I had high hopes for this place. The chocolate raised and cake donuts tasted like bad imitations of Krispy Kreme, which isn't good to begin with. </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">2015-09-26</small>
+              </div>
+            </div>
           </div>
-      </div>
-    </div>
-    
-    <div class="col mb-4">
-      <div class="card">
-          <img src="Donutselfies_bMxPRLTyVg/12033098_10104183767987247_1798043361033455225_n_10104183767987247.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">I had high hopes for this place. The chocolate raised and cake donuts tasted like bad imitations of Krispy Kreme, which isn't good to begin with.</h5>
-            <p class="card-text">I had high hopes for this place. The chocolate raised and cake donuts tasted like bad imitations of Krispy Kreme, which isn't good to begin with. </p>
-          </div>
-          <div class="card-footer">
-            <small class="text-muted">2015-09-26</small>
-          </div>
-      </div>
-    </div>
-    
-    <div class="col mb-4">
-      <div class="card">
-          <img src="Donutselfies_bMxPRLTyVg/12003954_10104151938758277_3054041525346188747_n_10104151938758277.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">Keans Bakery</h5>
-            <p class="card-text">Keans Bakery
+        </div>    
+        
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card">
+              <img src="Donutselfies_bMxPRLTyVg/12003954_10104151938758277_3054041525346188747_n_10104151938758277.jpg" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Keans Bakery</h5>
+                <p class="card-text">Keans Bakery
 217 N Walnut St 
 Itasca, IL 
 
 Charming place by the metra stop. The chocolate cake and chocolate french I had were priced for tourists but tasted great. I was impressed by their french donut: fluffy, not stale, with a crispy exterior. </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">2015-09-09</small>
+              </div>
+            </div>
           </div>
-          <div class="card-footer">
-            <small class="text-muted">2015-09-09</small>
-          </div>
-      </div>
-    </div>
-    
-    <div class="col mb-4">
-      <div class="card">
-          <img src="Donutselfies_bMxPRLTyVg/11924779_10104131453820257_4223580814067757812_n_10104131453820257.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">M Bakery</h5>
-            <p class="card-text">M Bakery
+        </div>    
+        
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card">
+              <img src="Donutselfies_bMxPRLTyVg/11924779_10104131453820257_4223580814067757812_n_10104131453820257.jpg" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">M Bakery</h5>
+                <p class="card-text">M Bakery
 1527 W Lawrence Ave
 Chicago, IL
 
 This bakery, which has an excellent Chocolate Bar, is just blocks from my new apartment. #Blessed </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">2015-08-29</small>
+              </div>
+            </div>
           </div>
-          <div class="card-footer">
-            <small class="text-muted">2015-08-29</small>
-          </div>
-      </div>
-    </div>
-    
-    <div class="col mb-4">
-      <div class="card">
-          <img src="Donutselfies_bMxPRLTyVg/11887854_10104093323044637_1092097140037189336_n_10104093323044637.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">Huck Finn Restaurant</h5>
-            <p class="card-text">Huck Finn Restaurant
+        </div>    
+        
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card">
+              <img src="Donutselfies_bMxPRLTyVg/11887854_10104093323044637_1092097140037189336_n_10104093323044637.jpg" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Huck Finn Restaurant</h5>
+                <p class="card-text">Huck Finn Restaurant
 3414 S Archer Ave
 Chicago, IL
 
 I'm on a mission to take the worst selfie and to find the best donuts. They have Texas-sized donuts, which, I believe are bigger than those at Dat Donut -- but that's an investigation for another day and another empty stomach. It's just south of I-55 Damen exit and well worth a stop, open 24hrs and the donuts are good. </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">2015-08-11</small>
+              </div>
+            </div>
           </div>
-          <div class="card-footer">
-            <small class="text-muted">2015-08-11</small>
-          </div>
-      </div>
-    </div>
-    
-    <div class="col mb-4">
-      <div class="card">
-          <img src="Donutselfies_bMxPRLTyVg/11214036_10104064318360257_8855994138047983450_n_10104064318360257.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">Dinkel's Bakery</h5>
-            <p class="card-text">Dinkel's Bakery
+        </div>    
+        
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card">
+              <img src="Donutselfies_bMxPRLTyVg/11214036_10104064318360257_8855994138047983450_n_10104064318360257.jpg" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Dinkel's Bakery</h5>
+                <p class="card-text">Dinkel's Bakery
 3329 Lincoln Ave. 
 Chicago, IL
 
 I had a chocolate cake and chocolate long john which were soft, rich, very filling, and fairly priced! They use something I'm not used to in donuts, real chocolate. Recommended. </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">2015-07-28</small>
+              </div>
+            </div>
           </div>
-          <div class="card-footer">
-            <small class="text-muted">2015-07-28</small>
-          </div>
-      </div>
-    </div>
-    
-    <div class="col mb-4">
-      <div class="card">
-          <img src="Donutselfies_bMxPRLTyVg/11057575_10104039937504687_8036643554970859129_n_10104039937504687.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">Beavers Coffee + Donuts</h5>
-            <p class="card-text">Beavers Coffee + Donuts 
+        </div>    
+        
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card">
+              <img src="Donutselfies_bMxPRLTyVg/11057575_10104039937504687_8036643554970859129_n_10104039937504687.jpg" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Beavers Coffee + Donuts</h5>
+                <p class="card-text">Beavers Coffee + Donuts 
 Wabash and Jackson
 Chicago, IL
 
 They sell the mini-style donuts (like Trish's in SF) with a variety of toppings. I got 4 with powdered sugar which lacked that deep-fried crispness I look for in mini donuts but I persevered. </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">2015-07-16</small>
+              </div>
+            </div>
           </div>
-          <div class="card-footer">
-            <small class="text-muted">2015-07-16</small>
-          </div>
-      </div>
-    </div>
-    
-    <div class="col mb-4">
-      <div class="card">
-          <img src="Donutselfies_bMxPRLTyVg/11700908_10104025585630957_7550107700965894854_n_10104025585630957.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">Tag's Bakery</h5>
-            <p class="card-text">Tag's Bakery
+        </div>    
+        
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card">
+              <img src="Donutselfies_bMxPRLTyVg/11700908_10104025585630957_7550107700965894854_n_10104025585630957.jpg" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Tag's Bakery</h5>
+                <p class="card-text">Tag's Bakery
 2010 Central St
 Evanston, IL 
 
 You can see blue on the right side of my glasses courtesy of refraction. Donuts were ok: Chocolate Long John and French. $2.80 for both. </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">2015-07-08</small>
+              </div>
+            </div>
           </div>
-          <div class="card-footer">
-            <small class="text-muted">2015-07-08</small>
-          </div>
-      </div>
-    </div>
-    
-    <div class="col mb-4">
-      <div class="card">
-          <img src="Donutselfies_bMxPRLTyVg/11350447_10103996467678567_6571267186824421531_n_10103996467678567.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">Gurnee Donuts</h5>
-            <p class="card-text">Gurnee Donuts
+        </div>    
+        
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card">
+              <img src="Donutselfies_bMxPRLTyVg/11350447_10103996467678567_6571267186824421531_n_10103996467678567.jpg" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Gurnee Donuts</h5>
+                <p class="card-text">Gurnee Donuts
 4949 Grand Ave
 Gurnee, IL 
 
 I recommend 'em if you find yourself an hour north of Chicago. </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">2015-06-24</small>
+              </div>
+            </div>
           </div>
-          <div class="card-footer">
-            <small class="text-muted">2015-06-24</small>
-          </div>
-      </div>
-    </div>
-    
-    <div class="col mb-4">
-      <div class="card">
-          <img src="Donutselfies_bMxPRLTyVg/11407059_10103980655820657_6575427693543917633_n_10103980655820657.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">Artemio's Panaderia</h5>
-            <p class="card-text">Artemio's Panaderia 
+        </div>    
+        
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card">
+              <img src="Donutselfies_bMxPRLTyVg/11407059_10103980655820657_6575427693543917633_n_10103980655820657.jpg" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Artemio's Panaderia</h5>
+                <p class="card-text">Artemio's Panaderia 
 3919 N Sheridan 
 Chicago, IL </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">2015-06-16</small>
+              </div>
+            </div>
           </div>
-          <div class="card-footer">
-            <small class="text-muted">2015-06-16</small>
-          </div>
-      </div>
-    </div>
-    
-    <div class="col mb-4">
-      <div class="card">
-          <img src="Donutselfies_bMxPRLTyVg/1780802_10103946526680727_6286942836098356922_n_10103946526680727.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">Old Fashioned Donuts</h5>
-            <p class="card-text">Old Fashioned Donuts
+        </div>    
+        
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card">
+              <img src="Donutselfies_bMxPRLTyVg/1780802_10103946526680727_6286942836098356922_n_10103946526680727.jpg" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Old Fashioned Donuts</h5>
+                <p class="card-text">Old Fashioned Donuts
 11248 S Michigan Ave
 Chicago, IL 
 
 Great donut shop on the south side of Chicago (112th St). I had a chocolate raised which was the best donut I've had in years, crispy on the outside, warm and fluffy inside, good-tasting chocolate on top...mmm! Ironically, they don't have old-fashioned-style donuts. </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">2015-05-29</small>
+              </div>
+            </div>
           </div>
-          <div class="card-footer">
-            <small class="text-muted">2015-05-29</small>
-          </div>
-      </div>
-    </div>
-    
-    <div class="col mb-4">
-      <div class="card">
-          <img src="Donutselfies_bMxPRLTyVg/10329309_10103780462754167_5238621732526428403_n_10103780462754167.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">Somethin' Sweet Donuts</h5>
-            <p class="card-text">Somethin' Sweet Donuts
+        </div>    
+        
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card">
+              <img src="Donutselfies_bMxPRLTyVg/10329309_10103780462754167_5238621732526428403_n_10103780462754167.jpg" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Somethin' Sweet Donuts</h5>
+                <p class="card-text">Somethin' Sweet Donuts
 5112 W Fullerton Ave
 Chicago, IL
 
 Donuts were good (all chocolate) and the coffee was not. The chocolate frosting was spread thin but no complaints otherwise. </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">2015-03-22</small>
+              </div>
+            </div>
           </div>
-          <div class="card-footer">
-            <small class="text-muted">2015-03-22</small>
-          </div>
-      </div>
-    </div>
-    
-    <div class="col mb-4">
-      <div class="card">
-          <img src="Donutselfies_bMxPRLTyVg/10945562_10103704220698857_5323933723363706956_n_10103704220698857.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">New York Bagels & Bialy</h5>
-            <p class="card-text">New York Bagels & Bialy 
+        </div>    
+        
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card">
+              <img src="Donutselfies_bMxPRLTyVg/10945562_10103704220698857_5323933723363706956_n_10103704220698857.jpg" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">New York Bagels & Bialy</h5>
+                <p class="card-text">New York Bagels & Bialy 
 8794 West Dempster
 Niles, IL
 
 Have you ever had a fresh bagel? It's almost as good as a fresh donut. </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">2015-02-08</small>
+              </div>
+            </div>
           </div>
-          <div class="card-footer">
-            <small class="text-muted">2015-02-08</small>
-          </div>
-      </div>
-    </div>
-    
-    <div class="col mb-4">
-      <div class="card">
-          <img src="Donutselfies_bMxPRLTyVg/10464194_10103691120681397_9087706912042794368_n_10103691120681397.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">Donut Vault (Vault Van)</h5>
-            <p class="card-text">Donut Vault (Vault Van)
+        </div>    
+        
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card">
+              <img src="Donutselfies_bMxPRLTyVg/10464194_10103691120681397_9087706912042794368_n_10103691120681397.jpg" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Donut Vault (Vault Van)</h5>
+                <p class="card-text">Donut Vault (Vault Van)
 Addison and Southport, Chicago IL
 
 I had a triple chocolate old-fashioned donut for $2 from the "Vault Van" which wasn't twice as good as other donuts for the usual $1. The problem, I think, is that hipsters confuse fancy with good. There's value in simple things done well. #donutselfie out! </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">2015-02-01</small>
+              </div>
+            </div>
           </div>
-          <div class="card-footer">
-            <small class="text-muted">2015-02-01</small>
-          </div>
-      </div>
-    </div>
-    
-    <div class="col mb-4">
-      <div class="card">
-          <img src="Donutselfies_bMxPRLTyVg/10917135_10103609551272147_1788393887877201710_n_10103609551272147.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">Trish's Mini Donuts</h5>
-            <p class="card-text">Trish's Mini Donuts
+        </div>    
+        
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card">
+              <img src="Donutselfies_bMxPRLTyVg/10917135_10103609551272147_1788393887877201710_n_10103609551272147.jpg" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Trish's Mini Donuts</h5>
+                <p class="card-text">Trish's Mini Donuts
 Pier 39
 San Francisco, CA </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">2015-01-03</small>
+              </div>
+            </div>
           </div>
-          <div class="card-footer">
-            <small class="text-muted">2015-01-03</small>
-          </div>
-      </div>
-    </div>
-    
-    <div class="col mb-4">
-      <div class="card">
-          <img src="Donutselfies_bMxPRLTyVg/10394856_10103576760100917_3237812230373216880_n_10103576760100917.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">Chicago Sweet Connection</h5>
-            <p class="card-text">Chicago Sweet Connection
+        </div>    
+        
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card">
+              <img src="Donutselfies_bMxPRLTyVg/10394856_10103576760100917_3237812230373216880_n_10103576760100917.jpg" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Chicago Sweet Connection</h5>
+                <p class="card-text">Chicago Sweet Connection
 5569 North Northwest Highway
 Chicago, IL 
 
 Wholesale bakery but all they had for me was a plain cake donut. Despite the lack of chocolate, it was good. </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">2014-12-20</small>
+              </div>
+            </div>
           </div>
-          <div class="card-footer">
-            <small class="text-muted">2014-12-20</small>
-          </div>
-      </div>
-    </div>
-    
-    <div class="col mb-4">
-      <div class="card">
-          <img src="Donutselfies_bMxPRLTyVg/10850266_10103547689279077_479860368152993490_n_10103547689279077.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">Schlegl's Bakery & Cafe</h5>
-            <p class="card-text">Schlegl's Bakery & Cafe
+        </div>    
+        
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card">
+              <img src="Donutselfies_bMxPRLTyVg/10850266_10103547689279077_479860368152993490_n_10103547689279077.jpg" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Schlegl's Bakery & Cafe</h5>
+                <p class="card-text">Schlegl's Bakery & Cafe
 3915 W Touhy Ave
 Lincolnwood, IL
 
 This is a German bakery that makes donuts; there was a great selection of donuts. I had a chocolate long john and two chocolate cake donuts. I liked 'em! The coffee was good too -- this goes against my donuts vs coffee theory (they are inversely proportional in quality, ie good coffee = bad donuts) but this is technically a bakery and not a donut shop so my theory still holds. </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">2014-12-05</small>
+              </div>
+            </div>
           </div>
-          <div class="card-footer">
-            <small class="text-muted">2014-12-05</small>
-          </div>
-      </div>
-    </div>
-    
-    <div class="col mb-4">
-      <div class="card">
-          <img src="Donutselfies_bMxPRLTyVg/10494761_10103536434573597_2109729002386700375_n_10103536434573597.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">Dat Donut</h5>
-            <p class="card-text">Dat Donut 
+        </div>    
+        
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card">
+              <img src="Donutselfies_bMxPRLTyVg/10494761_10103536434573597_2109729002386700375_n_10103536434573597.jpg" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Dat Donut</h5>
+                <p class="card-text">Dat Donut 
 8251 S Cottage Grove Ave
 Chicago, IL 
 
 I have a "one and done" policy with selfies. The sun was in my eyes and the sign isn't in the background...oh well. I had a chocolate cake and chocolate long john which came in under $2 and were excellent. </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">2014-11-29</small>
+              </div>
+            </div>
           </div>
-          <div class="card-footer">
-            <small class="text-muted">2014-11-29</small>
-          </div>
-      </div>
-    </div>
-    
-    <div class="col mb-4">
-      <div class="card">
-          <img src="Donutselfies_bMxPRLTyVg/10371938_10103525072927427_5558786170887611385_n_10103525072927427.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">Stan's Donuts</h5>
-            <p class="card-text">Stan's Donuts
+        </div>    
+        
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card">
+              <img src="Donutselfies_bMxPRLTyVg/10371938_10103525072927427_5558786170887611385_n_10103525072927427.jpg" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Stan's Donuts</h5>
+                <p class="card-text">Stan's Donuts
 1560 N Damen Ave
 Chicago, IL
 
 In the "hip" Wicker Park neighborhood, these are expensive fancy donuts. The lady in front of me asked about the difference between "glutenless" and "gluten-free" (apparently there is one). Donuts are lousy, coffee is good. </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">2014-11-23</small>
+              </div>
+            </div>
           </div>
-          <div class="card-footer">
-            <small class="text-muted">2014-11-23</small>
-          </div>
-      </div>
-    </div>
-    
-    <div class="col mb-4">
-      <div class="card">
-          <img src="Donutselfies_bMxPRLTyVg/10592937_10103445722007307_6386833000863610856_n_10103445722007307.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">Donuts Donuts</h5>
-            <p class="card-text">Donuts Donuts
+        </div>    
+        
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card">
+              <img src="Donutselfies_bMxPRLTyVg/10592937_10103445722007307_6386833000863610856_n_10103445722007307.jpg" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Donuts Donuts</h5>
+                <p class="card-text">Donuts Donuts
 Russellville, AR </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">2014-10-11</small>
+              </div>
+            </div>
           </div>
-          <div class="card-footer">
-            <small class="text-muted">2014-10-11</small>
-          </div>
-      </div>
-    </div>
-    
-    <div class="col mb-4">
-      <div class="card">
-          <img src="Donutselfies_bMxPRLTyVg/10645249_10103435556364337_1334881353086342842_n_10103435556364337.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">SLO Donut Company</h5>
-            <p class="card-text">SLO Donut Company
+        </div>    
+        
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card">
+              <img src="Donutselfies_bMxPRLTyVg/10645249_10103435556364337_1334881353086342842_n_10103435556364337.jpg" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">SLO Donut Company</h5>
+                <p class="card-text">SLO Donut Company
 793F Foothill Blvd
 San Luis Obispo, CA 
 
 Close to Calpoly, it caters to the cool kids who eat donuts...like me! SLO DO CO (pronounced slow-doh-co) is the second 24hr donut shop in SLO. Donuts are great, so is the coffee. </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">2014-10-07</small>
+              </div>
+            </div>
           </div>
-          <div class="card-footer">
-            <small class="text-muted">2014-10-07</small>
-          </div>
-      </div>
-    </div>
-    
-    <div class="col mb-4">
-      <div class="card">
-          <img src="Donutselfies_bMxPRLTyVg/10703586_10103433110490887_6196302749502437864_n_10103433110490887.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">Main Street Donuts</h5>
-            <p class="card-text">Main Street Donuts
+        </div>    
+        
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card">
+              <img src="Donutselfies_bMxPRLTyVg/10703586_10103433110490887_6196302749502437864_n_10103433110490887.jpg" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Main Street Donuts</h5>
+                <p class="card-text">Main Street Donuts
 715 E Main St 
 Santa Maria, CA </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">2014-10-06</small>
+              </div>
+            </div>
           </div>
-          <div class="card-footer">
-            <small class="text-muted">2014-10-06</small>
-          </div>
-      </div>
-    </div>
-    
-    <div class="col mb-4">
-      <div class="card">
-          <img src="Donutselfies_bMxPRLTyVg/10671383_10103433110391087_2996635248147182991_n_10103433110391087.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">Anna's Bakery</h5>
-            <p class="card-text">Anna's Bakery
+        </div>    
+        
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card">
+              <img src="Donutselfies_bMxPRLTyVg/10671383_10103433110391087_2996635248147182991_n_10103433110391087.jpg" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Anna's Bakery</h5>
+                <p class="card-text">Anna's Bakery
 7018 Market Place Dr
 Goleta, CA 
 
 Anna's gets an honorary mention  (it's a proper bakery with good coffee) because they have the best donuts in Goleta. </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">2014-10-06</small>
+              </div>
+            </div>
           </div>
-          <div class="card-footer">
-            <small class="text-muted">2014-10-06</small>
-          </div>
-      </div>
-    </div>
-    
-    <div class="col mb-4">
-      <div class="card">
-          <img src="Donutselfies_bMxPRLTyVg/10672220_10103430987934507_1773704337729440728_n_10103430987934507.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">Dolly's Donuts</h5>
-            <p class="card-text">Dolly's Donuts
+        </div>    
+        
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card">
+              <img src="Donutselfies_bMxPRLTyVg/10672220_10103430987934507_1773704337729440728_n_10103430987934507.jpg" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Dolly's Donuts</h5>
+                <p class="card-text">Dolly's Donuts
 1095 Kennedy Way (off Quintana) 
 Morro Bay, CA 
 
 I think we've established that I can't take a quality selfie. Stay tuned for more facial expressions! </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">2014-10-05</small>
+              </div>
+            </div>
           </div>
-          <div class="card-footer">
-            <small class="text-muted">2014-10-05</small>
-          </div>
-      </div>
-    </div>
-    
-    <div class="col mb-4">
-      <div class="card">
-          <img src="Donutselfies_bMxPRLTyVg/1511771_10103426553236677_7333323940363814731_n_10103426553236677.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">Sunshine Donuts</h5>
-            <p class="card-text">Sunshine Donuts
+        </div>    
+        
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card">
+              <img src="Donutselfies_bMxPRLTyVg/1511771_10103426553236677_7333323940363814731_n_10103426553236677.jpg" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Sunshine Donuts</h5>
+                <p class="card-text">Sunshine Donuts
 195 Higuera St
 San Luis Obispo, CA
 
 Sunshine Donuts is one of two (2!) 24hr donuts shops in SLO. This is the working-man's donut shop, nothing fancy: just donuts and lousy coffee. </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">2014-10-03</small>
+              </div>
+            </div>
           </div>
-          <div class="card-footer">
-            <small class="text-muted">2014-10-03</small>
-          </div>
-      </div>
-    </div>
-    
-    <div class="col mb-4">
-      <div class="card">
-          <img src="Donutselfies_bMxPRLTyVg/1458705_10103414788328647_723159324173124768_n_10103414788328647.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">Fresh Donuts (PanaderÃ­a)</h5>
-            <p class="card-text">Fresh Donuts (PanaderÃ­a)
+        </div>    
+        
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card">
+              <img src="Donutselfies_bMxPRLTyVg/1458705_10103414788328647_723159324173124768_n_10103414788328647.jpg" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Fresh Donuts (PanaderÃ­a)</h5>
+                <p class="card-text">Fresh Donuts (PanaderÃ­a)
 1137 Country Club Dr
 Madera, CA </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">2014-09-27</small>
+              </div>
+            </div>
           </div>
-          <div class="card-footer">
-            <small class="text-muted">2014-09-27</small>
-          </div>
-      </div>
-    </div>
-    
-    <div class="col mb-4">
-      <div class="card">
-          <img src="Donutselfies_bMxPRLTyVg/10156063_10103414787645017_5597385503370660289_n_10103414787645017.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">Donut Factory</h5>
-            <p class="card-text">Donut Factory
+        </div>    
+        
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card">
+              <img src="Donutselfies_bMxPRLTyVg/10156063_10103414787645017_5597385503370660289_n_10103414787645017.jpg" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Donut Factory</h5>
+                <p class="card-text">Donut Factory
 334 Center St 
-Turlock, CA 
-
-Courtesy of @[3626557:2048:Matthew Christian] </p>
+Turlock, CA </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">2014-09-27</small>
+              </div>
+            </div>
           </div>
-          <div class="card-footer">
-            <small class="text-muted">2014-09-27</small>
-          </div>
-      </div>
-    </div>
-    
-    <div class="col mb-4">
-      <div class="card">
-          <img src="Donutselfies_bMxPRLTyVg/10678482_10103409857255557_8523069412261754922_n_10103409857255557.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">Donut Time</h5>
-            <p class="card-text">Donut Time 
+        </div>    
+        
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card">
+              <img src="Donutselfies_bMxPRLTyVg/10678482_10103409857255557_8523069412261754922_n_10103409857255557.jpg" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Donut Time</h5>
+                <p class="card-text">Donut Time 
 252 Hwy 246
 Buellton, CA 
 
 Donuts are a buck each, no decaf coffee (that's a plus), locals buy out most of the donuts by 9 am -- the leftovers are still fantastic. </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">2014-09-24</small>
+              </div>
+            </div>
           </div>
-          <div class="card-footer">
-            <small class="text-muted">2014-09-24</small>
-          </div>
-      </div>
-    </div>
-    
-    <div class="col mb-4">
-      <div class="card">
-          <img src="Donutselfies_bMxPRLTyVg/10665920_10103400367438227_6483719830652760805_n_10103400367438227.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">Freshh Donuts</h5>
-            <p class="card-text">Freshh Donuts
+        </div>    
+        
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card">
+              <img src="Donutselfies_bMxPRLTyVg/10665920_10103400367438227_6483719830652760805_n_10103400367438227.jpg" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Freshh Donuts</h5>
+                <p class="card-text">Freshh Donuts
 3810 Broad St 
 San Luis Obispo, CA
 
 You're not mistaken, there are two "h"s in "Freshh"...I tried not to think about it too much as I ate my freshh donuts. It's an old folks hangout, so you know it's good! </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">2014-09-19</small>
+              </div>
+            </div>
           </div>
-          <div class="card-footer">
-            <small class="text-muted">2014-09-19</small>
+        </div>    
+        
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card">
+              <img src="Donutselfies_bMxPRLTyVg/10351247_10103384416843347_9200108762657560274_n_10103384416843347.jpg" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Happy Donuts</h5>
+                <p class="card-text">Happy Donuts 
+1455 Market St.
+San Fransisco, CA  Open late, convenient for SF Symphony or Opera. </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">2014-09-11</small>
+              </div>
+            </div>
           </div>
+        </div>    
+        
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card">
+              <img src="Donutselfies_bMxPRLTyVg/10403014_10103384416858317_8115253999398096043_n_10103384416858317.jpg" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Johnny's Donuts</h5>
+                <p class="card-text">Johnny's Donuts
+Lafayette, CA
+
+Best donuts in the world*!
+* I grew up in Lafayette. </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">2014-09-11</small>
+              </div>
+            </div>
+          </div>
+        </div>    
+        
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card">
+              <img src="Donutselfies_bMxPRLTyVg/10646832_10103384416883267_8649782873199892512_n_10103384416883267.jpg" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Chuck's Donuts</h5>
+                <p class="card-text">Chuck's Donuts
+641 Ralston Ave Belmont, CA </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">2014-09-11</small>
+              </div>
+            </div>
+          </div>
+        </div>    
+        
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card">
+              <img src="Donutselfies_bMxPRLTyVg/1907812_10103384416888257_573373788638653511_n_10103384416888257.jpg" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Sunshine Donuts</h5>
+                <p class="card-text">Sunshine Donuts 80 Cabrillo Hwy  Half Moon Bay, CA </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">2014-09-11</small>
+              </div>
+            </div>
+          </div>
+        </div>    
+        
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card">
+              <img src="Donutselfies_bMxPRLTyVg/10556287_10103384416588857_8899912873936614042_n_10103384416588857.jpg" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Templeton Donuts & Bakery</h5>
+                <p class="card-text">Templeton Donuts & Bakery  Templeton, CA </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">2014-09-11</small>
+              </div>
+            </div>
+          </div>
+        </div>    
+        
       </div>
     </div>
-    
-    <div class="col mb-4">
-      <div class="card">
-          <img src="Donutselfies_bMxPRLTyVg/10351247_10103384416843347_9200108762657560274_n_10103384416843347.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">Happy Donuts. 1455 Market St. San Fransisco, CA. Open late, convenient for SF Symphony or Opera.</h5>
-            <p class="card-text">Happy Donuts. 1455 Market St. San Fransisco, CA. Open late, convenient for SF Symphony or Opera. </p>
-          </div>
-          <div class="card-footer">
-            <small class="text-muted">2014-09-11</small>
-          </div>
-      </div>
-    </div>
-    
-    <div class="col mb-4">
-      <div class="card">
-          <img src="Donutselfies_bMxPRLTyVg/10403014_10103384416858317_8115253999398096043_n_10103384416858317.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">Johnny's Donuts. Lafayette, CA</h5>
-            <p class="card-text">Johnny's Donuts. Lafayette, CA </p>
-          </div>
-          <div class="card-footer">
-            <small class="text-muted">2014-09-11</small>
-          </div>
-      </div>
-    </div>
-    
-    <div class="col mb-4">
-      <div class="card">
-          <img src="Donutselfies_bMxPRLTyVg/10646832_10103384416883267_8649782873199892512_n_10103384416883267.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">Chuck's Donuts. 641 Ralston Ave, Belmont, CA</h5>
-            <p class="card-text">Chuck's Donuts. 641 Ralston Ave, Belmont, CA </p>
-          </div>
-          <div class="card-footer">
-            <small class="text-muted">2014-09-11</small>
-          </div>
-      </div>
-    </div>
-    
-    <div class="col mb-4">
-      <div class="card">
-          <img src="Donutselfies_bMxPRLTyVg/1907812_10103384416888257_573373788638653511_n_10103384416888257.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">Sunshine Donuts. Half Moon Bay, CA</h5>
-            <p class="card-text">Sunshine Donuts. Half Moon Bay, CA </p>
-          </div>
-          <div class="card-footer">
-            <small class="text-muted">2014-09-11</small>
-          </div>
-      </div>
-    </div>
-    
-    <div class="col mb-4">
-      <div class="card">
-          <img src="Donutselfies_bMxPRLTyVg/10556287_10103384416588857_8899912873936614042_n_10103384416588857.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">Templeton Donuts & Bakery. Templeton, CA</h5>
-            <p class="card-text">Templeton Donuts & Bakery. Templeton, CA </p>
-          </div>
-          <div class="card-footer">
-            <small class="text-muted">2014-09-11</small>
-          </div>
-      </div>
-    </div>
-    
   </div>
+</main>
+
+
+<footer class="text-muted">
+  <div class="container">
+    <p class="float-right">
+      <a href="#">Back to top</a>
+    </p>
+    <p>Visit your local donut shop!</p>
+    <p>Curious how this works? The code is on Github under <a href="https://github.com/roryhr/code/tree/master/donut_reviews">donut reviews</a>.</p>
+  </div>
+</footer>
 
 </body>
+<script src="generate_map.js" type="text/javascript"></script>
 </html>

@@ -12,7 +12,7 @@ xmlhttp.onreadystatechange = function() {
 };
 
 
-var map = L.map('map').setView([37.28099, -121.95252], 7);
+var map = L.map('map').setView([40.5092065,-60.4475978], 3);
 
 L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
     maxZoom: 18,
@@ -23,7 +23,6 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=p
 }).addTo(map);
 
 function onEachFeature(feature, layer) {
-    // does this feature have a property named popupContent?
     if (feature.properties && feature.properties.popupContent
         && typeof(feature.geometry.coordinates[0] == "number")) {
         layer.bindPopup(feature.properties.popupContent);
