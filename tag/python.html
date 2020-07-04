@@ -4,15 +4,6 @@
         <meta charset="utf-8" />
         <title>Rory's Corner - python</title>
         <link rel="stylesheet" href="http://roryhr.com/theme/css/main.css" />
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-151184132-1"></script>
-        <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-
-          gtag('config', 'UA-151184132-1');
-        </script>
 </head>
 
 <body id="index" class="home">
@@ -21,7 +12,6 @@
                 <nav><ul>
                     <li><a href="/">Home</a></li>
                     <li><a href="/articles">Articles</a></li>
-                    <li><a href="/archives">Archives</a></li>
                     <li><a href="/pages/about">About</a></li>
                     <li><a href="/pages/projects">Projects</a></li>
                     <li><a href="/pages/contact">Contact</a></li>
@@ -46,8 +36,8 @@
 <p>I like to phrase things as punchy commands but it's all just my preference.
 My personal style is constantly evolving.</p>
 <p>My motto is a twist on the Zen of Python</p>
-<div class="highlight"><pre><span></span>If the implementation is hard to understand, it&#39;s bad.
-If the implementation is easy to understand, it may be good.
+<div class="highlight"><pre><span></span><span class="err">If the implementation is hard to understand, it&#39;s bad.</span>
+<span class="err">If the implementation is easy to understand, it may be good.</span>
 </pre></div>
 
 
@@ -107,8 +97,8 @@ Conserve your colleagues' brainpower: if a function has a good name and docstrin
 <p>Other Spark preferences:
 Distinguish between Spark DataFrames and Pandas DataFrames when mixing the two.</p>
 <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyspark</span>
-<span class="kn">import</span> <span class="nn">pyspark.sql.types</span> <span class="kn">as</span> <span class="nn">T</span> 
-<span class="kn">import</span> <span class="nn">pyspark.sql.functions</span> <span class="kn">as</span> <span class="nn">F</span>
+<span class="kn">import</span> <span class="nn">pyspark.sql.types</span> <span class="k">as</span> <span class="nn">T</span> 
+<span class="kn">import</span> <span class="nn">pyspark.sql.functions</span> <span class="k">as</span> <span class="nn">F</span>
 </pre></div>
 
 
@@ -136,7 +126,7 @@ If you find yourself passing several parameters between functions then make a cl
     <span class="n">_</span><span class="p">,</span> <span class="n">database</span><span class="p">,</span> <span class="n">date</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span>
 
     <span class="n">spark</span> <span class="o">=</span> <span class="n">pyspark</span><span class="o">.</span><span class="n">sql</span><span class="o">.</span><span class="n">SparkSession</span><span class="o">.</span><span class="n">builder</span>\
-        <span class="o">.</span><span class="n">appName</span><span class="p">(</span><span class="s1">&#39;Anonymize Emails for {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">date</span><span class="p">))</span>\
+        <span class="o">.</span><span class="n">appName</span><span class="p">(</span><span class="s1">&#39;Anonymize Emails for </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">date</span><span class="p">))</span>\
         <span class="o">.</span><span class="n">getOrCreate</span><span class="p">()</span>
 
     <span class="n">anonymize_emails</span><span class="p">(</span><span class="n">spark</span><span class="p">,</span> <span class="n">database</span><span class="p">,</span> <span class="n">date</span><span class="p">)</span>
@@ -144,7 +134,7 @@ If you find yourself passing several parameters between functions then make a cl
 
 
 <p>Explicitly ignore extra parameters if you want.</p>
-<div class="highlight"><pre><span></span>_, database, date, *_ = sys.argv
+<div class="highlight"><pre><span></span><span class="err">_, database, date, *_ = sys.argv</span>
 </pre></div>
 
 
@@ -262,6 +252,7 @@ of what's out there but here are a few that struck me.</p>
                 <div class="blogroll">
                         <h2>links</h2>
                         <ul>
+                            <li><a href="https://www.chipy.org/">ChiPy</a></li>
                             <li><a href="http://baypiggies.net/">BayPIGies</a></li>
                             <li><a href="http://pyninsula.org/">Pyninsula</a></li>
                             <li><a href="http://sfpythonmeetup.com/">SF Python</a></li>
