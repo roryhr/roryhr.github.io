@@ -37,7 +37,7 @@
         </address>
 <p>In <a href="http://roryhr.com/category/python-documentation.html">python, documentation</a>.</p>
 
-</footer><!-- /.post-info -->      <p>Updated: 2019-11-29</p>
+</footer><!-- /.post-info -->      <p>Updated: 2022-12-12</p>
 <p>Added a <code>requirements.txt</code> to capture dependencies and ported to MacOS. </p>
 <h1>Introduction</h1>
 <p>After 9 months I'm returning to this website.
@@ -49,17 +49,14 @@ Of course I didn't document it and I don't remember. Lesson learned.</p>
 <h2>High level overview</h2>
 <p>This site is hosted for free by <a href="https://github.com/">Github</a> from the special repository <a href="https://github.com/roryhr/roryhr.github.io">roryhr/roryhr.github.io</a>. 
 Thanks Github!</p>
-<p>Great. 
-I used a static site generator called Pelican that generates html, which comprises this website, from markdown text files in a particular directory structure (more on that in a bit).
+<p>I used a static site generator called Pelican that generates html, which comprises this website, from markdown text files in a particular directory structure (more on that in a bit).
 These files are in a separate repository at
-<a href="https://github.com/roryhr/site-code">roryhr/site-code</a>.</p>
+<a href="https://github.com/roryhr/code/tree/master/website_code">roryhr/code/website_cost</a>.</p>
 <h2>Recipes</h2>
 <p>Content for the website goes in the <code>content</code> directory. 
 Generate the website</p>
-<div class="highlight"><pre><span></span><span class="o">((</span>blog<span class="o">))</span> rory@rory-Satellite-S75-B:~/Projects/site-code$ pelican content
-WARNING: empty slug <span class="k">for</span> /home/rory/Projects/site-code/content/pages/index.md. You can fix this by adding a title or a slug to your content
-Done: Processed <span class="m">7</span> articles, <span class="m">0</span> drafts, <span class="m">4</span> pages and <span class="m">0</span> hidden pages in <span class="m">0</span>.23 seconds.
-<span class="o">((</span>blog<span class="o">))</span> rory@rory-Satellite-S75-B:~/Projects/site-code$
+<div class="highlight"><pre><span></span><span class="o">(</span>web<span class="o">)</span> ~/p/website_code&gt; pelican content
+Done: Processed <span class="m">13</span> articles, <span class="m">0</span> drafts, <span class="m">4</span> pages, <span class="m">0</span> hidden pages and <span class="m">0</span> draft pages in <span class="m">0</span>.85 seconds.
 </pre></div>
 
 
@@ -89,15 +86,17 @@ origin  https://github.com/roryhr/roryhr.github.io <span class="o">(</span>push<
 </pre></div>
 
 
+<h3>Development</h3>
+<p>In <code>pelicanconf.py</code> enable relative URLs by setting <code>RELATIVE_URLS=True</code>.</p>
 <p>Run the development server manually and navigate to <code>http://localhost:8000</code></p>
 <div class="highlight"><pre><span></span><span class="o">((</span>blog<span class="o">))</span> rory@rory-Satellite-S75-B:~/Projects/site-code$ <span class="nb">cd</span> output/
 <span class="o">((</span>blog<span class="o">))</span> rory@rory-Satellite-S75-B:~/Projects/site-code/output$ python -m pelican.server
 </pre></div>
 
 
-<p>Alternatively, take advantage of the shell script that recompiles the site as you edit it (very cool!)</p>
-<div class="highlight"><pre><span></span><span class="o">(</span>web<span class="o">)</span> Rorys-MBP:website_code rory$ ./develop_server.sh start
-<span class="o">(</span>web<span class="o">)</span> Rorys-MBP:website_code rory$ ./develop_server.sh stop
+<p>Alternatively, take advantage of Pelican script that recompiles the site as you edit it (very cool!)</p>
+<div class="highlight"><pre><span></span><span class="o">(</span>web<span class="o">)</span> ~/p/website_code&gt; ./develop_server.sh start
+<span class="o">(</span>web<span class="o">)</span> ~/p/website_code&gt; ./develop_server.sh stop
 </pre></div>
 
 
@@ -159,6 +158,7 @@ origin  https://github.com/roryhr/roryhr.github.io <span class="o">(</span>push<
                             <li><a href="http://efavdb.com/">EFAVDB</a></li>
                             <li><a href="http://multithreaded.stitchfix.com/">MultiThreaded</a></li>
                             <li><a href="http://sisl.stanford.edu/">SISL</a></li>
+                            <li><a href="https://adventofcode.com/">Advent of Code</a></li>
                         </ul>
                 </div><!-- /.blogroll -->
                 <div class="social">
