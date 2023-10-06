@@ -21,7 +21,153 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="http://roryhr.com/its-2023.html">It's 2023</a></h1>
+                    <h1 class="entry-title"><a href="http://roryhr.com/enumerations.html">Enumerations</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2023-10-06T00:00:00-07:00">
+                Published: Fri 06 October 2023
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="http://roryhr.com/author/rory-hartong-redden.html">Rory Hartong-Redden</a>
+        </address>
+<p>In <a href="http://roryhr.com/category/blog.html">blog</a>.</p>
+<p>tags: <a href="http://roryhr.com/tag/python.html">python</a> </p>
+</footer><!-- /.post-info --><p>I recently learned about Enums. 
+Here's a fine ChatGPT example which is essentially the content of of Google search result.
+ChatGPT is like the old internet where you could read text on websites.</p>
+<h2>ChatGPT</h2>
+<p>Following is just verbatim output from the following request:</p>
+<div class="highlight"><pre><span></span>➜  ~ llm <span class="s2">&quot;give me an example of using Enums in python&quot;</span>
+</pre></div>
+
+
+<p>Sure! Here's an example of using Enums in Python:</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">Enum</span>
+
+<span class="c1"># Define an Enum class</span>
+<span class="k">class</span> <span class="nc">Color</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+    <span class="n">RED</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">GREEN</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">BLUE</span> <span class="o">=</span> <span class="mi">3</span>
+
+<span class="c1"># Accessing Enum members</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Color</span><span class="o">.</span><span class="n">RED</span><span class="p">)</span>                    <span class="c1"># Color.RED</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Color</span><span class="o">.</span><span class="n">RED</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>               <span class="c1"># RED</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Color</span><span class="o">.</span><span class="n">RED</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>              <span class="c1"># 1</span>
+
+<span class="c1"># Iterating over Enum members</span>
+<span class="k">for</span> <span class="n">color</span> <span class="ow">in</span> <span class="n">Color</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">color</span><span class="p">)</span>
+
+<span class="c1"># Checking Enum membership</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Color</span><span class="o">.</span><span class="n">RED</span> <span class="ow">in</span> <span class="n">Color</span><span class="p">)</span>           <span class="c1"># True</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Color</span><span class="o">.</span><span class="n">YELLOW</span> <span class="ow">in</span> <span class="n">Color</span><span class="p">)</span>        <span class="c1"># False</span>
+
+<span class="c1"># Comparing Enum members</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Color</span><span class="o">.</span><span class="n">RED</span> <span class="o">==</span> <span class="n">Color</span><span class="o">.</span><span class="n">RED</span><span class="p">)</span>       <span class="c1"># True</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Color</span><span class="o">.</span><span class="n">RED</span> <span class="o">==</span> <span class="n">Color</span><span class="o">.</span><span class="n">GREEN</span><span class="p">)</span>     <span class="c1"># False</span>
+
+<span class="c1"># Enum as dictionary keys</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">Color</span><span class="o">.</span><span class="n">RED</span><span class="p">:</span> <span class="s2">&quot;FF0000&quot;</span><span class="p">,</span>
+    <span class="n">Color</span><span class="o">.</span><span class="n">GREEN</span><span class="p">:</span> <span class="s2">&quot;00FF00&quot;</span><span class="p">,</span>
+    <span class="n">Color</span><span class="o">.</span><span class="n">BLUE</span><span class="p">:</span> <span class="s2">&quot;0000FF&quot;</span>
+<span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">colors</span><span class="p">[</span><span class="n">Color</span><span class="o">.</span><span class="n">RED</span><span class="p">])</span>            <span class="c1"># FF0000</span>
+</pre></div>
+
+
+<p>In this example, we define an enum class called "Color" with three members - RED, GREEN, and BLUE. We can access enum members using dot notation (e.g., Color.RED). We can also access the name and value of an enum member using the <code>name</code> and <code>value</code> properties.</p>
+<p>We can iterate over all the enum members using a for loop. Enum membership can be checked using the <code>in</code> keyword.</p>
+<p>Enum members can be compared using the equality operator (<code>==</code>). We can also use enums as dictionary keys, as shown in the last example.</p>
+<h2>Back to me</h2>
+<p>This is all great. My takeaway is that we can replace strings with Enums across the codebase. The Color class enumerates color options and removes typos. There are two more things I want, however. </p>
+<p>First, since this is an API interacting with other services, we need to be able to serialize to JSON. </p>
+<div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="s2">&quot;inspection&quot;</span><span class="p">:</span> <span class="n">Inspection</span><span class="o">.</span><span class="n">VISUAL</span><span class="p">}))</span>
+<span class="c1"># TypeError: Object of type Inspection is not JSON serializable</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="s2">&quot;inspection&quot;</span><span class="p">:</span> <span class="n">Inspection</span><span class="o">.</span><span class="n">VISUAL</span><span class="o">.</span><span class="n">value</span><span class="p">}))</span>
+<span class="p">{</span><span class="s2">&quot;inspection&quot;</span><span class="p">:</span> <span class="s2">&quot;Visual Check&quot;</span><span class="p">}</span>
+</pre></div>
+
+
+<p>The default Enu, as you can see, is not serializable – but is value is. So all over the codebase we’d have to call <code>.value</code> whenever the Enum gets turned into JSON and that's not cool. </p>
+<p>Well, can chatGPT help here? Maybe but in the time it'd take to fiddle with GPT I can do a Google search and get my answer on <a href="https://stackoverflow.com/questions/24481852/serialising-an-enum-member-to-json">StackOverflow</a>.
+The trick is to inherit from str and Enum. </p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Inspection</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">Enum</span><span class="p">):</span>
+   <span class="sd">&quot;&quot;&quot;JSON serializable inspection types with custom exception&quot;&quot;&quot;</span>
+
+
+   <span class="n">VISUAL</span> <span class="o">=</span> <span class="s2">&quot;Visual Check&quot;</span>
+   <span class="n">BASIC</span> <span class="o">=</span> <span class="s2">&quot;Basic Inspection&quot;</span>
+   <span class="n">STANDARD</span> <span class="o">=</span> <span class="s2">&quot;Standard Inspection&quot;</span>
+   <span class="n">ADVANCED</span> <span class="o">=</span> <span class="s2">&quot;Advanced Inspection&quot;</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="s2">&quot;inspection&quot;</span><span class="p">:</span> <span class="n">Inspection</span><span class="o">.</span><span class="n">VISUAL</span><span class="p">}))</span>
+<span class="c1"># {&quot;inspection&quot;: &quot;Visual Check&quot;}</span>
+</pre></div>
+
+
+<p>Boom! First problems solved and now the second problem....
+A nice property of Enums is, like a dictionary, they raise an error if you try to make an Enum from an unknown value.
+For Example: </p>
+<div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">Inspection</span><span class="p">(</span><span class="s2">&quot;Just look it it real quick&quot;</span><span class="p">))</span>
+<span class="c1"># ValueError: &#39;Just look it it real quick&#39; is not a valid Inspection</span>
+</pre></div>
+
+
+<p>This is nice but we want to raise a custom exception (whether we should have custom exceptions is a topic for another day)</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_unknown_inspection</span><span class="p">():</span>
+   <span class="k">with</span> <span class="n">pytest</span><span class="o">.</span><span class="n">raises</span><span class="p">(</span><span class="n">MissingModelConfigError</span><span class="p">):</span>
+       <span class="n">Inspection</span><span class="p">(</span><span class="s2">&quot;Give it a quick look&quot;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>No problem because as we can see in stacktrace</p>
+<div class="highlight"><pre><span></span>   <span class="mi">575</span>     <span class="nd">@classmethod</span>
+    <span class="mi">576</span>     <span class="k">def</span> <span class="nf">_missing_</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+<span class="o">--&gt;</span> <span class="mi">577</span>         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%r</span><span class="s2"> is not a valid </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="bp">cls</span><span class="o">.</span><span class="vm">__name__</span><span class="p">))</span>
+</pre></div>
+
+
+<p>all we have to do is override the <code>_missing_</code> method.</p>
+<h2>Result</h2>
+<p>Now we're done</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Inspection</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">Enum</span><span class="p">):</span>
+   <span class="sd">&quot;&quot;&quot;JSON serializable inspection types with custom exception&quot;&quot;&quot;</span>
+
+
+   <span class="n">VISUAL</span> <span class="o">=</span> <span class="s2">&quot;Visual Check&quot;</span>
+   <span class="n">BASIC</span> <span class="o">=</span> <span class="s2">&quot;Basic Inspection&quot;</span>
+   <span class="n">STANDARD</span> <span class="o">=</span> <span class="s2">&quot;Standard Inspection&quot;</span>
+   <span class="n">ADVANCED</span> <span class="o">=</span> <span class="s2">&quot;Advanced Inspection&quot;</span>
+
+
+   <span class="nd">@classmethod</span>
+   <span class="k">def</span> <span class="nf">_missing_</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+       <span class="k">raise</span> <span class="n">MissingModelConfigError</span><span class="p">(</span>
+           <span class="n">missing_property</span><span class="o">=</span><span class="s2">&quot;inspection&quot;</span><span class="p">,</span> <span class="n">expected_value</span><span class="o">=</span><span class="n">value</span>
+       <span class="p">)</span>
+</pre></div>
+
+
+<p>For this effort we don’t have to worry about typos or an unknown inspection sneaking in. 
+All we need to care about is a subset of these defined inspections. 
+Very cool!</p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="http://roryhr.com/its-2023.html" rel="bookmark"
+                           title="Permalink to It's 2023">It's 2023</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2023-03-06T00:00:00-08:00">
                 Published: Mon 06 March 2023
@@ -32,7 +178,7 @@
         </address>
 <p>In <a href="http://roryhr.com/category/blog.html">blog</a>.</p>
 <p>tags: <a href="http://roryhr.com/tag/opinion.html">opinion</a> </p>
-</footer><!-- /.post-info --><p>It's been nearly three years since I last posted an article so let's do a check in.  </p>
+</footer><!-- /.post-info -->                <p>It's been nearly three years since I last posted an article so let's do a check in.  </p>
 <p>What's changed? </p>
 <ol>
 <li>
@@ -40,30 +186,10 @@
 </li>
 <li>
 <p>I adopted the <a href="https://github.com/psf/black">Black</a> code formatter.
-At first I was hesitant because I liked to tweak my code formatting but it's a game changer that eliminates a whole class of problems. 
-If you're working on a team I recommend using it.</p>
-</li>
-<li>
-<p>I learned a lot of Elixir with Phoenix and Ecto. Plus some Rust. I like Elixir.</p>
-</li>
-<li>
-<p>I became "Mr. Manager" (Well, manager; we just say manager.) </p>
-</li>
-</ol>
-<p>This blog is nearly seven years old and other than that things are mostly the same.
-I recently saw "Jiro Dreams of Sushi" and this quote comes to mind </p>
-<blockquote>
-<p>I do the same thing over and over, improving bit by bit. There is always a yearning to achieve more. I'll continue to climb, trying to reach the top, but no one knows where the top is. 
--Jiro Ono</p>
-</blockquote>
-<p>That's sort of what I do in data science. 
-I apply the same analysis and programming techniques on different data, solving different problems, over and over again. 
-Hopefully I'm improving.</p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+At first I was hesitant because I liked to tweak my code formatting …</p></li></ol>
+                <a class="readmore" href="http://roryhr.com/its-2023.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
@@ -145,31 +271,6 @@ The only way to work on this pair of projects …</p>
                 <a class="readmore" href="http://roryhr.com/python-environments.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://roryhr.com/running-quickstart.html" rel="bookmark"
-                           title="Permalink to Running Quickstart">Running Quickstart</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-07-14T00:00:00-07:00">
-                Published: Sat 14 July 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="http://roryhr.com/author/rory-hartong-redden.html">Rory Hartong-Redden</a>
-        </address>
-<p>In <a href="http://roryhr.com/category/blog.html">blog</a>.</p>
-<p>tags: <a href="http://roryhr.com/tag/running.html">running</a> <a href="http://roryhr.com/tag/miniessays.html">miniessays</a> </p>
-</footer><!-- /.post-info -->                <p>This is the second in a series of short articles.</p>
-<p>Running is fun, relaxing, a great way to experience the outdoors, and good exercise. 
-There are no shortcuts to getting better, you have to put in the work over months and years. 
-Distance running cultivates long-term planning, consistency, and dicipline …</p>
-                <a class="readmore" href="http://roryhr.com/running-quickstart.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
                 </ol><!-- /#posts-list -->
 <p class="paginator">
     Page 1 / 3
@@ -197,7 +298,6 @@ Distance running cultivates long-term planning, consistency, and dicipline …</
 
                             <li><a href="https://github.com/roryhr">Github</a></li>
                             <li><a href="https://www.linkedin.com/in/rory-hartong-redden-18334356">LinkedIn</a></li>
-                            <li><a href="https://twitter.com/rory_h_r">Twitter</a></li>
                         </ul>
                 </div><!-- /.social -->
         </section><!-- /#extras -->
