@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
         <meta charset="utf-8" />
-        <title>Running Quickstart</title>
+        <title>PyCharm</title>
         <link rel="stylesheet" href="./theme/css/main.css" />
 </head>
 
@@ -22,43 +22,82 @@
   <article>
     <header>
       <h1 class="entry-title">
-        <a href="./running-quickstart.html" rel="bookmark"
-           title="Permalink to Running Quickstart">Running Quickstart</a></h1>
+        <a href="./pycharm.html" rel="bookmark"
+           title="Permalink to PyCharm">PyCharm</a></h1>
     </header>
 
     <div class="entry-content">
 <footer class="post-info">
-        <abbr class="published" title="2018-07-14T00:00:00-07:00">
-                Published: Sat 14 July 2018
+        <abbr class="published" title="2023-10-20T00:00:00-07:00">
+                Published: Fri 20 October 2023
         </abbr>
 
         <address class="vcard author">
                 By                         <a class="url fn" href="./author/rory-hartong-redden.html">Rory Hartong-Redden</a>
         </address>
 <p>In <a href="./category/blog.html">blog</a>.</p>
-<p>tags: <a href="./tag/running.html">running</a> <a href="./tag/miniessays.html">miniessays</a> </p>
-</footer><!-- /.post-info -->      <p>This is the second in a series of short articles.</p>
-<p>Running is fun, relaxing, a great way to experience the outdoors, and good exercise. 
-There are no shortcuts to getting better, you have to put in the work over months and years. 
-Distance running cultivates long-term planning, consistency, and dicipline -- useful skills applicable to your personal and professional life. </p>
-<h1>Running Quickstart</h1>
+<p>tags: <a href="./tag/python.html">python</a> </p>
+</footer><!-- /.post-info -->      <p>I still use PyCharm as my daily text editor. </p>
+<p>IDEs like PyCharm have tons of features and the 80/20 rule applies: investing 20% effort learning the tool will get you 80% productivity. 
+The rest is marginal gains and your effort is better spent thinking about your code.</p>
+<p>Here, I'll enumerate the subset of functionality that I use.</p>
+<h2>Keyboard Shortcuts</h2>
 <ol>
-<li>
-<p>Shoes: Go to a specialty running store and get some running shoes. Try on 2-3 pairs, jog around the block, and go with the cheapest and most comfortable pair. Don't overthink it because like haircuts you can always get another.</p>
-</li>
-<li>
-<p>Clothes: general athletic wear is fine. I ran in my high-school tennis shorts and shirt for years. Running socks are expensive but last forever, consider them optional.</p>
-</li>
-<li>
-<p>Make a plan: set aside time every week for 2-3 runs of 2-4 miles each. Run at an easy conversational pace. Don't kill yourself out there and don't stretch before the run. </p>
-</li>
-<li>
-<p>Keep it up: for 3 weeks. Slowly increase the distance of your runs and add an extra day or two. Target 20 miles per week, then 25, then 30.</p>
-</li>
-<li>
-<p>Have fun!</p>
-</li>
+<li><strong>Cmd + O</strong>  - Goto file or class</li>
+<li><strong>Ctrl + G</strong>  - Select the next matching text.</li>
+<li><strong>Cmd + B</strong> - Jump to the definition or usages of a class, function, or variable.</li>
+<li><strong>Cmd + X</strong> - Cut. Use this to delete a line of code.</li>
+<li><strong>Cmd + C</strong> / <strong>Ctrl + V</strong> - Copy and paste </li>
+<li><strong>Cmd + /</strong> - Toggle commenting. </li>
+<li><strong>Tab</strong> / <strong>Shift + Tab</strong> - Increase or decrease the indentation level.</li>
+<li><strong>Ctrl + R</strong> - Rerun the previous file, test, or command</li>
 </ol>
+<h2>GUI Features</h2>
+<p>You can use PyCharm to just edit text but that misses the point of an IDE.</p>
+<ul>
+<li>
+<p>Refactor. PyCharm handles renaming and moving seamlessly. You don't need to go and find every instance a Class is imported and rename it. Just use the tool once and it'll "just work" everywhere.</p>
+</li>
+<li>
+<p>Managing conda environments and keeping them sync with <code>requirements.txt</code>. 
+PyCharm will warn you if a package is outdated. If so, in the terminal tab I'll run </p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span>conda activate py39 
+pip install -r requirements.txt
+</pre></div>
+
+
+<p>I don't use PyCharm to manage Python environments. </p>
+<ul>
+<li>
+<p>Running tests. You can run directory or file or individual tests. Very handy with the debugger. </p>
+</li>
+<li>
+<p>Run file in Python console. This runs the file and then leaves you with a Python prompt so you can interactively use the code you just wrote. I use IPython here. </p>
+</li>
+<li>
+<p>Markdown.
+PyCharm can render markdown files. There's a new table editor so you don't have to mess around with the <code>-- and |</code> characters. </p>
+</li>
+<li>
+<p>Git
+I don't recommend using PyCharm for most git actions but it has a handy rollback button, a neat diff viewer between branches, and a nice tool to fix merge conflicts. </p>
+</li>
+<li>
+<p>Formatting.
+Don't bother making your code pretty. It can be any color you want as long as it's black. </p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span>black ../src-code-dir
+</pre></div>
+
+
+<h2>Summary</h2>
+<p>What's the cost of this?
+The "Community Edition" is free and that's what I use.
+<a href="https://www.jetbrains.com/pycharm/download">PyCharm Community Edition</a>
+It's been around for a long time and I don't expect it to go anywhere.</p>
     </div><!-- /.entry-content -->
 
   </article>

@@ -3,12 +3,12 @@
 <head>
         <meta charset="utf-8" />
         <title>Rory's Corner</title>
-        <link rel="stylesheet" href="http://roryhr.com/theme/css/main.css" />
+        <link rel="stylesheet" href="./theme/css/main.css" />
 </head>
 
 <body id="index" class="home">
         <header id="banner" class="body">
-                <h1><a href="http://roryhr.com/">Rory's Corner </a></h1>
+                <h1><a href="./">Rory's Corner </a></h1>
                 <nav><ul>
                     <li><a href="/">Home</a></li>
                     <li><a href="/articles">Articles</a></li>
@@ -21,140 +21,78 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="http://roryhr.com/enumerations.html">Enumerations</a></h1>
+                    <h1 class="entry-title"><a href="./pycharm.html">PyCharm</a></h1>
 <footer class="post-info">
-        <abbr class="published" title="2023-10-06T00:00:00-07:00">
-                Published: Fri 06 October 2023
+        <abbr class="published" title="2023-10-20T00:00:00-07:00">
+                Published: Fri 20 October 2023
         </abbr>
 
         <address class="vcard author">
-                By                         <a class="url fn" href="http://roryhr.com/author/rory-hartong-redden.html">Rory Hartong-Redden</a>
+                By                         <a class="url fn" href="./author/rory-hartong-redden.html">Rory Hartong-Redden</a>
         </address>
-<p>In <a href="http://roryhr.com/category/blog.html">blog</a>.</p>
-<p>tags: <a href="http://roryhr.com/tag/python.html">python</a> </p>
-</footer><!-- /.post-info --><p>I recently learned about Enums. 
-Here's a fine ChatGPT example which is essentially the content of of Google search result.
-ChatGPT is like the old internet where you could read text on websites.</p>
-<h2>ChatGPT</h2>
-<p>Following is just verbatim output from the following request:</p>
-<div class="highlight"><pre><span></span>➜  ~ llm <span class="s2">&quot;give me an example of using Enums in python&quot;</span>
+<p>In <a href="./category/blog.html">blog</a>.</p>
+<p>tags: <a href="./tag/python.html">python</a> </p>
+</footer><!-- /.post-info --><p>I still use PyCharm as my daily text editor. </p>
+<p>IDEs like PyCharm have tons of features and the 80/20 rule applies: investing 20% effort learning the tool will get you 80% productivity. 
+The rest is marginal gains and your effort is better spent thinking about your code.</p>
+<p>Here, I'll enumerate the subset of functionality that I use.</p>
+<h2>Keyboard Shortcuts</h2>
+<ol>
+<li><strong>Cmd + O</strong>  - Goto file or class</li>
+<li><strong>Ctrl + G</strong>  - Select the next matching text.</li>
+<li><strong>Cmd + B</strong> - Jump to the definition or usages of a class, function, or variable.</li>
+<li><strong>Cmd + X</strong> - Cut. Use this to delete a line of code.</li>
+<li><strong>Cmd + C</strong> / <strong>Ctrl + V</strong> - Copy and paste </li>
+<li><strong>Cmd + /</strong> - Toggle commenting. </li>
+<li><strong>Tab</strong> / <strong>Shift + Tab</strong> - Increase or decrease the indentation level.</li>
+<li><strong>Ctrl + R</strong> - Rerun the previous file, test, or command</li>
+</ol>
+<h2>GUI Features</h2>
+<p>You can use PyCharm to just edit text but that misses the point of an IDE.</p>
+<ul>
+<li>
+<p>Refactor. PyCharm handles renaming and moving seamlessly. You don't need to go and find every instance a Class is imported and rename it. Just use the tool once and it'll "just work" everywhere.</p>
+</li>
+<li>
+<p>Managing conda environments and keeping them sync with <code>requirements.txt</code>. 
+PyCharm will warn you if a package is outdated. If so, in the terminal tab I'll run </p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span>conda activate py39 
+pip install -r requirements.txt
 </pre></div>
 
 
-<p>Sure! Here's an example of using Enums in Python:</p>
-<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">Enum</span>
-
-<span class="c1"># Define an Enum class</span>
-<span class="k">class</span> <span class="nc">Color</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
-    <span class="n">RED</span> <span class="o">=</span> <span class="mi">1</span>
-    <span class="n">GREEN</span> <span class="o">=</span> <span class="mi">2</span>
-    <span class="n">BLUE</span> <span class="o">=</span> <span class="mi">3</span>
-
-<span class="c1"># Accessing Enum members</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">Color</span><span class="o">.</span><span class="n">RED</span><span class="p">)</span>                    <span class="c1"># Color.RED</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">Color</span><span class="o">.</span><span class="n">RED</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>               <span class="c1"># RED</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">Color</span><span class="o">.</span><span class="n">RED</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>              <span class="c1"># 1</span>
-
-<span class="c1"># Iterating over Enum members</span>
-<span class="k">for</span> <span class="n">color</span> <span class="ow">in</span> <span class="n">Color</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">color</span><span class="p">)</span>
-
-<span class="c1"># Checking Enum membership</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">Color</span><span class="o">.</span><span class="n">RED</span> <span class="ow">in</span> <span class="n">Color</span><span class="p">)</span>           <span class="c1"># True</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">Color</span><span class="o">.</span><span class="n">YELLOW</span> <span class="ow">in</span> <span class="n">Color</span><span class="p">)</span>        <span class="c1"># False</span>
-
-<span class="c1"># Comparing Enum members</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">Color</span><span class="o">.</span><span class="n">RED</span> <span class="o">==</span> <span class="n">Color</span><span class="o">.</span><span class="n">RED</span><span class="p">)</span>       <span class="c1"># True</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">Color</span><span class="o">.</span><span class="n">RED</span> <span class="o">==</span> <span class="n">Color</span><span class="o">.</span><span class="n">GREEN</span><span class="p">)</span>     <span class="c1"># False</span>
-
-<span class="c1"># Enum as dictionary keys</span>
-<span class="n">colors</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="n">Color</span><span class="o">.</span><span class="n">RED</span><span class="p">:</span> <span class="s2">&quot;FF0000&quot;</span><span class="p">,</span>
-    <span class="n">Color</span><span class="o">.</span><span class="n">GREEN</span><span class="p">:</span> <span class="s2">&quot;00FF00&quot;</span><span class="p">,</span>
-    <span class="n">Color</span><span class="o">.</span><span class="n">BLUE</span><span class="p">:</span> <span class="s2">&quot;0000FF&quot;</span>
-<span class="p">}</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">colors</span><span class="p">[</span><span class="n">Color</span><span class="o">.</span><span class="n">RED</span><span class="p">])</span>            <span class="c1"># FF0000</span>
+<p>I don't use PyCharm to manage Python environments. </p>
+<ul>
+<li>
+<p>Running tests. You can run directory or file or individual tests. Very handy with the debugger. </p>
+</li>
+<li>
+<p>Run file in Python console. This runs the file and then leaves you with a Python prompt so you can interactively use the code you just wrote. I use IPython here. </p>
+</li>
+<li>
+<p>Markdown.
+PyCharm can render markdown files. There's a new table editor so you don't have to mess around with the <code>-- and |</code> characters. </p>
+</li>
+<li>
+<p>Git
+I don't recommend using PyCharm for most git actions but it has a handy rollback button, a neat diff viewer between branches, and a nice tool to fix merge conflicts. </p>
+</li>
+<li>
+<p>Formatting.
+Don't bother making your code pretty. It can be any color you want as long as it's black. </p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span>black ../src-code-dir
 </pre></div>
 
 
-<p>In this example, we define an enum class called "Color" with three members - RED, GREEN, and BLUE. We can access enum members using dot notation (e.g., Color.RED). We can also access the name and value of an enum member using the <code>name</code> and <code>value</code> properties.</p>
-<p>We can iterate over all the enum members using a for loop. Enum membership can be checked using the <code>in</code> keyword.</p>
-<p>Enum members can be compared using the equality operator (<code>==</code>). We can also use enums as dictionary keys, as shown in the last example.</p>
-<h2>Back to me</h2>
-<p>This is all great. My takeaway is that we can replace strings with Enums across the codebase. The Color class enumerates color options and removes typos. There are two more things I want, however. </p>
-<p>First, since this is an API interacting with other services, we need to be able to serialize to JSON. </p>
-<div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="s2">&quot;inspection&quot;</span><span class="p">:</span> <span class="n">Inspection</span><span class="o">.</span><span class="n">VISUAL</span><span class="p">}))</span>
-<span class="c1"># TypeError: Object of type Inspection is not JSON serializable</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="s2">&quot;inspection&quot;</span><span class="p">:</span> <span class="n">Inspection</span><span class="o">.</span><span class="n">VISUAL</span><span class="o">.</span><span class="n">value</span><span class="p">}))</span>
-<span class="p">{</span><span class="s2">&quot;inspection&quot;</span><span class="p">:</span> <span class="s2">&quot;Visual Check&quot;</span><span class="p">}</span>
-</pre></div>
-
-
-<p>The default Enu, as you can see, is not serializable – but is value is. So all over the codebase we’d have to call <code>.value</code> whenever the Enum gets turned into JSON and that's not cool. </p>
-<p>Well, can chatGPT help here? Maybe but in the time it'd take to fiddle with GPT I can do a Google search and get my answer on <a href="https://stackoverflow.com/questions/24481852/serialising-an-enum-member-to-json">StackOverflow</a>.
-The trick is to inherit from str and Enum. </p>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Inspection</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">Enum</span><span class="p">):</span>
-   <span class="sd">&quot;&quot;&quot;JSON serializable inspection types with custom exception&quot;&quot;&quot;</span>
-
-
-   <span class="n">VISUAL</span> <span class="o">=</span> <span class="s2">&quot;Visual Check&quot;</span>
-   <span class="n">BASIC</span> <span class="o">=</span> <span class="s2">&quot;Basic Inspection&quot;</span>
-   <span class="n">STANDARD</span> <span class="o">=</span> <span class="s2">&quot;Standard Inspection&quot;</span>
-   <span class="n">ADVANCED</span> <span class="o">=</span> <span class="s2">&quot;Advanced Inspection&quot;</span>
-
-
-<span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="s2">&quot;inspection&quot;</span><span class="p">:</span> <span class="n">Inspection</span><span class="o">.</span><span class="n">VISUAL</span><span class="p">}))</span>
-<span class="c1"># {&quot;inspection&quot;: &quot;Visual Check&quot;}</span>
-</pre></div>
-
-
-<p>Boom! First problems solved and now the second problem....
-A nice property of Enums is, like a dictionary, they raise an error if you try to make an Enum from an unknown value.
-For Example: </p>
-<div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">Inspection</span><span class="p">(</span><span class="s2">&quot;Just look it it real quick&quot;</span><span class="p">))</span>
-<span class="c1"># ValueError: &#39;Just look it it real quick&#39; is not a valid Inspection</span>
-</pre></div>
-
-
-<p>This is nice but we want to raise a custom exception (whether we should have custom exceptions is a topic for another day)</p>
-<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_unknown_inspection</span><span class="p">():</span>
-   <span class="k">with</span> <span class="n">pytest</span><span class="o">.</span><span class="n">raises</span><span class="p">(</span><span class="n">MissingModelConfigError</span><span class="p">):</span>
-       <span class="n">Inspection</span><span class="p">(</span><span class="s2">&quot;Give it a quick look&quot;</span><span class="p">)</span>
-</pre></div>
-
-
-<p>No problem because as we can see in stacktrace</p>
-<div class="highlight"><pre><span></span>   <span class="mi">575</span>     <span class="nd">@classmethod</span>
-    <span class="mi">576</span>     <span class="k">def</span> <span class="nf">_missing_</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-<span class="o">--&gt;</span> <span class="mi">577</span>         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%r</span><span class="s2"> is not a valid </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="bp">cls</span><span class="o">.</span><span class="vm">__name__</span><span class="p">))</span>
-</pre></div>
-
-
-<p>all we have to do is override the <code>_missing_</code> method.</p>
-<h2>Result</h2>
-<p>Now we're done</p>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Inspection</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">Enum</span><span class="p">):</span>
-   <span class="sd">&quot;&quot;&quot;JSON serializable inspection types with custom exception&quot;&quot;&quot;</span>
-
-
-   <span class="n">VISUAL</span> <span class="o">=</span> <span class="s2">&quot;Visual Check&quot;</span>
-   <span class="n">BASIC</span> <span class="o">=</span> <span class="s2">&quot;Basic Inspection&quot;</span>
-   <span class="n">STANDARD</span> <span class="o">=</span> <span class="s2">&quot;Standard Inspection&quot;</span>
-   <span class="n">ADVANCED</span> <span class="o">=</span> <span class="s2">&quot;Advanced Inspection&quot;</span>
-
-
-   <span class="nd">@classmethod</span>
-   <span class="k">def</span> <span class="nf">_missing_</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-       <span class="k">raise</span> <span class="n">MissingModelConfigError</span><span class="p">(</span>
-           <span class="n">missing_property</span><span class="o">=</span><span class="s2">&quot;inspection&quot;</span><span class="p">,</span> <span class="n">expected_value</span><span class="o">=</span><span class="n">value</span>
-       <span class="p">)</span>
-</pre></div>
-
-
-<p>For this effort we don’t have to worry about typos or an unknown inspection sneaking in. 
-All we need to care about is a subset of these defined inspections. 
-Very cool!</p>                </article>
+<h2>Summary</h2>
+<p>What's the cost of this?
+The "Community Edition" is free and that's what I use.
+<a href="https://www.jetbrains.com/pycharm/download">PyCharm Community Edition</a>
+It's been around for a long time and I don't expect it to go anywhere.</p>                </article>
             </aside><!-- /#featured -->
                 <section id="content" class="body">
                     <h1>Other articles</h1>
@@ -163,7 +101,34 @@ Very cool!</p>                </article>
 
             <li><article class="hentry">
                 <header>
-                    <h1><a href="http://roryhr.com/its-2023.html" rel="bookmark"
+                    <h1><a href="./enumerations.html" rel="bookmark"
+                           title="Permalink to Enumerations">Enumerations</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2023-10-06T00:00:00-07:00">
+                Published: Fri 06 October 2023
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="./author/rory-hartong-redden.html">Rory Hartong-Redden</a>
+        </address>
+<p>In <a href="./category/blog.html">blog</a>.</p>
+<p>tags: <a href="./tag/python.html">python</a> </p>
+</footer><!-- /.post-info -->                <p>I recently learned about Enums. 
+Here's a fine ChatGPT example which is essentially the content of of Google search result.
+ChatGPT is like the old internet where you could read text on websites.</p>
+<h2>ChatGPT</h2>
+<p>Following is just verbatim output from the following request:</p>
+<div class="highlight"><pre><span></span>➜  ~ llm <span class="s2">&quot;give me an example of using …</span></pre></div>
+                <a class="readmore" href="./enumerations.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="./its-2023.html" rel="bookmark"
                            title="Permalink to It's 2023">It's 2023</a></h1>
                 </header>
 
@@ -174,10 +139,10 @@ Very cool!</p>                </article>
         </abbr>
 
         <address class="vcard author">
-                By                         <a class="url fn" href="http://roryhr.com/author/rory-hartong-redden.html">Rory Hartong-Redden</a>
+                By                         <a class="url fn" href="./author/rory-hartong-redden.html">Rory Hartong-Redden</a>
         </address>
-<p>In <a href="http://roryhr.com/category/blog.html">blog</a>.</p>
-<p>tags: <a href="http://roryhr.com/tag/opinion.html">opinion</a> </p>
+<p>In <a href="./category/blog.html">blog</a>.</p>
+<p>tags: <a href="./tag/opinion.html">opinion</a> </p>
 </footer><!-- /.post-info -->                <p>It's been nearly three years since I last posted an article so let's do a check in.  </p>
 <p>What's changed? </p>
 <ol>
@@ -187,13 +152,13 @@ Very cool!</p>                </article>
 <li>
 <p>I adopted the <a href="https://github.com/psf/black">Black</a> code formatter.
 At first I was hesitant because I liked to tweak my code formatting …</p></li></ol>
-                <a class="readmore" href="http://roryhr.com/its-2023.html">read more</a>
+                <a class="readmore" href="./its-2023.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
 
             <li><article class="hentry">
                 <header>
-                    <h1><a href="http://roryhr.com/old-school-is-new-school.html" rel="bookmark"
+                    <h1><a href="./old-school-is-new-school.html" rel="bookmark"
                            title="Permalink to Old School is New School">Old School is New School</a></h1>
                 </header>
 
@@ -204,21 +169,21 @@ At first I was hesitant because I liked to tweak my code formatting …</p></li>
         </abbr>
 
         <address class="vcard author">
-                By                         <a class="url fn" href="http://roryhr.com/author/rory-hartong-redden.html">Rory Hartong-Redden</a>
+                By                         <a class="url fn" href="./author/rory-hartong-redden.html">Rory Hartong-Redden</a>
         </address>
-<p>In <a href="http://roryhr.com/category/python.html">Python</a>.</p>
-<p>tags: <a href="http://roryhr.com/tag/miniessays.html">miniessays</a> </p>
+<p>In <a href="./category/python.html">Python</a>.</p>
+<p>tags: <a href="./tag/miniessays.html">miniessays</a> </p>
 </footer><!-- /.post-info -->                <p>After a few years in tech you notice trends come and go, seemingly faster and faster every year, like tides in the ocean.</p>
 <p>Is everyone who writes code condemned to run on a treadmill struggling to stay in place?
 In short, yes. 
 Security patches, updates, and best practices are always …</p>
-                <a class="readmore" href="http://roryhr.com/old-school-is-new-school.html">read more</a>
+                <a class="readmore" href="./old-school-is-new-school.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
 
             <li><article class="hentry">
                 <header>
-                    <h1><a href="http://roryhr.com/approach-to-python.html" rel="bookmark"
+                    <h1><a href="./approach-to-python.html" rel="bookmark"
                            title="Permalink to Approach to Python">Approach to Python</a></h1>
                 </header>
 
@@ -229,52 +194,23 @@ Security patches, updates, and best practices are always …</p>
         </abbr>
 
         <address class="vcard author">
-                By                         <a class="url fn" href="http://roryhr.com/author/rory-hartong-redden.html">Rory Hartong-Redden</a>
+                By                         <a class="url fn" href="./author/rory-hartong-redden.html">Rory Hartong-Redden</a>
         </address>
-<p>In <a href="http://roryhr.com/category/python.html">Python</a>.</p>
-<p>tags: <a href="http://roryhr.com/tag/python.html">python</a> </p>
+<p>In <a href="./category/python.html">Python</a>.</p>
+<p>tags: <a href="./tag/python.html">python</a> </p>
 </footer><!-- /.post-info -->                <p>Note:</p>
 <p>I like to phrase things as punchy commands but it's all just my preference.
 My personal style is constantly evolving.</p>
 <p>My motto is a twist on the Zen of Python</p>
 <div class="highlight"><pre><span></span><span class="err">If the implementation is hard to understand, it&#39;s bad.</span>
 <span class="err">If the implementation is easy to understand, it may …</span></pre></div>
-                <a class="readmore" href="http://roryhr.com/approach-to-python.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://roryhr.com/python-environments.html" rel="bookmark"
-                           title="Permalink to Python Environments">Python Environments</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-08-13T00:00:00-07:00">
-                Published: Mon 13 August 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="http://roryhr.com/author/rory-hartong-redden.html">Rory Hartong-Redden</a>
-        </address>
-<p>In <a href="http://roryhr.com/category/python.html">Python</a>.</p>
-<p>tags: <a href="http://roryhr.com/tag/python.html">python</a> <a href="http://roryhr.com/tag/miniessays.html">miniessays</a> </p>
-</footer><!-- /.post-info -->                <ol>
-<li>Why should I care about environments?</li>
-<li>How do I manage environments? </li>
-<li>Demo</li>
-</ol>
-<h1>Why should I care about environments?</h1>
-<p>Suppose you work on two projects, one is old and written in Python 2, the other is new and uses Python 3. 
-The only way to work on this pair of projects …</p>
-                <a class="readmore" href="http://roryhr.com/python-environments.html">read more</a>
+                <a class="readmore" href="./approach-to-python.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
 <p class="paginator">
-    Page 1 / 3
-        <a href="http://roryhr.com/articles2.html">&raquo;</a>
+    Page 1 / 4
+        <a href="./articles2.html">&raquo;</a>
 </p>
                 </section><!-- /#content -->
         <section id="extras" class="body">
