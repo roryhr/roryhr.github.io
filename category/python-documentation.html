@@ -52,93 +52,87 @@ These files are in a separate repository at
 <h2>Recipes</h2>
 <p>Content for the website goes in the <code>content</code> directory. 
 Generate the website</p>
-<div class="highlight"><pre><span></span><span class="o">(</span>web<span class="o">)</span> ~/p/website_code&gt; pelican content
-Done: Processed <span class="m">13</span> articles, <span class="m">0</span> drafts, <span class="m">4</span> pages, <span class="m">0</span> hidden pages and <span class="m">0</span> draft pages in <span class="m">0</span>.85 seconds.
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="o">(</span>web<span class="o">)</span><span class="w"> </span>~/p/website_code&gt;<span class="w"> </span>pelican<span class="w"> </span>content
+Done:<span class="w"> </span>Processed<span class="w"> </span><span class="m">13</span><span class="w"> </span>articles,<span class="w"> </span><span class="m">0</span><span class="w"> </span>drafts,<span class="w"> </span><span class="m">4</span><span class="w"> </span>pages,<span class="w"> </span><span class="m">0</span><span class="w"> </span>hidden<span class="w"> </span>pages<span class="w"> </span>and<span class="w"> </span><span class="m">0</span><span class="w"> </span>draft<span class="w"> </span>pages<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">0</span>.85<span class="w"> </span>seconds.
+</code></pre></div>
 
 <p>The output html goes to the <code>output</code> directory which gets pushed to <code>roryhr.github.io</code> repo.</p>
-<div class="highlight"><pre><span></span><span class="o">((</span>blog<span class="o">))</span> rory@rory-Satellite-S75-B:~/Projects/site-code/output$ git status
-On branch master
-Your branch is up-to-date with <span class="s1">&#39;origin/master&#39;</span>.
-Changes not staged <span class="k">for</span> commit:
-  <span class="o">(</span>use <span class="s2">&quot;git add &lt;file&gt;...&quot;</span> to update what will be committed<span class="o">)</span>
-  <span class="o">(</span>use <span class="s2">&quot;git checkout -- &lt;file&gt;...&quot;</span> to discard changes in working directory<span class="o">)</span>
+<div class="highlight"><pre><span></span><code><span class="o">((</span>blog<span class="o">))</span><span class="w"> </span>rory@rory-Satellite-S75-B:~/Projects/site-code/output$<span class="w"> </span>git<span class="w"> </span>status
+On<span class="w"> </span>branch<span class="w"> </span>master
+Your<span class="w"> </span>branch<span class="w"> </span>is<span class="w"> </span>up-to-date<span class="w"> </span>with<span class="w"> </span><span class="s1">&#39;origin/master&#39;</span>.
+Changes<span class="w"> </span>not<span class="w"> </span>staged<span class="w"> </span><span class="k">for</span><span class="w"> </span>commit:
+<span class="w">  </span><span class="o">(</span>use<span class="w"> </span><span class="s2">&quot;git add &lt;file&gt;...&quot;</span><span class="w"> </span>to<span class="w"> </span>update<span class="w"> </span>what<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>committed<span class="o">)</span>
+<span class="w">  </span><span class="o">(</span>use<span class="w"> </span><span class="s2">&quot;git checkout -- &lt;file&gt;...&quot;</span><span class="w"> </span>to<span class="w"> </span>discard<span class="w"> </span>changes<span class="w"> </span><span class="k">in</span><span class="w"> </span>working<span class="w"> </span>directory<span class="o">)</span>
 
-    modified:   archives.html
-    modified:   author/rory-hartong-redden.html
-    modified:   authors.html
-    modified:   category/opinion.html
+<span class="w">    </span>modified:<span class="w">   </span>archives.html
+<span class="w">    </span>modified:<span class="w">   </span>author/rory-hartong-redden.html
+<span class="w">    </span>modified:<span class="w">   </span>authors.html
+<span class="w">    </span>modified:<span class="w">   </span>category/opinion.html
 
-Untracked files:
-  <span class="o">(</span>use <span class="s2">&quot;git add &lt;file&gt;...&quot;</span> to include in what will be committed<span class="o">)</span>
+Untracked<span class="w"> </span>files:
+<span class="w">  </span><span class="o">(</span>use<span class="w"> </span><span class="s2">&quot;git add &lt;file&gt;...&quot;</span><span class="w"> </span>to<span class="w"> </span>include<span class="w"> </span><span class="k">in</span><span class="w"> </span>what<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>committed<span class="o">)</span>
 
-    how-does-this-thing-work.html
+<span class="w">    </span>how-does-this-thing-work.html
 
-no changes added to commit <span class="o">(</span>use <span class="s2">&quot;git add&quot;</span> and/or <span class="s2">&quot;git commit -a&quot;</span><span class="o">)</span>
-<span class="o">((</span>blog<span class="o">))</span> rory@rory-Satellite-S75-B:~/Projects/site-code/output$ git remote -v
-origin  https://github.com/roryhr/roryhr.github.io <span class="o">(</span>fetch<span class="o">)</span>
-origin  https://github.com/roryhr/roryhr.github.io <span class="o">(</span>push<span class="o">)</span>
-<span class="o">((</span>blog<span class="o">))</span> rory@rory-Satellite-S75-B:~/Projects/site-code/output$
-</pre></div>
-
+no<span class="w"> </span>changes<span class="w"> </span>added<span class="w"> </span>to<span class="w"> </span>commit<span class="w"> </span><span class="o">(</span>use<span class="w"> </span><span class="s2">&quot;git add&quot;</span><span class="w"> </span>and/or<span class="w"> </span><span class="s2">&quot;git commit -a&quot;</span><span class="o">)</span>
+<span class="o">((</span>blog<span class="o">))</span><span class="w"> </span>rory@rory-Satellite-S75-B:~/Projects/site-code/output$<span class="w"> </span>git<span class="w"> </span>remote<span class="w"> </span>-v
+origin<span class="w">  </span>https://github.com/roryhr/roryhr.github.io<span class="w"> </span><span class="o">(</span>fetch<span class="o">)</span>
+origin<span class="w">  </span>https://github.com/roryhr/roryhr.github.io<span class="w"> </span><span class="o">(</span>push<span class="o">)</span>
+<span class="o">((</span>blog<span class="o">))</span><span class="w"> </span>rory@rory-Satellite-S75-B:~/Projects/site-code/output$
+</code></pre></div>
 
 <h3>Development</h3>
 <p>In <code>pelicanconf.py</code> enable relative URLs by setting <code>RELATIVE_URLS=True</code>.</p>
 <p>Run the development server manually and navigate to <code>http://localhost:8000</code></p>
-<div class="highlight"><pre><span></span><span class="o">((</span>blog<span class="o">))</span> rory@rory-Satellite-S75-B:~/Projects/site-code$ <span class="nb">cd</span> output/
-<span class="o">((</span>blog<span class="o">))</span> rory@rory-Satellite-S75-B:~/Projects/site-code/output$ python -m pelican.server
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="o">((</span>blog<span class="o">))</span><span class="w"> </span>rory@rory-Satellite-S75-B:~/Projects/site-code$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>output/
+<span class="o">((</span>blog<span class="o">))</span><span class="w"> </span>rory@rory-Satellite-S75-B:~/Projects/site-code/output$<span class="w"> </span>python<span class="w"> </span>-m<span class="w"> </span>pelican.server
+</code></pre></div>
 
 <p>Alternatively, take advantage of Pelican script that recompiles the site as you edit it (very cool!)</p>
-<div class="highlight"><pre><span></span><span class="o">(</span>web<span class="o">)</span> ~/p/website_code&gt; ./develop_server.sh start
-<span class="o">(</span>web<span class="o">)</span> ~/p/website_code&gt; ./develop_server.sh stop
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="o">(</span>web<span class="o">)</span><span class="w"> </span>~/p/website_code&gt;<span class="w"> </span>./develop_server.sh<span class="w"> </span>start
+<span class="o">(</span>web<span class="o">)</span><span class="w"> </span>~/p/website_code&gt;<span class="w"> </span>./develop_server.sh<span class="w"> </span>stop
+</code></pre></div>
 
 <h1>Repository contents</h1>
-<div class="highlight"><pre><span></span>site-code/
-    content/
-        blog/
-            blog-posts-go-here.md
-        images/
-            images-go-here.jpg
-            and-other-static-files.html
-        pages/
-            about.md
-            contact.md
-            index.md
-            projects.md
-    output/
-        index.html
-        lots of other html files
-    render_math/
-    develop_server.sh  
-    LICENSE
-    pelicanconf.py  
-    README.md
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>site-code/
+<span class="w">    </span>content/
+<span class="w">        </span>blog/
+<span class="w">            </span>blog-posts-go-here.md
+<span class="w">        </span>images/
+<span class="w">            </span>images-go-here.jpg
+<span class="w">            </span>and-other-static-files.html
+<span class="w">        </span>pages/
+<span class="w">            </span>about.md
+<span class="w">            </span>contact.md
+<span class="w">            </span>index.md
+<span class="w">            </span>projects.md
+<span class="w">    </span>output/
+<span class="w">        </span>index.html
+<span class="w">        </span>lots<span class="w"> </span>of<span class="w"> </span>other<span class="w"> </span>html<span class="w"> </span>files
+<span class="w">    </span>render_math/
+<span class="w">    </span>develop_server.sh<span class="w">  </span>
+<span class="w">    </span>LICENSE
+<span class="w">    </span>pelicanconf.py<span class="w">  </span>
+<span class="w">    </span>README.md
+</code></pre></div>
 
 <h2>Wiring the site up</h2>
 <p>I made a custom landing page with <code>pages/index.md</code> which becomes <code>index.html</code></p>
-<div class="highlight"><pre><span></span><span class="n">title</span><span class="p">:</span>
+<div class="highlight"><pre><span></span><code><span class="n">title</span><span class="p">:</span>
 <span class="n">save_as</span><span class="p">:</span> <span class="n">index</span><span class="o">.</span><span class="n">html</span>
 
 <span class="n">Thanks</span> <span class="k">for</span> <span class="n">stopping</span> <span class="n">by</span> <span class="n">my</span> <span class="n">little</span> <span class="n">website</span><span class="o">.</span>
 
 <span class="o">--</span> <span class="n">Rory</span> <span class="n">Hartong</span><span class="o">-</span><span class="n">Redden</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>In <code>site-code/pelicanconf.py</code> I wire up the buttons so they're labeled and go to the appropriate place (this took some fiddling).</p>
-<div class="highlight"><pre><span></span><span class="n">MENUITEMS</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;Home&#39;</span><span class="p">,</span> <span class="s1">&#39;/&#39;</span><span class="p">),</span>
+<div class="highlight"><pre><span></span><code><span class="n">MENUITEMS</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;Home&#39;</span><span class="p">,</span> <span class="s1">&#39;/&#39;</span><span class="p">),</span>
              <span class="p">(</span><span class="s1">&#39;Articles&#39;</span><span class="p">,</span> <span class="s1">&#39;/archives&#39;</span><span class="p">),</span>
              <span class="p">(</span><span class="s1">&#39;About&#39;</span><span class="p">,</span> <span class="s1">&#39;/pages/about&#39;</span><span class="p">),</span>
              <span class="p">(</span><span class="s1">&#39;Projects&#39;</span><span class="p">,</span> <span class="s1">&#39;/pages/projects&#39;</span><span class="p">),</span>
              <span class="p">(</span><span class="s1">&#39;Contact&#39;</span><span class="p">,</span> <span class="s1">&#39;/pages/contact&#39;</span><span class="p">)]</span>
-</pre></div>                </article>
+</code></pre></div>                </article>
             </aside><!-- /#featured -->
         <section id="extras" class="body">
                 <div class="blogroll">
@@ -153,6 +147,7 @@ origin  https://github.com/roryhr/roryhr.github.io <span class="o">(</span>push<
                             <li><a href="http://multithreaded.stitchfix.com/">MultiThreaded</a></li>
                             <li><a href="http://sisl.stanford.edu/">SISL</a></li>
                             <li><a href="https://adventofcode.com/">Advent of Code</a></li>
+                            <li><a href="https://simonwillison.net/">Simon Willison’s Weblog</a></li>
                         </ul>
                 </div><!-- /.blogroll -->
                 <div class="social">

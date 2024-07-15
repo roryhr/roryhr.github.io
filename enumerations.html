@@ -45,12 +45,11 @@ Here's a fine ChatGPT example which is essentially the content of of Google sear
 ChatGPT is like the old internet where you could read text on websites.</p>
 <h2>ChatGPT</h2>
 <p>Following is just verbatim output from the following request:</p>
-<div class="highlight"><pre><span></span>➜  ~ llm <span class="s2">&quot;give me an example of using Enums in python&quot;</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>➜<span class="w">  </span>~<span class="w"> </span>llm<span class="w"> </span><span class="s2">&quot;give me an example of using Enums in python&quot;</span>
+</code></pre></div>
 
 <p>Sure! Here's an example of using Enums in Python:</p>
-<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">Enum</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">Enum</span>
 
 <span class="c1"># Define an Enum class</span>
 <span class="k">class</span> <span class="nc">Color</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
@@ -82,8 +81,7 @@ ChatGPT is like the old internet where you could read text on websites.</p>
     <span class="n">Color</span><span class="o">.</span><span class="n">BLUE</span><span class="p">:</span> <span class="s2">&quot;0000FF&quot;</span>
 <span class="p">}</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">colors</span><span class="p">[</span><span class="n">Color</span><span class="o">.</span><span class="n">RED</span><span class="p">])</span>            <span class="c1"># FF0000</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>In this example, we define an enum class called "Color" with three members - RED, GREEN, and BLUE. We can access enum members using dot notation (e.g., Color.RED). We can also access the name and value of an enum member using the <code>name</code> and <code>value</code> properties.</p>
 <p>We can iterate over all the enum members using a for loop. Enum membership can be checked using the <code>in</code> keyword.</p>
@@ -91,19 +89,18 @@ ChatGPT is like the old internet where you could read text on websites.</p>
 <h2>Back to me</h2>
 <p>This is all great. My takeaway is that we can replace strings with Enums across the codebase. The Color class enumerates color options and removes typos. There are two more things I want, however. </p>
 <p>First, since this is an API interacting with other services, we need to be able to serialize to JSON. </p>
-<div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="s2">&quot;inspection&quot;</span><span class="p">:</span> <span class="n">Inspection</span><span class="o">.</span><span class="n">VISUAL</span><span class="p">}))</span>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="s2">&quot;inspection&quot;</span><span class="p">:</span> <span class="n">Inspection</span><span class="o">.</span><span class="n">VISUAL</span><span class="p">}))</span>
 <span class="c1"># TypeError: Object of type Inspection is not JSON serializable</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="s2">&quot;inspection&quot;</span><span class="p">:</span> <span class="n">Inspection</span><span class="o">.</span><span class="n">VISUAL</span><span class="o">.</span><span class="n">value</span><span class="p">}))</span>
 <span class="p">{</span><span class="s2">&quot;inspection&quot;</span><span class="p">:</span> <span class="s2">&quot;Visual Check&quot;</span><span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>The default Enu, as you can see, is not serializable – but is value is. So all over the codebase we’d have to call <code>.value</code> whenever the Enum gets turned into JSON and that's not cool. </p>
 <p>Well, can chatGPT help here? Maybe but in the time it'd take to fiddle with GPT I can do a Google search and get my answer on <a href="https://stackoverflow.com/questions/24481852/serialising-an-enum-member-to-json">StackOverflow</a>.
 The trick is to inherit from str and Enum. </p>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Inspection</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">Enum</span><span class="p">):</span>
-   <span class="sd">&quot;&quot;&quot;JSON serializable inspection types with custom exception&quot;&quot;&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Inspection</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">Enum</span><span class="p">):</span>
+<span class="w">   </span><span class="sd">&quot;&quot;&quot;JSON serializable inspection types with custom exception&quot;&quot;&quot;</span>
 
 
    <span class="n">VISUAL</span> <span class="o">=</span> <span class="s2">&quot;Visual Check&quot;</span>
@@ -114,36 +111,32 @@ The trick is to inherit from str and Enum. </p>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="s2">&quot;inspection&quot;</span><span class="p">:</span> <span class="n">Inspection</span><span class="o">.</span><span class="n">VISUAL</span><span class="p">}))</span>
 <span class="c1"># {&quot;inspection&quot;: &quot;Visual Check&quot;}</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>Boom! First problems solved and now the second problem....
 A nice property of Enums is, like a dictionary, they raise an error if you try to make an Enum from an unknown value.
 For Example: </p>
-<div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">Inspection</span><span class="p">(</span><span class="s2">&quot;Just look it it real quick&quot;</span><span class="p">))</span>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">Inspection</span><span class="p">(</span><span class="s2">&quot;Just look it it real quick&quot;</span><span class="p">))</span>
 <span class="c1"># ValueError: &#39;Just look it it real quick&#39; is not a valid Inspection</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>This is nice but we want to raise a custom exception (whether we should have custom exceptions is a topic for another day)</p>
-<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_unknown_inspection</span><span class="p">():</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">test_unknown_inspection</span><span class="p">():</span>
    <span class="k">with</span> <span class="n">pytest</span><span class="o">.</span><span class="n">raises</span><span class="p">(</span><span class="n">MissingModelConfigError</span><span class="p">):</span>
        <span class="n">Inspection</span><span class="p">(</span><span class="s2">&quot;Give it a quick look&quot;</span><span class="p">)</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>No problem because as we can see in stacktrace</p>
-<div class="highlight"><pre><span></span>   <span class="mi">575</span>     <span class="nd">@classmethod</span>
+<div class="highlight"><pre><span></span><code>   <span class="mi">575</span>     <span class="nd">@classmethod</span>
     <span class="mi">576</span>     <span class="k">def</span> <span class="nf">_missing_</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
 <span class="o">--&gt;</span> <span class="mi">577</span>         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%r</span><span class="s2"> is not a valid </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="bp">cls</span><span class="o">.</span><span class="vm">__name__</span><span class="p">))</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>all we have to do is override the <code>_missing_</code> method.</p>
 <h2>Result</h2>
 <p>Now we're done</p>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Inspection</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">Enum</span><span class="p">):</span>
-   <span class="sd">&quot;&quot;&quot;JSON serializable inspection types with custom exception&quot;&quot;&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Inspection</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">Enum</span><span class="p">):</span>
+<span class="w">   </span><span class="sd">&quot;&quot;&quot;JSON serializable inspection types with custom exception&quot;&quot;&quot;</span>
 
 
    <span class="n">VISUAL</span> <span class="o">=</span> <span class="s2">&quot;Visual Check&quot;</span>
@@ -157,8 +150,7 @@ For Example: </p>
        <span class="k">raise</span> <span class="n">MissingModelConfigError</span><span class="p">(</span>
            <span class="n">missing_property</span><span class="o">=</span><span class="s2">&quot;inspection&quot;</span><span class="p">,</span> <span class="n">expected_value</span><span class="o">=</span><span class="n">value</span>
        <span class="p">)</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>For this effort we don’t have to worry about typos or an unknown inspection sneaking in. 
 All we need to care about is a subset of these defined inspections. 
@@ -180,6 +172,7 @@ Very cool!</p>
                             <li><a href="http://multithreaded.stitchfix.com/">MultiThreaded</a></li>
                             <li><a href="http://sisl.stanford.edu/">SISL</a></li>
                             <li><a href="https://adventofcode.com/">Advent of Code</a></li>
+                            <li><a href="https://simonwillison.net/">Simon Willison’s Weblog</a></li>
                         </ul>
                 </div><!-- /.blogroll -->
                 <div class="social">

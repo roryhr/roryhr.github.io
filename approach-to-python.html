@@ -44,25 +44,23 @@
 <p>I like to phrase things as punchy commands but it's all just my preference.
 My personal style is constantly evolving.</p>
 <p>My motto is a twist on the Zen of Python</p>
-<div class="highlight"><pre><span></span><span class="err">If the implementation is hard to understand, it&#39;s bad.</span>
-<span class="err">If the implementation is easy to understand, it may be good.</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="nx">If</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">implementation</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="nx">hard</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="nx">understand</span><span class="p">,</span><span class="w"> </span><span class="nx">it</span><span class="err">&#39;</span><span class="nx">s</span><span class="w"> </span><span class="nx">bad</span><span class="p">.</span>
+<span class="nx">If</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">implementation</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="nx">easy</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="nx">understand</span><span class="p">,</span><span class="w"> </span><span class="nx">it</span><span class="w"> </span><span class="nx">may</span><span class="w"> </span><span class="nx">be</span><span class="w"> </span><span class="nx">good</span><span class="p">.</span>
+</code></pre></div>
 
 <h1>Style Guide</h1>
 <p>List comprehensions are your bread and butter. Structure them like a SQL query.</p>
-<div class="highlight"><pre><span></span><span class="n">cleaned_emails</span> <span class="o">=</span> <span class="p">[</span>
+<div class="highlight"><pre><span></span><code><span class="n">cleaned_emails</span> <span class="o">=</span> <span class="p">[</span>
     <span class="n">email</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
     <span class="k">for</span> <span class="n">email</span>
     <span class="ow">in</span> <span class="n">emails</span>
     <span class="k">if</span> <span class="s1">&#39;@test.com&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">email</span>
 <span class="p">]</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>Give the <a href="https://numpydoc.readthedocs.io/en/latest/format.html">The Numpy docstring style</a> a try.</p>
-<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">clean_emails</span><span class="p">(</span><span class="n">emails</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Clean up emails from source database</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">clean_emails</span><span class="p">(</span><span class="n">emails</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Clean up emails from source database</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -81,37 +79,33 @@ My personal style is constantly evolving.</p>
         <span class="k">if</span> <span class="s1">&#39;@test.com&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">email</span>
     <span class="p">]</span>
     <span class="k">return</span> <span class="n">cleaned_emails</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>Naming things is hard. Do it well! 
 Conserve your colleagues' brainpower: if a function has a good name and docstring then they don't have to understand <em>how it works</em> to understand <em>what it does</em>. </p>
 <p>Use SQL where possible, it's more readable than the PySpark equivalent.</p>
-<div class="highlight"><pre><span></span><span class="n">user_df</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="n">user_df</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">SELECT id,</span>
 <span class="s2">       created_at,</span>
 <span class="s2">       dt AS partition</span>
 <span class="s2">  FROM users</span>
 <span class="s2"> WHERE updated_at IS NOT NULL</span>
 <span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>Distinguish between Spark DataFrames and Pandas DataFrames when mixing the two. </p>
-<div class="highlight"><pre><span></span><span class="n">user_pdf</span> <span class="o">=</span> <span class="n">user_df</span><span class="o">.</span><span class="n">toPandas</span><span class="p">()</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="n">user_pdf</span> <span class="o">=</span> <span class="n">user_df</span><span class="o">.</span><span class="n">toPandas</span><span class="p">()</span>
+</code></pre></div>
 
 <p>Other Spark preferences:
 Distinguish between Spark DataFrames and Pandas DataFrames when mixing the two.</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyspark</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pyspark</span>
 <span class="kn">import</span> <span class="nn">pyspark.sql.types</span> <span class="k">as</span> <span class="nn">T</span> 
 <span class="kn">import</span> <span class="nn">pyspark.sql.functions</span> <span class="k">as</span> <span class="nn">F</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>As the <a href="http://spark.apache.org/docs/latest/api/python/pyspark.sql.html#pyspark.sql.SparkSession">documentation</a> says, the preferred entry point for Spark is through <code>spark</code>.</p>
-<div class="highlight"><pre><span></span><span class="c1"># Yes</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Yes</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">parquet</span><span class="p">()</span>
 <span class="n">rdd</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">sparkContext</span><span class="o">.</span><span class="n">sequenceFile</span><span class="p">()</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;SELECT * FROM users&quot;&quot;&quot;</span><span class="p">)</span>
@@ -120,14 +114,13 @@ Distinguish between Spark DataFrames and Pandas DataFrames when mixing the two.<
 <span class="n">sparkContext</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">sqlContext</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;SELECT * FROM users&quot;&quot;&quot;</span><span class="p">)</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">hiveContext</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;SELECT * FROM users&quot;&quot;&quot;</span><span class="p">)</span>
-</pre></div>
-
+</code></pre></div>
 
 <h1>Writing Scripts</h1>
 <p>Start with functions.
 If you find yourself passing several parameters between functions then make a class.</p>
 <p>Let's say you have a PySpark script called <code>anonymize_emails.py</code> which needs a date and a database. </p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">import</span> <span class="nn">pyspark</span>
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
@@ -138,24 +131,21 @@ If you find yourself passing several parameters between functions then make a cl
         <span class="o">.</span><span class="n">getOrCreate</span><span class="p">()</span>
 
     <span class="n">anonymize_emails</span><span class="p">(</span><span class="n">spark</span><span class="p">,</span> <span class="n">database</span><span class="p">,</span> <span class="n">date</span><span class="p">)</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>Explicitly ignore extra parameters if you want.</p>
-<div class="highlight"><pre><span></span><span class="err">_, database, date, *_ = sys.argv</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>_, database, date, *_ = sys.argv
+</code></pre></div>
 
 <p>I'm not a huge fan of the trailing backslash for new lines but it's common in Spark and growing on me. 
 For Pandas I still prefer to use parentheses. 
 In any case put each operation on new line. </p>
-<div class="highlight"><pre><span></span><span class="p">(</span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;user_id&#39;</span><span class="p">,</span> <span class="s1">&#39;time_on_page&#39;</span><span class="p">]]</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;user_id&#39;</span><span class="p">,</span> <span class="s1">&#39;time_on_page&#39;</span><span class="p">]]</span>
     <span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;user_id&#39;</span><span class="p">)</span>
     <span class="o">.</span><span class="n">mean</span><span class="p">()</span>
     <span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;average_time_on_page.csv&#39;</span><span class="p">)</span>
 <span class="p">)</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>Jupyter Notebooks are your friend. 
 Especially for data science you'll want to iterate: see what's in the data, check the processing did what you think it did, and see how long each chunk of code takes to run. 
@@ -181,6 +171,7 @@ Now you're ready to transfer this code to a proper script and deploy it.</p>
                             <li><a href="http://multithreaded.stitchfix.com/">MultiThreaded</a></li>
                             <li><a href="http://sisl.stanford.edu/">SISL</a></li>
                             <li><a href="https://adventofcode.com/">Advent of Code</a></li>
+                            <li><a href="https://simonwillison.net/">Simon Willison’s Weblog</a></li>
                         </ul>
                 </div><!-- /.blogroll -->
                 <div class="social">

@@ -84,30 +84,26 @@ It includes the hits like <code>Pandas</code>, <code>matplotlib</code>, <code>re
 <p><code>$ conda create -n web_env pelican markdown</code></p>
 </li>
 </ol>
-<div class="highlight"><pre><span></span>$ conda create -n web_env pelican markdown
-Solving environment: failed
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>web_env<span class="w"> </span>pelican<span class="w"> </span>markdown
+Solving<span class="w"> </span>environment:<span class="w"> </span>failed
 
-PackagesNotFoundError: The following packages are not available from current channels:
+PackagesNotFoundError:<span class="w"> </span>The<span class="w"> </span>following<span class="w"> </span>packages<span class="w"> </span>are<span class="w"> </span>not<span class="w"> </span>available<span class="w"> </span>from<span class="w"> </span>current<span class="w"> </span>channels:
 
-  - pelican
-</pre></div>
-
+<span class="w">  </span>-<span class="w"> </span>pelican
+</code></pre></div>
 
 <p>Not to worry! We can make an environment and then pip install whatever we can find on conda.</p>
-<div class="highlight"><pre><span></span>$ conda create -n web_env <span class="nv">python</span><span class="o">=</span><span class="m">3</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>web_env<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>
+</code></pre></div>
 
-
-<div class="highlight"><pre><span></span>$ <span class="nb">source</span> activate web_env
-<span class="o">(</span>web_env<span class="o">)</span> $ pip install pelican markdown
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>activate<span class="w"> </span>web_env
+<span class="o">(</span>web_env<span class="o">)</span><span class="w"> </span>$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>pelican<span class="w"> </span>markdown
+</code></pre></div>
 
 <p>Check out our handiwork and save our dependencies. </p>
-<div class="highlight"><pre><span></span>$ conda list
-$ pip freeze &gt; requirements.txt
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>conda<span class="w"> </span>list
+$<span class="w"> </span>pip<span class="w"> </span>freeze<span class="w"> </span>&gt;<span class="w"> </span>requirements.txt
+</code></pre></div>
 
 <p>And that's about all there is to it!</p>
     </div><!-- /.entry-content -->
@@ -127,6 +123,7 @@ $ pip freeze &gt; requirements.txt
                             <li><a href="http://multithreaded.stitchfix.com/">MultiThreaded</a></li>
                             <li><a href="http://sisl.stanford.edu/">SISL</a></li>
                             <li><a href="https://adventofcode.com/">Advent of Code</a></li>
+                            <li><a href="https://simonwillison.net/">Simon Willison’s Weblog</a></li>
                         </ul>
                 </div><!-- /.blogroll -->
                 <div class="social">
