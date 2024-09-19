@@ -36,23 +36,25 @@
 
 </footer><!-- /.post-info --><p>Updated: 2022-12-12</p>
 <p>Added a <code>requirements.txt</code> to capture dependencies and ported to MacOS. </p>
+<p>Updated: 2024-09-19
+entry-point is the Makefile </p>
 <h1>Introduction</h1>
 <p>After 9 months I'm returning to this website.
 My first question was "How does this thing work?"
-Of course I didn't document it and I don't remember. Lesson learned.</p>
+Of course, I didn't document it and I don't remember. Lesson learned.</p>
 <p><strong>The things we take for granted are the most important to document.</strong></p>
 <p>This post is for myself and anyone interested in using Pelican to make a Github-hosted website.</p>
 <h1>How does this thing work?</h1>
 <h2>High level overview</h2>
-<p>This site is hosted for free by <a href="https://github.com/">Github</a> from the special repository <a href="https://github.com/roryhr/roryhr.github.io">roryhr/roryhr.github.io</a>. 
-Thanks Github!</p>
-<p>I used a static site generator called Pelican that generates html, which comprises this website, from markdown text files in a particular directory structure (more on that in a bit).
+<p>This site is hosted for free by <a href="https://github.com/">GitHub</a> from the special repository <a href="https://github.com/roryhr/roryhr.github.io">roryhr/roryhr.github.io</a>. 
+Thanks, GitHub!</p>
+<p>I used a static site generator called Pelican that generates html, which comprises this website, from Markdown text files in a particular directory structure (more on that in a bit).
 These files are in a separate repository at
 <a href="https://github.com/roryhr/code/tree/master/website_code">roryhr/code/website_cost</a>.</p>
 <h2>Recipes</h2>
 <p>Content for the website goes in the <code>content</code> directory. 
 Generate the website</p>
-<div class="highlight"><pre><span></span><code><span class="o">(</span>web<span class="o">)</span><span class="w"> </span>~/p/website_code&gt;<span class="w"> </span>pelican<span class="w"> </span>content
+<div class="highlight"><pre><span></span><code><span class="o">(</span>py39<span class="o">)</span><span class="w"> </span>~/p/website_code&gt;<span class="w"> </span>pelican<span class="w"> </span>content
 Done:<span class="w"> </span>Processed<span class="w"> </span><span class="m">13</span><span class="w"> </span>articles,<span class="w"> </span><span class="m">0</span><span class="w"> </span>drafts,<span class="w"> </span><span class="m">4</span><span class="w"> </span>pages,<span class="w"> </span><span class="m">0</span><span class="w"> </span>hidden<span class="w"> </span>pages<span class="w"> </span>and<span class="w"> </span><span class="m">0</span><span class="w"> </span>draft<span class="w"> </span>pages<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">0</span>.85<span class="w"> </span>seconds.
 </code></pre></div>
 
@@ -82,17 +84,18 @@ origin<span class="w">  </span>https://github.com/roryhr/roryhr.github.io<span c
 </code></pre></div>
 
 <h3>Development</h3>
-<p>In <code>pelicanconf.py</code> enable relative URLs by setting <code>RELATIVE_URLS=True</code>.</p>
-<p>Run the development server manually and navigate to <code>http://localhost:8000</code></p>
-<div class="highlight"><pre><span></span><code><span class="o">((</span>blog<span class="o">))</span><span class="w"> </span>rory@rory-Satellite-S75-B:~/Projects/site-code$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>output/
-<span class="o">((</span>blog<span class="o">))</span><span class="w"> </span>rory@rory-Satellite-S75-B:~/Projects/site-code/output$<span class="w"> </span>python<span class="w"> </span>-m<span class="w"> </span>pelican.server
+<p>In <code>pelicanconf.py</code> enable relative URLs by setting <code>RELATIVE_URLS=True</code> and comment out <code>ANALYTICS</code>. 
+Neither are necessary.</p>
+<p>Take advantage of Pelican script to recompile the site as you edit it (very cool!).</p>
+<p>Across my various projects I like to have a consistent make entrypoint because remembering the particulars of Pelican, Flask, Django across different versions is hard.</p>
+<div class="highlight"><pre><span></span><code><span class="o">(</span>py39<span class="o">)</span><span class="w"> </span>~/p/website_code&gt;<span class="w"> </span>make<span class="w"> </span>dev
 </code></pre></div>
 
-<p>Alternatively, take advantage of Pelican script that recompiles the site as you edit it (very cool!)</p>
-<div class="highlight"><pre><span></span><code><span class="o">(</span>web<span class="o">)</span><span class="w"> </span>~/p/website_code&gt;<span class="w"> </span>./develop_server.sh<span class="w"> </span>start
-<span class="o">(</span>web<span class="o">)</span><span class="w"> </span>~/p/website_code&gt;<span class="w"> </span>./develop_server.sh<span class="w"> </span>stop
+<p>In this case that command is </p>
+<div class="highlight"><pre><span></span><code><span class="n">source</span><span class="w"> </span><span class="n">activate</span><span class="w"> </span><span class="n">py39</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">pelican</span><span class="w"> </span><span class="o">--</span><span class="n">listen</span><span class="w"> </span><span class="o">--</span><span class="n">autoreload</span><span class="w"> </span><span class="o">--</span><span class="n">relative</span><span class="o">-</span><span class="n">urls</span>
 </code></pre></div>
 
+<p>Navigate to <code>http://localhost:8000</code></p>
 <h1>Repository contents</h1>
 <div class="highlight"><pre><span></span><code>site-code/
 <span class="w">    </span>content/
@@ -109,8 +112,6 @@ origin<span class="w">  </span>https://github.com/roryhr/roryhr.github.io<span c
 <span class="w">    </span>output/
 <span class="w">        </span>index.html
 <span class="w">        </span>lots<span class="w"> </span>of<span class="w"> </span>other<span class="w"> </span>html<span class="w"> </span>files
-<span class="w">    </span>render_math/
-<span class="w">    </span>develop_server.sh<span class="w">  </span>
 <span class="w">    </span>LICENSE
 <span class="w">    </span>pelicanconf.py<span class="w">  </span>
 <span class="w">    </span>README.md
