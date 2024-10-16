@@ -320,10 +320,7 @@ figure p.caption {
 	padding: 0;
 	text-align: center;
 	max-width: 800px;
-
 	border-radius: 5px;
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
 }
 
 #banner nav ul {
@@ -362,7 +359,6 @@ figure p.caption {
 	-webkit-border-top-left-radius: 5px;
 
 	border-bottom-left-radius: 5px;
-	-moz-border-radius-bottomleft: 5px;
 	-webkit-border-bottom-left-radius: 5px;
 }
 
