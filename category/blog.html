@@ -27,7 +27,76 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="https://www.roryhr.com/websites.html">Websites</a></h1>
+                    <h1 class="entry-title"><a href="https://www.roryhr.com/activity-title.html">Activity Title</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2026-01-29T00:00:00-08:00">
+                Published: Thu 29 January 2026
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://www.roryhr.com/author/rory-hartong-redden.html">Rory Hartong-Redden</a>
+        </address>
+<p>In <a href="https://www.roryhr.com/category/blog.html">blog</a>.</p>
+<p>tags: <a href="https://www.roryhr.com/tag/web.html">web</a> <a href="https://www.roryhr.com/tag/projects.html">projects</a> </p>
+</footer><!-- /.post-info --><p>According to git history I started work on "Activity Title" in August 2024. 
+It's advertised on my <a href="https://www.roryhr.com/pages/projects.html">Projects</a> page.
+The user I'm targeting is me. 
+This is a hobby project that I made available to the public and it has maybe 20 users.</p>
+<p>It's been hosted on Fly.io and, for over a year, it's been a low-maintenance project that "just worked".
+The monthly cost was below $5 so it was free to me.</p>
+<p>Earlier this week I tried logging in to <a href="https://activitytitle.com/">activitytitle.com</a> and was greeted with this error on Firefox</p>
+<div class="highlight"><pre><span></span><code><span class="n">Secure</span> <span class="n">Connection</span> <span class="n">Failed</span>
+
+<span class="n">An</span> <span class="n">error</span> <span class="n">occurred</span> <span class="n">during</span> <span class="n">a</span> <span class="n">connection</span> <span class="n">to</span> <span class="n">activitytitle</span><span class="p">.</span><span class="n">com</span><span class="p">.</span> <span class="n">PR_END_OF_FILE_ERROR</span>
+
+<span class="n">Error</span> <span class="n">code</span><span class="p">:</span> <span class="n">PR_END_OF_FILE_ERROR</span>
+
+    <span class="n">The</span> <span class="n">page</span> <span class="n">you</span> <span class="n">are</span> <span class="n">trying</span> <span class="n">to</span> <span class="n">view</span> <span class="n">cannot</span> <span class="n">be</span> <span class="n">shown</span> <span class="n">because</span> <span class="n">the</span> <span class="n">authenticity</span> <span class="n">of</span> <span class="n">the</span> <span class="n">received</span> <span class="n">data</span> <span class="n">could</span> <span class="n">not</span> <span class="n">be</span> <span class="n">verified</span><span class="p">.</span>
+    <span class="n">Please</span> <span class="n">contact</span> <span class="n">the</span> <span class="n">website</span> <span class="n">owners</span> <span class="n">to</span> <span class="n">inform</span> <span class="n">them</span> <span class="n">of</span> <span class="n">this</span> <span class="n">problem</span><span class="p">.</span>
+</code></pre></div>
+
+<p>The domain was fine so the security angle was a red-herring.
+The fly domain, https://strava-deck.fly.dev/, gave the same error.
+Something is busted! </p>
+<p>The fly machine was down so I tried redeploying it.</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;</span><span class="w"> </span><span class="n">fly</span><span class="w"> </span><span class="n">deploy</span>
+<span class="o">&gt;</span><span class="w"> </span><span class="p">....</span>
+<span class="o">&gt;</span><span class="w"> </span><span class="n">fly</span><span class="w"> </span><span class="n">logs</span>
+
+<span class="o">[</span><span class="n">PR04</span><span class="o">]</span><span class="w"> </span><span class="n">could</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">find</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">good</span><span class="w"> </span><span class="n">candidate</span><span class="w"> </span><span class="k">within</span><span class="w"> </span><span class="mi">40</span><span class="w"> </span><span class="n">attempts</span><span class="w"> </span><span class="k">at</span><span class="w"> </span><span class="k">load</span><span class="w"> </span><span class="n">balancing</span>
+</code></pre></div>
+
+<p>I checked the fly.toml and Dockerfile -- but nothing had changed lately. </p>
+<p>After a night of debugging I identified that the issue is the volume.</p>
+<div class="highlight"><pre><span></span><code><span class="k">[mounts]</span>
+<span class="w">  </span><span class="n">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;deck_data&quot;</span>
+<span class="w">  </span><span class="n">destination</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;/data&quot;</span>
+</code></pre></div>
+
+<p>If I comment this out the machine runs and the website returns a different error (progress!).
+In the logs I see Django errors because there's no database, which is expected (the database is a file in the volume).</p>
+<p>Just when I was about the wipe it all and recreate the volume I found this support post from an old-school Google search:
+https://community.fly.io/t/machine-suspended-and-it-wont-start-again-not-another-post-about-cold-start/24984/4</p>
+<p>The trick is forking the volume, creating a copy, and deleting the old volume. 
+The new fork volume attaches to a machine like magic and we're running just like before with all data restored. </p>
+<h1>Conclusion</h1>
+<p>What did I learn from this ordeal? 
+<a href="https://fly.io/">Fly.io</a> is a little janky. 
+And my website is janky too.
+But, hey, they're free so don't complain.</p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://www.roryhr.com/websites.html" rel="bookmark"
+                           title="Permalink to Websites">Websites</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2024-10-17T00:00:00-07:00">
                 Published: Thu 17 October 2024
@@ -38,45 +107,14 @@
         </address>
 <p>In <a href="https://www.roryhr.com/category/blog.html">blog</a>.</p>
 <p>tags: <a href="https://www.roryhr.com/tag/web.html">web</a> </p>
-</footer><!-- /.post-info --><p>I've been revamping this website and my internet presence. 
+</footer><!-- /.post-info -->                <p>I've been revamping this website and my internet presence. 
 For most of my career I didn't care if anyone found my projects or my writing.
 Unsurprisingly, this website has been buried (maybe rightly so!)</p>
 <p>I assumed that if you made a website that Google would index it.
-This, it turns out, isn't quite true (lol). </p>
-<p>So I've been doing some house cleaning on this little corner of the internet.</p>
-<ol>
-<li>Google Search Console<ol>
-<li>Made a sitemap.xml using a pelican <a href="https://github.com/pelican-plugins/sitemap">plugin</a></li>
-<li>Setup https. I don't really care but there's a button you can click on GitHub Pages settings so at least it's easy.</li>
-<li>Got crawled and indexed</li>
-<li>I need a "canonical" urls. I like the classic <code>www.</code> so I'm sticking with that.</li>
-</ol>
-</li>
-<li>Tracking<ol>
-<li>Google deprecated Google Analytics so...I</li>
-<li>Setup <a href="https://umami.is/">umami</a> tracking and that's going great</li>
-</ol>
-</li>
-<li>Linking here from LinkedIn<ol>
-<li>I own the distribution and content! The medium is the message right?</li>
-</ol>
-</li>
-<li>Social Media<ol>
-<li>Removed links to Twitter</li>
-<li>Setup Mastodon (I'm still trying to get that green verified box)</li>
-<li>Threads</li>
-</ol>
-</li>
-<li>Links<ol>
-<li>Updating links section to focus on personal websites and meetups</li>
-</ol>
-</li>
-</ol>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+This, it turns …</p>
+                <a class="readmore" href="https://www.roryhr.com/websites.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
@@ -155,37 +193,12 @@ What happened?</p>
                 <a class="readmore" href="https://www.roryhr.com/part-one-what-happened-to-fast-radius.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="https://www.roryhr.com/pycharm.html" rel="bookmark"
-                           title="Permalink to PyCharm">PyCharm</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2023-10-20T00:00:00-07:00">
-                Published: Fri 20 October 2023
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="https://www.roryhr.com/author/rory-hartong-redden.html">Rory Hartong-Redden</a>
-        </address>
-<p>In <a href="https://www.roryhr.com/category/blog.html">blog</a>.</p>
-<p>tags: <a href="https://www.roryhr.com/tag/python.html">python</a> </p>
-</footer><!-- /.post-info -->                <p>I still use PyCharm as my daily text editor. </p>
-<p>IDEs like PyCharm have tons of features and the 80/20 rule applies: investing 20% effort learning the tool will get you 80% productivity. 
-The rest is marginal gains and your effort is better spent thinking about your code.</p>
-<p>Here, I'll …</p>
-                <a class="readmore" href="https://www.roryhr.com/pycharm.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
                 </ol><!-- /#posts-list -->
 <nav>
   <ul>
-    <li>Page 1 / 2</li>
+    <li>Page 1 / 3</li>
         <li><a href="https://www.roryhr.com/category/blog2.html">&rang;</a></li>
-        <li><a href="https://www.roryhr.com/category/blog2.html">&Rang;</a></li>
+        <li><a href="https://www.roryhr.com/category/blog3.html">&Rang;</a></li>
   </ul>
 </nav>
                 </section><!-- /#content -->
